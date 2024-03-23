@@ -1,4 +1,5 @@
 class CarsModel {
+  String image;
   String name;
   String type;
   int rage;
@@ -9,7 +10,8 @@ class CarsModel {
   double priceHour;
   double priceDay;
   CarsModel(
-      {required this.name,
+      {required this.image,
+      required this.name,
       required this.type,
       required this.rage,
       required this.seat,
@@ -23,6 +25,7 @@ class CarsModel {
     List<CarsModel> cars = [];
 
     cars.add(CarsModel(
+        image: 'assets/images/Tesla model X.png',
         name: 'Tesla Model X',
         type: 'SUV',
         rage: 540,
@@ -33,6 +36,7 @@ class CarsModel {
         priceDay: 190.00));
 
     cars.add(CarsModel(
+        image: 'assets/images/Tesla model Y.png',
         name: 'Tesla Model S (LR)',
         type: 'Sedan',
         rage: 715,
@@ -43,6 +47,7 @@ class CarsModel {
         priceDay: 210.00));
       
       cars.add(CarsModel(
+        image: 'assets/images/BYD Seal RWD.png',
         name: 'BYD Seal RWD',
         type: 'Sedan',
         rage: 650,

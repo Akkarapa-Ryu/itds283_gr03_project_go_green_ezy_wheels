@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: GGEWTheme.light,
+      darkTheme: GGEWTheme.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
