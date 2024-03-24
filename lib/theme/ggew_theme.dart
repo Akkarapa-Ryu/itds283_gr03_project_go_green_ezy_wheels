@@ -13,16 +13,16 @@ final class GGEWTheme {
   static ThemeData get light => _baseTheme.copyWith(
         scaffoldBackgroundColor: DesignSystem.c1,
         colorScheme: const ColorScheme.light(
-          primary: DesignSystem.primary,
+          primary: DesignSystem.c1,
           error: DesignSystem.error,
           background: DesignSystem.c2
         ),
       );
 
   static ThemeData get dark => _baseTheme.copyWith(
-        scaffoldBackgroundColor: Colors.grey,
+        scaffoldBackgroundColor: DesignSystem.c0,
         colorScheme: const ColorScheme.dark(
-          primary: DesignSystem.primary,
+          primary: DesignSystem.c0,
           error: DesignSystem.error,
           background: DesignSystem.c0
         ),

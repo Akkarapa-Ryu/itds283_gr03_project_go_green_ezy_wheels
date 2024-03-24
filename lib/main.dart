@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/theme.dart';
+import '/pages/pages.dart';
+import 'theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: GGEWTheme.light,
-      darkTheme: GGEWTheme.dark,
+      // darkTheme: GGEWTheme.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
