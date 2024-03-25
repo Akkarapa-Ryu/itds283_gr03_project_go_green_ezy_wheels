@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
               ),
               CircleAvatar(
                 radius: 80,
-                backgroundColor: DesignSystem.c0,
+                backgroundImage: NetworkImage('https://img.freepik.com/premium-photo/portrait-handsome-young-man_53876-38137.jpg?size=626&ext=jpg&ga=GA1.1.735520172.1711238400&semt=ais'),
               )
             ],
           ),
