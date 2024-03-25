@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/pages/pages.dart';
-import 'theme/theme.dart';
+import '/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,8 +31,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CarListPage(),
+    return PageView(
+      children: [HomePage(), CarListPage()],
     );
   }
 }
