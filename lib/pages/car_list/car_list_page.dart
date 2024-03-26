@@ -11,7 +11,7 @@ class CarListPage extends StatefulWidget {
 }
 
 class _CarListPageState extends State<CarListPage> {
-  final brandsOfCars = ['Tesla', 'MG', 'BYD', 'Benz', 'MG', 'BYD', 'Benz'];
+  final brandsOfCars = ['Tesla', 'MG', 'BYD', 'Benz', 'ORA', 'BMW', 'Hyundai'];
   List<String> selectCarBrand = [];
 
   @override
