@@ -23,7 +23,7 @@ class _CarListPageState extends State<CarListPage> {
         appBar: AppBar(
             title: const Text(
           'Car List',
-          style: TextStyle(fontFamily: 'Manrope', fontWeight: FontWeight.w700),
+          style: TextStyle(fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         )),
         body: SingleChildScrollView(
           child: Center(
