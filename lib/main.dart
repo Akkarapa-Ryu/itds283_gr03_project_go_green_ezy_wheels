@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import '/pages/pages.dart';
 import '/theme/theme.dart';
 
@@ -29,10 +30,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [HomePage(), CarListPage(), SettingPage()],
+    return MaterialApp(
+      home: Scaffold(
+        body: <Widget>[
+          HomePage(),
+          CarListPage(),
+          SettingPage()
+        ][currentPageIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          selectedItemColor: DesignSystem.c6,
+          backgroundColor: DesignSystem.c1,
+          currentIndex: currentPageIndex,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined,size: 35,), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.car_crash,size: 35,), label: 'Car'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings_outlined,size: 35,), label: 'Setting'),
+          ],
+        ),
+      ),
     );
   }
 }

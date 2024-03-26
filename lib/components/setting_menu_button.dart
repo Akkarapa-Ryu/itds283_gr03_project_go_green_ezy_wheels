@@ -29,7 +29,7 @@ class SettingMenuButton extends StatelessWidget {
             CircleAvatar(
               radius: 20,
               backgroundColor: DesignSystem.c6,
-              child: Icon(iconSetting.icon, size: 30,),
+              child: Icon(iconSetting.icon, size: 30,color: DesignSystem.c1,),
             ),
             SizedBox(
               width: 20,
