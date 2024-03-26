@@ -7,7 +7,6 @@ import '../theme/theme.dart';
 class CustomListTile extends StatelessWidget {
   const CustomListTile(
       {super.key,
-      // required this.image,
       required this.thumbnail,
       required this.title,
       required this.type,
@@ -20,7 +19,6 @@ class CustomListTile extends StatelessWidget {
       required this.seat,
       required this.brand});
 
-  // final Image image;
   final Widget thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -35,92 +33,94 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(5),
-      child: SizedBox(
-        height: 130,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      thumbnail,
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        children: [
-                          Text('$priceHour / Hour'),
-                          Text('$priceDay / Day'),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-                flex: 3,
-                child: Padding(
-                    padding: EdgeInsets.only(left: 20, right: 2),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.all(5),
+        child: SizedBox(
+          height: 130,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    Row(
                       children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Type: $type  Rage: $rage  Seat: $seat',
-                              style: TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 11),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'DC: $dc Kw/H',
-                              style: TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 11),
-                            ),
-                            superchargeORac(supercharge, ac)
-                          ],
-                        ),
-                        // Text('Brand: $brand',style: TextStyle(
-                        //           fontFamily: DesignSystem.fontFamily,
-                        //           fontWeight: FontWeight.w500,
-                        //           fontSize: 11),),
-                        ElevatedButton(
-                            onPressed: () {},
-                            child: Text(
-                              '      Select      ',
-                              style: TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                  color: DesignSystem.c1),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: DesignSystem.c6))
+                        thumbnail,
                       ],
-                    )))
-          ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          children: [
+                            Text('$priceHour / Hour'),
+                            Text('$priceDay / Day'),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex: 3,
+                  child: Padding(
+                      padding: EdgeInsets.only(left: 20, right: 2),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Type: $type  Rage: $rage  Seat: $seat',
+                                style: TextStyle(
+                                    fontFamily: DesignSystem.fontFamily,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'DC: $dc Kw/H',
+                                style: TextStyle(
+                                    fontFamily: DesignSystem.fontFamily,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11),
+                              ),
+                              superchargeORac(supercharge, ac)
+                            ],
+                          ),
+                          // Text('Brand: $brand',style: TextStyle(
+                          //           fontFamily: DesignSystem.fontFamily,
+                          //           fontWeight: FontWeight.w500,
+                          //           fontSize: 11),),
+                          ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                '      Select      ',
+                                style: TextStyle(
+                                    fontFamily: DesignSystem.fontFamily,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: DesignSystem.c1),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: DesignSystem.c6))
+                        ],
+                      )))
+            ],
+          ),
         ),
       ),
     );
@@ -146,5 +146,4 @@ class CustomListTile extends StatelessWidget {
       );
     }
   }
-  
 }
