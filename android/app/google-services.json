@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988691039433",
+    "project_id": "itds283-gr03-ggew",
+    "storage_bucket": "itds283-gr03-ggew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988691039433:android:3f852340185be7c71af918",
+        "android_client_info": {
+          "package_name": "com.example.itds283_gr03_project_go_green_ezy_wheels"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABeVGFqNyQNV7rAObvJ1gqzFZ9s0pqX2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
