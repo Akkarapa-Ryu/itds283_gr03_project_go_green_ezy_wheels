@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/firebase_api/firebase_api.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/design_system.dart';
 
 import '../../components/components.dart';
@@ -93,6 +94,9 @@ class _HomePageState extends State<HomePage> {
                       iconMenu: Icon(Icons.charging_station),
                       text: 'EV Charger',
                     ),
+                    ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
+                    }, child: Icon(Icons.add,size: 100,))
                     // HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: 'Van with Driver',),
                     // HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: 'Premium car with Driver',),
                   ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import '/pages/pages.dart';
 import '/theme/theme.dart';
+import 'firebase_api/firebase_api.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
       theme: GGEWTheme.light,
       // darkTheme: GGEWTheme.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => MyHomePage(title: 'Flutter Demo Home Page',),
+      //   // '/homePage':(context) => HomePage(),
+      //   '/testPage': (context) => TestPage(),
+      // },
     );
   }
 }
@@ -33,7 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return 
+    // TestPage();
+    MaterialApp(
       home: Scaffold(
         body: <Widget>[
           HomePage(),
