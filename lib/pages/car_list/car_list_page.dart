@@ -79,7 +79,7 @@ class _CarListPageState extends State<CarListPage> {
                           elevation: 3,
                           margin: EdgeInsets.only(
                               left: 5, right: 5, top: 5, bottom: 5),
-                          child: CustomListTile(
+                          child: CustomListTileCarCard(
                             thumbnail: Image.asset(
                               filterBrands[index].image,
                               height: 90,
