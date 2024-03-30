@@ -11,10 +11,8 @@ class TestPage extends StatefulWidget {
 
 // https://www.youtube.com/watch?v=jDkKXJQ5xjE
 class _TestPageState extends State<TestPage> {
-  final Future<FirebaseApp> firebase =
-      Firebase.initializeApp(); // เตรียม firebase
-  CollectionReference _carsCollection =
-      FirebaseFirestore.instance.collection('cars');
+  final Future<FirebaseApp> firebase = Firebase.initializeApp(); // เตรียม firebase
+  final CollectionReference _carsCollection = FirebaseFirestore.instance.collection('cars');
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,10 @@ class _TestPageState extends State<TestPage> {
           return Scaffold(
             appBar: AppBar(title: Text('Cars Data')),
             body: StreamBuilder(
-              stream: FirebaseFirestore.instance.collection('cars').snapshots(),
+              stream:
+              _carsCollection.snapshots()
+              // FirebaseFirestore.instance.collection('cars').snapshots()
+              ,
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (!snapshot.hasData) {
                   return Center(

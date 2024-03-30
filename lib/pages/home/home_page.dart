@@ -94,9 +94,10 @@ class _HomePageState extends State<HomePage> {
                       iconMenu: Icon(Icons.charging_station),
                       text: 'EV Charger',
                     ),
+                    /*
                     ElevatedButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
-                    }, child: Icon(Icons.add,size: 100,))
+                    }, child: Icon(Icons.add,size: 100,))*/
                     // HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: 'Van with Driver',),
                     // HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: 'Premium car with Driver',),
                   ],
