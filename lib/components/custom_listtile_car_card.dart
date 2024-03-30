@@ -4,8 +4,8 @@ import '../theme/theme.dart';
 
 // https://api.flutter.dev/flutter/material/ListTile-class.html
 
-class CustomListTile extends StatelessWidget {
-  const CustomListTile(
+class CustomListTileCarCard extends StatelessWidget {
+  const CustomListTileCarCard(
       {super.key,
       required this.thumbnail,
       required this.title,

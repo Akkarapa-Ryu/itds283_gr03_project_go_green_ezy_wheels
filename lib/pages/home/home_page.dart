@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/firebase_api/firebase_api.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/design_system.dart';
-
+import '../../pages/pages.dart';
+import '../../theme/theme.dart';
 import '../../components/components.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
             child: Column(
+              
               children: [
                 SizedBox(
                   height: 50,
@@ -71,8 +71,9 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeMenuButton(
-                      iconMenu: Icon(Icons.punch_clock_sharp),
+                      iconMenu: Icon(IconData(0xee2d, fontFamily: 'MaterialIcons')),
                       text: 'Hour',
+                      routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
@@ -83,9 +84,6 @@ class _HomePageState extends State<HomePage> {
                       text: 'Long-Term',
                     ),
                   ],
-                ),
-                SizedBox(
-                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -98,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                     ElevatedButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
                     }, child: Icon(Icons.add,size: 100,))*/
-                    // HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: 'Van with Driver',),
-                    // HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: 'Premium car with Driver',),
+                    HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: 'Van with Driver',),
+                    HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: 'Premium car with Driver',),
                   ],
                 )
               ],

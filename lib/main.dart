@@ -18,12 +18,6 @@ class MyApp extends StatelessWidget {
       theme: GGEWTheme.light,
       // darkTheme: GGEWTheme.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (context) => MyHomePage(title: 'Flutter Demo Home Page',),
-      //   // '/homePage':(context) => HomePage(),
-      //   '/testPage': (context) => TestPage(),
-      // },
     );
   }
 }
@@ -39,32 +33,49 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
+  final List _pageWidget = [
+    const HomePage(),
+    const CarListPage(),
+    const SettingPage()
+  ];
+  final List<BottomNavigationBarItem> _menuBar = <BottomNavigationBarItem>[
+    const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.home_outlined,
+          size: 35,
+        ),
+        label: 'Home'),
+    const BottomNavigationBarItem(
+        icon: Icon(
+          IconData(0xe1d7, fontFamily: 'MaterialIcons'),
+          size: 35,
+        ),
+        label: 'Car'),
+    const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.settings_outlined,
+          size: 35,
+        ),
+        label: 'Setting'),
+  ];
+
+  _onItemTapped(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return 
-    // TestPage();
-    MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: <Widget>[
-          HomePage(),
-          CarListPage(),
-          SettingPage()
-        ][currentPageIndex],
+        body: _pageWidget.elementAt(currentPageIndex),
         bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            setState(() {
-              currentPageIndex = index;
-            });
-          },
+          onTap: (index) => _onItemTapped(index),
           selectedItemColor: DesignSystem.c6,
           backgroundColor: DesignSystem.c1,
           currentIndex: currentPageIndex,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined,size: 35,), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.car_crash,size: 35,), label: 'Car'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings_outlined,size: 35,), label: 'Setting'),
-          ],
+          items: _menuBar,
         ),
       ),
     );
