@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../constants/constants.dart';
 import '../theme/theme.dart';
 
 // https://api.flutter.dev/flutter/material/ListTile-class.html
@@ -55,8 +55,14 @@ class CustomListTileCarCard extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text('$priceHour / Hour'),
-                            Text('$priceDay / Day'),
+                            Text('$priceHour / ${CarListMessage.hour}',style: TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),),
+                            Text('$priceDay / ${CarListMessage.day}',style: TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),),
                           ],
                         ),
                       ],
@@ -81,7 +87,7 @@ class CustomListTileCarCard extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'Type: $type  Rage: $rage  Seat: $seat',
+                                '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
                                 style: TextStyle(
                                     fontFamily: DesignSystem.fontFamily,
                                     fontWeight: FontWeight.w500,
@@ -92,7 +98,7 @@ class CustomListTileCarCard extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'DC: $dc Kw/H',
+                                '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
                                 style: TextStyle(
                                     fontFamily: DesignSystem.fontFamily,
                                     fontWeight: FontWeight.w500,
@@ -108,7 +114,7 @@ class CustomListTileCarCard extends StatelessWidget {
                           ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                '      Select      ',
+                                '      ${CarListMessage.select}      ',
                                 style: TextStyle(
                                     fontFamily: DesignSystem.fontFamily,
                                     fontWeight: FontWeight.bold,
@@ -138,7 +144,7 @@ class CustomListTileCarCard extends StatelessWidget {
       );
     } else if (ac != null) {
       return Text(
-        '  AC: ' + ac.toString() + 'Kw/H',
+        '  ${CarListMessage.ac}: ' + ac.toString() + '${CarListMessage.kwH}',
         style: TextStyle(
             fontFamily: DesignSystem.fontFamily,
             fontWeight: FontWeight.w500,

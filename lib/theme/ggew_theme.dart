@@ -24,7 +24,7 @@ final class GGEWTheme {
         colorScheme: const ColorScheme.dark(
           primary: DesignSystem.c0,
           error: DesignSystem.error,
-          background: DesignSystem.c0
+          background: DesignSystem.disable
         ),
       );
 }
