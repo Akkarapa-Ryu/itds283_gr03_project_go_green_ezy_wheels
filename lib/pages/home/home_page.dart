@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeMenuButton(
-                      iconMenu: Icon(IconData(0xee2d, fontFamily: 'MaterialIcons')),
+                      iconMenu: Icon(IconData(0xee2d, fontFamily: DesignSystem.fontIcon_MaterialIcons)),
                       text: HomeMessage.hour,
                       routePage: HourPage(),
                     ),
