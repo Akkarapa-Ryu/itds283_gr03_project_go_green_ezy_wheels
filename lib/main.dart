@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '/pages/pages.dart';
 import '/theme/theme.dart';
+import '/constants/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: MainMessage.itds283Pjgr03,
       theme: GGEWTheme.light,
       // darkTheme: GGEWTheme.dark,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: MainMessage.goGreenEzyWheels),
     );
   }
 }
@@ -44,19 +45,19 @@ class _MyHomePageState extends State<MyHomePage> {
           Icons.home_outlined,
           size: 35,
         ),
-        label: 'Home'),
+        label: MainMessage.home),
     const BottomNavigationBarItem(
         icon: Icon(
-          IconData(0xe1d7, fontFamily: 'MaterialIcons'),
+          IconData(0xe1d7, fontFamily: DesignSystem.fontIcon_MaterialIcons),
           size: 35,
         ),
-        label: 'Car'),
+        label: MainMessage.car),
     const BottomNavigationBarItem(
         icon: Icon(
           Icons.settings_outlined,
           size: 35,
         ),
-        label: 'Setting'),
+        label: MainMessage.setting),
   ];
 
   _onItemTapped(int index) {

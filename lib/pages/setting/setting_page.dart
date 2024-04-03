@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
+import '../../constants/constants.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -12,7 +13,7 @@ class SettingPage extends StatelessWidget {
       appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'Setting',
+            SettingMessage.setting,
             style: TextStyle(
                 fontFamily: DesignSystem.fontFamily,
                 fontWeight: FontWeight.w700),
@@ -71,16 +72,16 @@ class SettingPage extends StatelessWidget {
               height: 15,
             ),
             SettingMenuButton(
-                textButtonSetting: 'Edit Profile',
+                textButtonSetting: SettingMessage.editProfile,
                 iconSetting: Icon(Icons.person)),
             SettingMenuButton(
-                textButtonSetting: 'Change Password',
+                textButtonSetting: SettingMessage.chagePassword,
                 iconSetting: Icon(IonIcons.finger_print)),
             SettingMenuButton(
-                textButtonSetting: 'Bank Account',
+                textButtonSetting: SettingMessage.bankAccount,
                 iconSetting: Icon(Icons.currency_bitcoin)),
             SettingMenuButton(
-                textButtonSetting: 'Information',
+                textButtonSetting: SettingMessage.information,
                 iconSetting: Icon(IonIcons.chatbox_ellipses)),
             SizedBox(
               height: 150,
@@ -91,7 +92,7 @@ class SettingPage extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 height: 70,
-                child: Text('Sign out',style: TextStyle(
+                child: Text(SettingMessage.signOut,style: TextStyle(
                     fontSize: 25,
                     fontFamily: DesignSystem.fontFamily,
                     fontWeight: FontWeight.w600),),

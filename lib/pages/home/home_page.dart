@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../constants/constants.dart';
 import '../../pages/pages.dart';
 import '../../theme/theme.dart';
 import '../../components/components.dart';
@@ -72,16 +73,16 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     HomeMenuButton(
                       iconMenu: Icon(IconData(0xee2d, fontFamily: 'MaterialIcons')),
-                      text: 'Hour',
+                      text: HomeMessage.hour,
                       routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
-                      text: 'Day',
+                      text: HomeMessage.day,
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.calendar_month),
-                      text: 'Long-Term',
+                      text: HomeMessage.longTerm,
                     ),
                   ],
                 ),
@@ -90,14 +91,14 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     HomeMenuButton(
                       iconMenu: Icon(Icons.charging_station),
-                      text: 'EV Charger',
+                      text: HomeMessage.evCharger,
                     ),
                     /*
                     ElevatedButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
                     }, child: Icon(Icons.add,size: 100,))*/
-                    HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: 'Van with Driver',),
-                    HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: 'Premium car with Driver',),
+                    HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: HomeMessage.vanWithDriver,),
+                    HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: HomeMessage.premiumCarWithDriver,),
                   ],
                 )
               ],

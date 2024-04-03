@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../components/components.dart';
 import '../../pages/pages.dart';
 import '../../theme/theme.dart';
+import '../../constants/constants.dart';
 
 class CarListPage extends StatefulWidget {
   const CarListPage({super.key});
@@ -11,7 +12,7 @@ class CarListPage extends StatefulWidget {
 }
 
 class _CarListPageState extends State<CarListPage> {
-  final brandsOfCars = ['Tesla', 'MG', 'BYD', 'Benz', 'ORA', 'BMW', 'Hyundai'];
+  final brandsOfCars = CarListMessage.brandsOfCars;
   List<String> selectCarBrand = [];
 
   @override
@@ -22,7 +23,7 @@ class _CarListPageState extends State<CarListPage> {
     return Scaffold(
         appBar: AppBar(
             title: const Text(
-          'Car List',
+          CarListMessage.carList,
           style: TextStyle(fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         )),
         body: SingleChildScrollView(
@@ -76,6 +77,7 @@ class _CarListPageState extends State<CarListPage> {
                       itemCount: filterBrands.length,
                       itemBuilder: (context, index) {
                         return Card(
+                          color: DesignSystem.c1,
                           elevation: 3,
                           margin: EdgeInsets.only(
                               left: 5, right: 5, top: 5, bottom: 5),
