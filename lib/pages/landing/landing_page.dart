@@ -14,14 +14,14 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   // https://www.youtube.com/watch?v=-JWkAcYDQeQ
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Timer(
-  //     Duration(seconds: 3),
-  //     () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WelcomePage()))
-  //   );
-  // }
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+      Duration(seconds: 3),
+      () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WelcomePage()))
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
