@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'constants/constants.dart';
 import 'pages/pages.dart';
 import 'theme/theme.dart';
@@ -12,7 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-int currentPageIndex = 0;
+  int currentPageIndex = 0;
   final List _pageWidget = [
     const HomePage(),
     const CarListPage(),
@@ -47,21 +46,15 @@ int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return 
-    // MaterialApp(
-    //   home: 
-      SingleChildScrollView(
-        child: Scaffold(
-          body: _pageWidget.elementAt(currentPageIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) => _onItemTapped(index),
-            selectedItemColor: DesignSystem.c6,
-            backgroundColor: DesignSystem.c1,
-            currentIndex: currentPageIndex,
-            items: _menuBar,
-          ),
-        // ),
-            ),
-      );
+    return Scaffold(
+      body: _pageWidget.elementAt(currentPageIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) => _onItemTapped(index),
+        selectedItemColor: DesignSystem.c6,
+        backgroundColor: DesignSystem.c1,
+        currentIndex: currentPageIndex,
+        items: _menuBar,
+      ),
+    );
   }
 }

@@ -17,7 +17,7 @@ class SettingPage extends StatelessWidget {
             style: TextStyle(
                 fontFamily: DesignSystem.fontFamily,
                 fontWeight: FontWeight.w700),
-          )),
+          ),automaticallyImplyLeading: false,),
       body: SingleChildScrollView(
         child: Column(
           children: [

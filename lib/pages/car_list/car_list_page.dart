@@ -39,10 +39,12 @@ class _CarListPageState extends State<CarListPage> {
     return Scaffold(
       backgroundColor: DesignSystem.c4,
         appBar: AppBar(
+          centerTitle: true,
             title: const Text(
           CarListMessage.carList,
           style: TextStyle(fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
-        )),
+        ),
+        automaticallyImplyLeading: false,),
         body: SingleChildScrollView(
           child: Center(
             child: Container(
