@@ -15,6 +15,7 @@ class DesignSystem {
   static const c5 = Color(0xffCBCBCB);
   static const c6 = Color(0xff13526D);
   static const c7 = Color(0xffFE3636);
+  static const c8 = Color(0xff6BDE79);
 
 
   static const disable = Color(0xffAAAAAA);

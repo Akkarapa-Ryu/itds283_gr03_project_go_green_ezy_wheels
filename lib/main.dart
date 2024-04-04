@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  /*
   int currentPageIndex = 0;
   final List _pageWidget = [
     const HomePage(),
@@ -64,10 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       currentPageIndex = index;
     });
-  }
+  }*/
+
+
 
   @override
   Widget build(BuildContext context) {
+    /*
     return MaterialApp(
       home: Scaffold(
         body: _pageWidget.elementAt(currentPageIndex),
@@ -79,6 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
           items: _menuBar,
         ),
       ),
-    );
+    );*/
+    return MaterialApp(
+        home: LandingPage()
+        // PageView(
+        //   controller: PageController(viewportFraction: 1),
+        //   onPageChanged: (index) => setState(() {
+        //     _currentPageIndex = index;
+        //   }),
+        //   children: [LandingPage(),WelcomePage()],
+        // ),
+        );
   }
 }
