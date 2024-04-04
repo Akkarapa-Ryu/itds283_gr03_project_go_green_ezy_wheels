@@ -14,14 +14,14 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   // https://www.youtube.com/watch?v=-JWkAcYDQeQ
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-      Duration(seconds: 3),
-      () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WelcomePage()))
-    );
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Timer(
+  //     Duration(seconds: 3),
+  //     () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WelcomePage()))
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +31,11 @@ class _LandingPageState extends State<LandingPage> {
         children: [
           Center(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(50),
               child: Image.asset(
-                'assets/images/logo.png',
+                'assets/images/logo.jpg',
+                color: DesignSystem.c7,
+                colorBlendMode: BlendMode.difference,
               ),
             ),
           ),
