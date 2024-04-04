@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../components/components.dart';
-import '../../pages/pages.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
 
@@ -14,13 +14,30 @@ class CarListPage extends StatefulWidget {
 class _CarListPageState extends State<CarListPage> {
   final brandsOfCars = CarListMessage.brandsOfCars;
   List<String> selectCarBrand = [];
+  List<QueryDocumentSnapshot> carsList = [];
+
+  getDate() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('cars').get();
+
+    carsList.addAll(querySnapshot.docs);
+    setState(() {
+    });
+  }
+
+
+  @override
+  void initState() {
+    getDate();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final filterBrands = carsList.where((brand) {
-      return selectCarBrand.isEmpty || selectCarBrand.contains(brand.brand);
+      return selectCarBrand.isEmpty || selectCarBrand.contains(brand.get('brand'));
     }).toList();
     return Scaffold(
+      backgroundColor: DesignSystem.c4,
         appBar: AppBar(
             title: const Text(
           CarListMessage.carList,
@@ -81,22 +98,19 @@ class _CarListPageState extends State<CarListPage> {
                           elevation: 3,
                           margin: EdgeInsets.only(
                               left: 5, right: 5, top: 5, bottom: 5),
-                          child: CustomListTileCarCard(
-                            thumbnail: Image.asset(
-                              filterBrands[index].image,
-                              height: 90,
-                              width: 150,
-                            ),
-                            title: filterBrands[index].name,
-                            type: filterBrands[index].type,
-                            dc: filterBrands[index].dc,
-                            priceHour: filterBrands[index].priceHour,
-                            priceDay: filterBrands[index].priceDay,
-                            rage: filterBrands[index].rage,
-                            seat: filterBrands[index].seat,
-                            brand: filterBrands[index].brand,
-                            supercharge: filterBrands[index].superCharger,
-                            ac: filterBrands[index].ac,
+                          child: 
+                          CustomListTileCarCard(
+                            thumbnail: filterBrands[index].get('image'),
+                            title: filterBrands[index].get('name'),
+                            type: filterBrands[index].get('type'),
+                            dc: filterBrands[index].get('dc'),
+                            priceHour: filterBrands[index].get('priceHour'),
+                            priceDay: filterBrands[index].get('priceDay'),
+                            rage: filterBrands[index].get('rage'),
+                            seat: filterBrands[index].get('seat'),
+                            brand: filterBrands[index].get('brand'),
+                            supercharge: filterBrands[index].get('superCharger'),
+                            ac: filterBrands[index].get('ac'),
                           ),
                         );
                       }),

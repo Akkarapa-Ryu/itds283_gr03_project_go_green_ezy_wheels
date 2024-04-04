@@ -50,16 +50,18 @@ int currentPageIndex = 0;
     return 
     // MaterialApp(
     //   home: 
-      Scaffold(
-        body: _pageWidget.elementAt(currentPageIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) => _onItemTapped(index),
-          selectedItemColor: DesignSystem.c6,
-          backgroundColor: DesignSystem.c1,
-          currentIndex: currentPageIndex,
-          items: _menuBar,
-        ),
-      // ),
-    );
+      SingleChildScrollView(
+        child: Scaffold(
+          body: _pageWidget.elementAt(currentPageIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) => _onItemTapped(index),
+            selectedItemColor: DesignSystem.c6,
+            backgroundColor: DesignSystem.c1,
+            currentIndex: currentPageIndex,
+            items: _menuBar,
+          ),
+        // ),
+            ),
+      );
   }
 }
