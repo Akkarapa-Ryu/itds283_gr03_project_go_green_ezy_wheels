@@ -19,7 +19,7 @@ class CustomListTileCarCard extends StatelessWidget {
       required this.seat,
       required this.brand});
 
-  final Widget thumbnail;
+  final String thumbnail;
   final String title; // name's car
   final String type; // type,
   final int rage;
@@ -28,7 +28,7 @@ class CustomListTileCarCard extends StatelessWidget {
   final int? ac;
   final String? supercharge;
   final double priceHour;
-  final double priceDay;
+  final int priceDay;
   final String brand;
 
   @override
@@ -46,23 +46,27 @@ class CustomListTileCarCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      children: [
-                        thumbnail,
-                      ],
+                      children: [containerImage(thumbnail)],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Column(
                           children: [
-                            Text('$priceHour / ${CarListMessage.hour}',style: TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14),),
-                            Text('$priceDay / ${CarListMessage.day}',style: TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14),),
+                            Text(
+                              '$priceHour / ${CarListMessage.hour}',
+                              style: TextStyle(
+                                  fontFamily: DesignSystem.fontFamily,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14),
+                            ),
+                            Text(
+                              '$priceDay / ${CarListMessage.day}',
+                              style: TextStyle(
+                                  fontFamily: DesignSystem.fontFamily,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14),
+                            ),
                           ],
                         ),
                       ],
@@ -104,7 +108,7 @@ class CustomListTileCarCard extends StatelessWidget {
                                     fontWeight: FontWeight.w500,
                                     fontSize: 11),
                               ),
-                              superchargeORac(supercharge, ac)
+                              superchargeORac(supercharge, ac),
                             ],
                           ),
                           // Text('Brand: $brand',style: TextStyle(
@@ -134,7 +138,7 @@ class CustomListTileCarCard extends StatelessWidget {
 
 // https://flutterdesk.com/show-conditional-widgets-in-flutter/
   superchargeORac(supercharge, ac) {
-    if (supercharge != null) {
+    if (supercharge != "-") {
       return Text(
         ' ($supercharge)',
         style: TextStyle(
@@ -142,7 +146,7 @@ class CustomListTileCarCard extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontSize: 11),
       );
-    } else if (ac != null) {
+    } else if (ac != 0) {
       return Text(
         '  ${CarListMessage.ac}: ' + ac.toString() + '${CarListMessage.kwH}',
         style: TextStyle(
@@ -152,4 +156,19 @@ class CustomListTileCarCard extends StatelessWidget {
       );
     }
   }
+}
+
+// https://www.youtube.com/watch?v=0ZHqrf0mzrI
+containerImage(String thumbnail) {
+  final urlDrive = thumbnail.split('/');
+  final pathH = 'https://drive.google.com/uc?export=view&id=${urlDrive[5]}';
+
+  print('URL: $thumbnail');
+  print("Url Drive: $urlDrive");
+  print('Path: $pathH');
+  return Image.network(
+    pathH,
+    height: 90,
+    width: 150,
+  );
 }
