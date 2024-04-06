@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/constants/constants.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import 'package:latlong2/latlong.dart';
@@ -22,18 +23,24 @@ class _EvChargerPageState extends State<EvChargerPage> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('EV Charger Map'),
+          title: Text(EvChargerMessage.evChargerMap),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: DesignSystem.c2),
-                height: 150,
+              SizedBox(
+                height: 170,
+                child: 
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/images/background.jpg',
+                    fit: BoxFit.fitWidth,
+                    width: double.maxFinite,
+                    alignment: Alignment(0,0.25),
+                  ),
+                ),
               ),
               Expanded(
                 // flex: 2,
@@ -67,7 +74,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
               CustomButton(
                   colorButton: DesignSystem.c2,
                   sizeButton: 45,
-                  textButton: 'Destication to Charger',
+                  textButton: EvChargerMessage.destinationToCharger,
                   colorText: DesignSystem.c0,
                   textSize: 16,
                   textWeight: FontWeight.bold)
