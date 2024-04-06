@@ -6,7 +6,7 @@ class HourPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Hour Car List')),
+      appBar: AppBar(centerTitle: true,title: Text('Hour Car List')),
       body: Container(),
     );
   }
