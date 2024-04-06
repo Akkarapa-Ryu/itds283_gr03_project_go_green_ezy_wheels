@@ -29,11 +29,12 @@ class _EvChargerPageState extends State<EvChargerPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
                 height: 170,
                 child: 
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
                     'assets/images/background.jpg',
                     fit: BoxFit.fitWidth,
@@ -44,32 +45,35 @@ class _EvChargerPageState extends State<EvChargerPage> {
               ),
               Expanded(
                 // flex: 2,
-                child: FlutterMap(
-                    options: MapOptions(
-                        initialCenter: LatLng(13.801773, 100.321121),
-                        initialZoom: 11,
-                        interactionOptions: InteractionOptions(
-                            flags: ~InteractiveFlag.doubleTapZoom)),
-                    children: [
-                      openStreetMapTileLayer,
-                      MarkerLayer(markers: [
-                        Marker(
-                            point: LatLng(13.801773, 100.321121),
-                            width: 60,
-                            height: 60,
-                            alignment: Alignment.center,
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to another screen
-                              },
-                              child: Icon(
-                                Icons.location_pin,
-                                size: 60,
-                                color: DesignSystem.error,
-                              ),
-                            ))
-                      ])
-                    ]),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: FlutterMap(
+                      options: MapOptions(
+                          initialCenter: LatLng(13.801773, 100.321121),
+                          initialZoom: 11,
+                          interactionOptions: InteractionOptions(
+                              flags: ~InteractiveFlag.doubleTapZoom)),
+                      children: [
+                        openStreetMapTileLayer,
+                        MarkerLayer(markers: [
+                          Marker(
+                              point: LatLng(13.801773, 100.321121),
+                              width: 60,
+                              height: 60,
+                              alignment: Alignment.center,
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigate to another screen
+                                },
+                                child: Icon(
+                                  Icons.location_pin,
+                                  size: 60,
+                                  color: DesignSystem.error,
+                                ),
+                              ))
+                        ])
+                      ]),
+                ),
               ),
               CustomButton(
                   colorButton: DesignSystem.c2,
