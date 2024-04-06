@@ -22,6 +22,7 @@ class _LandingPageState extends State<LandingPage> {
       () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => WelcomePage()))
     );
   }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

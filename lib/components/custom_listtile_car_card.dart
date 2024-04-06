@@ -27,15 +27,15 @@ class CustomListTileCarCard extends StatelessWidget {
   final int dc; // dc
   final int? ac;
   final String? supercharge;
-  final double priceHour;
-  final int priceDay;
+  final num priceHour;
+  final num priceDay;
   final String brand;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: SizedBox(
           height: 130,
           child: Row(
@@ -55,14 +55,14 @@ class CustomListTileCarCard extends StatelessWidget {
                           children: [
                             Text(
                               '$priceHour / ${CarListMessage.hour}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontFamily: DesignSystem.fontFamily,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14),
                             ),
                             Text(
                               '$priceDay / ${CarListMessage.day}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontFamily: DesignSystem.fontFamily,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14),
@@ -83,7 +83,7 @@ class CustomListTileCarCard extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: DesignSystem.fontFamily,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
@@ -92,7 +92,7 @@ class CustomListTileCarCard extends StatelessWidget {
                             children: [
                               Text(
                                 '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: DesignSystem.fontFamily,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 11),
@@ -117,16 +117,16 @@ class CustomListTileCarCard extends StatelessWidget {
                           //           fontSize: 11),),
                           ElevatedButton(
                               onPressed: () {},
-                              child: Text(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: DesignSystem.c6),
+                              child: const Text(
                                 '      ${CarListMessage.select}      ',
                                 style: TextStyle(
                                     fontFamily: DesignSystem.fontFamily,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                     color: DesignSystem.c1),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: DesignSystem.c6))
+                              ))
                         ],
                       )))
             ],
@@ -141,15 +141,15 @@ class CustomListTileCarCard extends StatelessWidget {
     if (supercharge != "-") {
       return Text(
         ' ($supercharge)',
-        style: TextStyle(
+        style: const TextStyle(
             fontFamily: DesignSystem.fontFamily,
             fontWeight: FontWeight.w500,
             fontSize: 11),
       );
     } else if (ac != 0) {
       return Text(
-        '  ${CarListMessage.ac}: ' + ac.toString() + '${CarListMessage.kwH}',
-        style: TextStyle(
+        '  ${CarListMessage.ac}: $ac${CarListMessage.kwH}',
+        style: const TextStyle(
             fontFamily: DesignSystem.fontFamily,
             fontWeight: FontWeight.w500,
             fontSize: 11),
@@ -163,9 +163,9 @@ containerImage(String thumbnail) {
   final urlDrive = thumbnail.split('/');
   final pathH = 'https://drive.google.com/uc?export=view&id=${urlDrive[5]}';
 
-  print('URL: $thumbnail');
-  print("Url Drive: $urlDrive");
-  print('Path: $pathH');
+  // print('URL: $thumbnail');
+  // print("Url Drive: $urlDrive");
+  // print('Path: $pathH');
   return Image.network(
     pathH,
     height: 90,

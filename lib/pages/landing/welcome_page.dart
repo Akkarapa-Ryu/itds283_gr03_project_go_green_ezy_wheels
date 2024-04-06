@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
+import '../../components/components.dart';
 import '/constants/constants.dart';
 import '/theme/theme.dart';
 
@@ -19,16 +20,19 @@ class _WelcomePageState extends State<WelcomePage> {
         children: <Widget>[
           Image.asset(
             'assets/images/background.jpg',
-            fit: BoxFit.fitWidth,width: double.maxFinite,
+            fit: BoxFit.fitWidth,
+            width: double.maxFinite,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
-            indent: 15,
-            endIndent: 230,
-            thickness: 4,
-            color: DesignSystem.c8,
+          Container(
+            margin: EdgeInsets.only(left: 17),
+            width: 150,
+            height: 5,
+            decoration: BoxDecoration(
+                color: DesignSystem.c8,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
           ),
           Padding(
             padding:
@@ -52,9 +56,10 @@ class _WelcomePageState extends State<WelcomePage> {
                     color: DesignSystem.c0,
                   ),
                 ),
-
-                SizedBox(height: 200,),
-                ElevatedButton(
+                SizedBox(
+                  height: 220,
+                ),
+                /*ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -68,10 +73,21 @@ class _WelcomePageState extends State<WelcomePage> {
                       alignment: Alignment.center,
                       width: double.infinity,
                       child: Text(WelcomeMessage.next,style: TextStyle(color: DesignSystem.c0,fontFamily: DesignSystem.fontFamily,fontWeight: FontWeight.w600,fontSize: 18),)),
-                ),
+                ),*/
               ],
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CustomButton(
+                routePage: MainPage(),
+                colorButton: DesignSystem.c2,
+                sizeButton: 50,
+                textButton: WelcomeMessage.next,
+                colorText: DesignSystem.c0,
+                textSize: 18,
+                textWeight: FontWeight.w600),
+          )
         ],
       ),
     );

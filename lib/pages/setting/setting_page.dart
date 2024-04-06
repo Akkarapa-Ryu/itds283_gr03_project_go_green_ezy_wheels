@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -84,23 +85,12 @@ class SettingPage extends StatelessWidget {
                 textButtonSetting: SettingMessage.information,
                 iconSetting: Icon(IonIcons.chatbox_ellipses)),
             SizedBox(
-              height: 150,
+              height: 200,
             ),
-            Card(
-              color: DesignSystem.c7,
-              shadowColor: DesignSystem.disable,
-              child: Container(
-                alignment: Alignment.center,
-                height: 70,
-                child: Text(SettingMessage.signOut,style: TextStyle(
-                    fontSize: 25,
-                    fontFamily: DesignSystem.fontFamily,
-                    fontWeight: FontWeight.w600),),
-                decoration: BoxDecoration(
-                  color: DesignSystem.c7,
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-              ),
-            )
+            CustomButton(colorButton: DesignSystem.c7, 
+            sizeButton: 65, textButton: SettingMessage.signOut, 
+            colorText: DesignSystem.c0, textSize: 25, 
+            textWeight: FontWeight.w600)
           ],
         ),
       ),

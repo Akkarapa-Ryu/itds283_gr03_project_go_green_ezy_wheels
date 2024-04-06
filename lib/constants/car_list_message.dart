@@ -1,7 +1,7 @@
 final class CarListMessage {
   const CarListMessage._();
   static const String carList = 'Car List';
-  static const List brandsOfCars = ['Tesla', 'MG', 'BYD', 'Benz', 'ORA', 'BMW', 'Hyundai'];
+  static const List brandsOfCars = ['Tesla', 'MG', 'BYD', 'Benz', 'Audi', 'ORA', 'BMW', 'Hyundai'];
   static const String hour = 'Hour';
   static const String day = 'Day';
   static const String type = 'Type';
