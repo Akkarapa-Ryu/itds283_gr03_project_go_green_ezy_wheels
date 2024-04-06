@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/constants/constants.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:flutter/src/rendering/box.dart';
 
 class EvChargerPage extends StatefulWidget {
   const EvChargerPage({super.key});
