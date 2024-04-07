@@ -100,25 +100,19 @@ class _CarListPageState extends State<CarListPage> {
                     padding: EdgeInsets.all(3),
                     itemCount: filterBrands.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        color: DesignSystem.c1,
-                        elevation: 3,
-                        margin: EdgeInsets.only(
-                            left: 5, right: 5, top: 5, bottom: 5),
-                        child: CustomListTileCarCard(
-                          thumbnail: filterBrands[index].get('image'),
-                          title: filterBrands[index].get('name'),
-                          type: filterBrands[index].get('type'),
-                          dc: filterBrands[index].get('dc'),
-                          priceHour: filterBrands[index].get('priceHour'),
-                          priceDay: filterBrands[index].get('priceDay'),
-                          rage: filterBrands[index].get('rage'),
-                          seat: filterBrands[index].get('seat'),
-                          brand: filterBrands[index].get('brand'),
-                          supercharge:
-                              filterBrands[index].get('superCharger'),
-                          ac: filterBrands[index].get('ac'),
-                        ),
+                      return CustomListTileCarCard(
+                        thumbnail: filterBrands[index].get('image'),
+                        title: filterBrands[index].get('name'),
+                        type: filterBrands[index].get('type'),
+                        dc: filterBrands[index].get('dc'),
+                        priceHour: filterBrands[index].get('priceHour'),
+                        priceDay: filterBrands[index].get('priceDay'),
+                        rage: filterBrands[index].get('rage'),
+                        seat: filterBrands[index].get('seat'),
+                        brand: filterBrands[index].get('brand'),
+                        supercharge:
+                            filterBrands[index].get('superCharger'),
+                        ac: filterBrands[index].get('ac'),
                       );
                     }),
               ),

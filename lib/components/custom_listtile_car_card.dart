@@ -33,104 +33,105 @@ class CustomListTileCarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: SizedBox(
-          height: 130,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [containerImage(thumbnail)],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+    return Card(
+      color: DesignSystem.c1,
+      surfaceTintColor: DesignSystem.c1,
+      elevation: 3,
+      margin: EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+      child: SizedBox(
+        height: 130,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Row(
+                    children: [containerImage(thumbnail)],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '$priceHour / ${CarListMessage.hour}',
+                            style: const TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),
+                          ),
+                          Text(
+                            '$priceDay / ${CarListMessage.day}',
+                            style: const TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+                flex: 3,
+                child: Padding(
+                    padding: EdgeInsets.only(left: 20, right: 2),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
+                        Text(
+                          title,
+                          style: const TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        Row(
                           children: [
                             Text(
-                              '$priceHour / ${CarListMessage.hour}',
+                              '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
                               style: const TextStyle(
                                   fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14),
-                            ),
-                            Text(
-                              '$priceDay / ${CarListMessage.day}',
-                              style: const TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text(
+                              '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
+                              style: TextStyle(
+                                  fontFamily: DesignSystem.fontFamily,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11),
+                            ),
+                            superchargeORac(supercharge, ac),
+                          ],
+                        ),
+                        // Text('Brand: $brand',style: TextStyle(
+                        //           fontFamily: DesignSystem.fontFamily,
+                        //           fontWeight: FontWeight.w500,
+                        //           fontSize: 11),),
+                        ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: DesignSystem.c6),
+                            child: const Text(
+                              '      ${CarListMessage.select}      ',
+                              style: TextStyle(
+                                  fontFamily: DesignSystem.fontFamily,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: DesignSystem.c1),
+                            ))
                       ],
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 2),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            title,
-                            style: const TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
-                                style: const TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              ),
-                              superchargeORac(supercharge, ac),
-                            ],
-                          ),
-                          // Text('Brand: $brand',style: TextStyle(
-                          //           fontFamily: DesignSystem.fontFamily,
-                          //           fontWeight: FontWeight.w500,
-                          //           fontSize: 11),),
-                          ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: DesignSystem.c6),
-                              child: const Text(
-                                '      ${CarListMessage.select}      ',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: DesignSystem.c1),
-                              ))
-                        ],
-                      )))
-            ],
-          ),
+                    )))
+          ],
         ),
       ),
     );

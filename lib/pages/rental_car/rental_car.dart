@@ -1,0 +1,1 @@
+export 'rental_car_day_page.dart';

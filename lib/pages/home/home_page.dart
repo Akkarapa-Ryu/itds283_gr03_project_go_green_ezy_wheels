@@ -75,11 +75,11 @@ class _HomePageState extends State<HomePage> {
                     HomeMenuButton(
                       iconMenu: Icon(IconData(0xee2d, fontFamily: DesignSystem.fontIcon_MaterialIcons)),
                       text: HomeMessage.hour,
-                      routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
                       text: HomeMessage.day,
+                      routePage: RentalCarDayPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.calendar_month),
