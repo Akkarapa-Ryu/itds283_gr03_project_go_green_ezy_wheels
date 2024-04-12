@@ -13,9 +13,13 @@
             "name": "DEV version",
             "request": "launch",
             "type": "dart",
+            "program": "lib/main.dart",
             "args": [
+                "--flavor",
+                "dev",
                 "--use-application-binary",
-                "build/app/outputs/apk/debug/app-debug.apk"
+                "build/app/outputs/apk/debug/app-debug.apk",
+                "lib/main.dart"
             ]
         },
         // {
