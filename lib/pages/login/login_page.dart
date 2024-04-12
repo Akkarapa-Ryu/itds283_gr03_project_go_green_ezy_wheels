@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../theme/theme.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -125,7 +126,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {},
                     child: Text('Sign In'),
                     style: TextButton.styleFrom(
-                       foregroundColor: Color.fromARGB(248, 141, 245, 155),
+                       foregroundColor: DesignSystem.c9,
                         textStyle: TextStyle(
                         fontSize: 16.0,
     
