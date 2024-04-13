@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/ev_charge/ev_chare.dart';
 import '../../constants/constants.dart';
 import '../../pages/pages.dart';
 import '../../theme/theme.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(children: [
           Container(
             height: 300,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             height: 550,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: DesignSystem.c4,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     HomeMenuButton(
                       iconMenu: Icon(IconData(0xee2d, fontFamily: DesignSystem.fontIcon_MaterialIcons)),
                       text: HomeMessage.hour,
-                      routePage: HourPage(),
+                      // routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
@@ -92,6 +93,7 @@ class _HomePageState extends State<HomePage> {
                     HomeMenuButton(
                       iconMenu: Icon(Icons.charging_station),
                       text: HomeMessage.evCharger,
+                      routePage: EvChargerPage(),
                     ),
                     /*
                     ElevatedButton(onPressed: (){

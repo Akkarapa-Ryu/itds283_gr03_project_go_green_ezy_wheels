@@ -3,3 +3,4 @@ export 'home/home.dart';
 export 'setting/setting.dart';
 export 'hour/hour.dart';
 export 'login/login.dart';
+export 'landing/landing.dart';

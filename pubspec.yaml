@@ -38,6 +38,8 @@ dependencies:
   icons_plus: ^5.0.0
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:
