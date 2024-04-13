@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
         label: MainMessage.home),
     const BottomNavigationBarItem(
         icon: Icon(
-          IconData(0xe1d7, fontFamily: DesignSystem.fontIcon_MaterialIcons),
+          IconData(0xe1d7, fontFamily: DesignSystem.fontIconMaterialIcons),
           size: 35,
         ),
         label: MainMessage.car),

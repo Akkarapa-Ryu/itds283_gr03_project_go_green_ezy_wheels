@@ -11,7 +11,7 @@ class HomeMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 170,
       child: Column(
         children: [
@@ -21,7 +21,7 @@ class HomeMenuButton extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => routePage!));
               } else {
-                print('Not Found');
+                // print('Not Found');
                 return;
               }
             },
@@ -37,7 +37,7 @@ class HomeMenuButton extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Container(
+          SizedBox(
             width: 100,
             child: Text(
               text,

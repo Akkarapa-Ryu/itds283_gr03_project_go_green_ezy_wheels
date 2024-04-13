@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/ev_charge/ev_chare.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
 import '../../constants/constants.dart';
-import '../../pages/pages.dart';
 import '../../theme/theme.dart';
 import '../../components/components.dart';
 
@@ -13,12 +14,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<QueryDocumentSnapshot> carsList = [];
+
+  getDate() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('cars').get();
+
+    carsList.addAll(querySnapshot.docs);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getDate();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
-          Container(
+          SizedBox(
             height: 300,
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +80,6 @@ class _HomePageState extends State<HomePage> {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
             child: Column(
-              
               children: [
                 SizedBox(
                   height: 50,
@@ -73,13 +88,14 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeMenuButton(
-                      iconMenu: Icon(IconData(0xee2d, fontFamily: DesignSystem.fontIcon_MaterialIcons)),
+                      iconMenu: Icon(IconData(0xee2d,
+                          fontFamily: DesignSystem.fontIconMaterialIcons)),
                       text: HomeMessage.hour,
-                      // routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
                       text: HomeMessage.day,
+                      routePage: CarListDayPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.calendar_month),
@@ -99,8 +115,14 @@ class _HomePageState extends State<HomePage> {
                     ElevatedButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
                     }, child: Icon(Icons.add,size: 100,))*/
-                    HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: HomeMessage.vanWithDriver,),
-                    HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: HomeMessage.premiumCarWithDriver,),
+                    HomeMenuButton(
+                      iconMenu: Icon(Icons.car_rental),
+                      text: HomeMessage.vanWithDriver,
+                    ),
+                    HomeMenuButton(
+                      iconMenu: Icon(Icons.car_repair_sharp),
+                      text: HomeMessage.premiumCarWithDriver,
+                    ),
                   ],
                 )
               ],

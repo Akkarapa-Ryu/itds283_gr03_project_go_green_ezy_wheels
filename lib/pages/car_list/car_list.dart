@@ -1,2 +1,2 @@
 export 'car_list_page.dart';
-export '../../models/cars_model.dart';
+export 'car_list_day_page.dart';

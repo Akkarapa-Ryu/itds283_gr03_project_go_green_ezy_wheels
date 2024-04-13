@@ -79,14 +79,16 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: CustomButton(
-                routePage: MainPage(),
-                colorButton: DesignSystem.c2,
-                sizeButton: 50,
-                textButton: WelcomeMessage.next,
-                colorText: DesignSystem.c0,
-                textSize: 18,
-                textWeight: FontWeight.w600),
+            child: Center(
+              child: CustomButton(
+                  routePage: MainPage(),
+                  colorButton: DesignSystem.c2,
+                  heightSizeButton: 50,
+                  textButton: WelcomeMessage.next,
+                  colorText: DesignSystem.c0,
+                  textSize: 18,
+                  textWeight: FontWeight.w600, widthSizeButton: 320,),
+            ),
           )
         ],
       ),

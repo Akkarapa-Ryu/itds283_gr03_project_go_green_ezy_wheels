@@ -22,7 +22,7 @@ class _TestPageState extends State<TestPage> {
         if (snapshot.hasError) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Error'),
+              title: const Text('Error'),
             ),
             body: Center(
               child: Text('${snapshot.error}'),
@@ -31,7 +31,7 @@ class _TestPageState extends State<TestPage> {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
-            appBar: AppBar(title: Text('Cars Data')),
+            appBar: AppBar(title: const Text('Cars Data')),
             body: StreamBuilder(
               stream:
               _carsCollection.snapshots()
@@ -39,16 +39,14 @@ class _TestPageState extends State<TestPage> {
               ,
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
                 return ListView(
                   children: snapshot.data!.docs.map((document) {
-                    return Container(
-                      child: Row(
-                        children: [Text('${document['name']},   ${document['type']}')],
-                      ),
+                    return Row(
+                      children: [Text('${document['name']},   ${document['type']}')],
                     );
                   }).toList(),
                 );
@@ -56,7 +54,7 @@ class _TestPageState extends State<TestPage> {
             ),
           );
         }
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child: CircularProgressIndicator(),
           ),
