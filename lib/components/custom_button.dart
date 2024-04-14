@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     required this.textWeight,
     this.iconWidget,
-    this.borderRadius, 
+    this.borderRadius,
   });
   final Color colorButton;
   final double sizeButtonHeight;
@@ -25,7 +25,6 @@ class CustomButton extends StatelessWidget {
   final FontWeight textWeight;
   final double? borderRadius;
   final Widget? iconWidget;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +47,7 @@ class CustomButton extends StatelessWidget {
                 fontFamily: DesignSystem.fontFamily, fontWeight: textWeight),
           ),
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+            shape: borderRadiusSize(borderRadius),
             backgroundColor: colorButton,
             surfaceTintColor: colorButton,
             minimumSize: Size(275.0, 50.0),
@@ -62,11 +59,9 @@ class CustomButton extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          backgroundColor: colorButton,
-          minimumSize: sizeButton(sizeButtonHeight,sizeButtonWidth)
-        ),
+            shape: borderRadiusSize(borderRadius),
+            backgroundColor: colorButton,
+            minimumSize: sizeButton(sizeButtonHeight, sizeButtonWidth)),
         onPressed: () {
           if (routePage != null) {
             Navigator.push(
@@ -87,17 +82,19 @@ class CustomButton extends StatelessWidget {
     );
   }
 
-    borderRadiusSize(borderRadius){
+  borderRadiusSize(borderRadius) {
     if (borderRadius != null) {
-     return RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius!));
-    }else{
-     return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
-  
+      return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius!));
+    } else {
+      return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
+    }
+  }
+
   sizeButton(sizeButtonHeight, sizeButtonWidth) {
     if (sizeButtonHeight == 0 && sizeButtonWidth == 0) {
       return const Size(275.0, 50.0);
-    }
-    else{
+    } else {
       return Size(sizeButtonWidth, sizeButtonHeight);
     }
   }

@@ -126,7 +126,6 @@ class CustomListTileCarCard extends StatelessWidget {
                       //           fontSize: 11),),
                       CustomButton(
                         colorButton: DesignSystem.c6,
-                        heightSizeButton: 40,
                         textButton: CarListMessage.select,
                         colorText: DesignSystem.c1,
                         textSize: 14,
@@ -147,7 +146,8 @@ class CustomListTileCarCard extends StatelessWidget {
                           batteryLevel: batteryLevel,
                         ),*/
                         borderRadius: 20,
-                        widthSizeButton: 120,
+                        sizeButtonHeight: 40,
+                        sizeButtonWidth: 120,
                       ),
                     ],
                   ),

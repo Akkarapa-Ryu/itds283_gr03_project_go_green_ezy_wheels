@@ -75,11 +75,11 @@ class _EvChargerPageState extends State<EvChargerPage> {
               CustomButton(
                   colorButton: DesignSystem.c2,
                   sizeButtonHeight: 45,
-                  sizeButtonWidth: 150,
+                  sizeButtonWidth: double.infinity,
                   textButton: EvChargerMessage.destinationToCharger,
                   colorText: DesignSystem.c0,
                   textSize: 16,
-                  textWeight: FontWeight.bold, widthSizeButton: 250,)
+                  textWeight: FontWeight.bold,)
             ],
           ),
         ));
