@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/login/login.dart';
+import '../../pages/pages.dart';
 import '../../components/components.dart';
-import '../../main_page.dart';
 import '/constants/constants.dart';
 import '/theme/theme.dart';
 
