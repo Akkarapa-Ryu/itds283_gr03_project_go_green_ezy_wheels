@@ -25,7 +25,7 @@ class CustomListTileCarCard extends StatelessWidget {
   final int rage;
   final String seat;
   final int dc; // dc
-  final int? ac;
+  final num? ac;
   final String? supercharge;
   final num priceHour;
   final num priceDay;
