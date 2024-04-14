@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/ev_charge/ev_chare.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
+import '../../pages/pages.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
 import '../../components/components.dart';
@@ -34,9 +33,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
-          SizedBox(
+          const SizedBox(
             height: 300,
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -79,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
-            child: Column(
+            child: const Column(
               children: [
                 SizedBox(
                   height: 50,

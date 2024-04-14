@@ -6,3 +6,4 @@ export 'landing_message.dart';
 export 'welcom_message.dart';
 export 'ev_charger_message.dart';
 export 'booking_message.dart';
+export 'login_message.dart';
