@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../components/components.dart';
-import '../pages.dart';
+import '../../main_page.dart';
 import '/constants/constants.dart';
 import '/theme/theme.dart';
 
@@ -68,11 +68,12 @@ class _WelcomePageState extends State<WelcomePage> {
               child: CustomButton(
                   routePage: MainPage(),
                   colorButton: DesignSystem.c2,
-                  heightSizeButton: 50,
+                  sizeButtonHeight: 50,
                   textButton: WelcomeMessage.next,
                   colorText: DesignSystem.c0,
                   textSize: 18,
-                  textWeight: FontWeight.w600, widthSizeButton: 320,),
+                  textWeight: FontWeight.w600, 
+                  sizeButtonWidth: double.infinity,),
             ),
           )
         ],
