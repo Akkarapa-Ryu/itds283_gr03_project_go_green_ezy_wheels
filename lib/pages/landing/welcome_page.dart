@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
 import '../../components/components.dart';
+import '../pages.dart';
 import '/constants/constants.dart';
 import '/theme/theme.dart';
 
@@ -59,30 +59,16 @@ class _WelcomePageState extends State<WelcomePage> {
                 SizedBox(
                   height: 220,
                 ),
-                /*ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    backgroundColor: DesignSystem.c2,
-                    minimumSize: Size.fromHeight(50),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-                  },
-                  child: Container(
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      child: Text(WelcomeMessage.next,style: TextStyle(color: DesignSystem.c0,fontFamily: DesignSystem.fontFamily,fontWeight: FontWeight.w600,fontSize: 18),)),
-                ),*/
               ],
             ),
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: CustomButton(
-                routePage: MainPage(),
+                routePage: LoginPage(),
                 colorButton: DesignSystem.c2,
-                sizeButton: 50,
+                sizeButtonHeight: 50,
+                sizeButtonWidth: double.infinity,
                 textButton: WelcomeMessage.next,
                 colorText: DesignSystem.c0,
                 textSize: 18,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/ev_charge/ev_chare.dart';
 import '../../constants/constants.dart';
 import '../../pages/pages.dart';
 import '../../theme/theme.dart';
@@ -18,9 +17,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
-          Container(
+          const SizedBox(
             height: 300,
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -63,8 +62,7 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
-            child: Column(
-              
+            child: const Column(
               children: [
                 SizedBox(
                   height: 50,
@@ -73,7 +71,8 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeMenuButton(
-                      iconMenu: Icon(IconData(0xee2d, fontFamily: DesignSystem.fontIcon_MaterialIcons)),
+                      iconMenu: Icon(IconData(0xee2d,
+                          fontFamily: DesignSystem.fontIcon_MaterialIcons)),
                       text: HomeMessage.hour,
                       // routePage: HourPage(),
                     ),
@@ -99,8 +98,14 @@ class _HomePageState extends State<HomePage> {
                     ElevatedButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
                     }, child: Icon(Icons.add,size: 100,))*/
-                    HomeMenuButton(iconMenu: Icon(Icons.car_rental), text: HomeMessage.vanWithDriver,),
-                    HomeMenuButton(iconMenu: Icon(Icons.car_repair_sharp), text: HomeMessage.premiumCarWithDriver,),
+                    HomeMenuButton(
+                      iconMenu: Icon(Icons.car_rental),
+                      text: HomeMessage.vanWithDriver,
+                    ),
+                    HomeMenuButton(
+                      iconMenu: Icon(Icons.car_repair_sharp),
+                      text: HomeMessage.premiumCarWithDriver,
+                    ),
                   ],
                 )
               ],

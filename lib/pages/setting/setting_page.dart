@@ -88,7 +88,9 @@ class SettingPage extends StatelessWidget {
               height: 200,
             ),
             CustomButton(colorButton: DesignSystem.c7, 
-            sizeButton: 65, textButton: SettingMessage.signOut, 
+            sizeButtonHeight: 65,
+            sizeButtonWidth: 350,
+             textButton: SettingMessage.signOut, 
             colorText: DesignSystem.c0, textSize: 25, 
             textWeight: FontWeight.w600)
           ],
