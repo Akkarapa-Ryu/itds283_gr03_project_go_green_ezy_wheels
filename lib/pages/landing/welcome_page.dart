@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/login/login.dart';
 import '../../components/components.dart';
 import '../../main_page.dart';
 import '/constants/constants.dart';
@@ -66,7 +67,7 @@ class _WelcomePageState extends State<WelcomePage> {
             padding: EdgeInsets.all(8.0),
             child: Center(
               child: CustomButton(
-                  routePage: MainPage(),
+                  routePage: LoginPage(),
                   colorButton: DesignSystem.c2,
                   sizeButtonHeight: 50,
                   textButton: WelcomeMessage.next,
