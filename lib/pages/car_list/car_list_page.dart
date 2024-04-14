@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
@@ -41,35 +39,34 @@ class _CarListPageState extends State<CarListPage> {
     }).toList();
 
     return Scaffold(
-        backgroundColor: DesignSystem.c4,
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            CarListMessage.carList,
-            style: TextStyle(
-                fontFamily: DesignSystem.fontFamily,
-                fontWeight: FontWeight.w700),
-          ),
-          automaticallyImplyLeading: false,
+      backgroundColor: DesignSystem.c4,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          CarListMessage.carList,
+          style: TextStyle(
+              fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-              color: DesignSystem.c4,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15))),
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  margin: EdgeInsets.only(
-                      top: 15, left: 10, right: 10, bottom: 10),
-                  child: Wrap(
-                    spacing: 10,
-                    runSpacing: 4,
-                    children: brandsOfCars
-                        .map((e) => FilterChip(
+        automaticallyImplyLeading: false,
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+            color: DesignSystem.c4,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin:
+                    const EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 4,
+                  children: brandsOfCars
+                      .map(
+                        (e) => FilterChip(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             side: BorderSide.none,
@@ -89,41 +86,60 @@ class _CarListPageState extends State<CarListPage> {
                                   selectCarBrand.remove(e);
                                 }
                               });
-                            }))
-                        .toList(),
-                  ),
+                            }),
+                      )
+                      .toList(),
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(3),
-                    itemCount: filterBrands.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        color: DesignSystem.c1,
-                        elevation: 3,
-                        margin: EdgeInsets.only(
-                            left: 5, right: 5, top: 5, bottom: 5),
-                        child: CustomListTileCarCard(
+            ),
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.all(3),
+                  itemCount: filterBrands.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: DesignSystem.c1,
+                      surfaceTintColor: DesignSystem.c1,
+                      elevation: 3,
+                      margin:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      child: CustomListTileCarCard(
+                        thumbnail: filterBrands[index].get('image'),
+                        title: filterBrands[index].get('name'),
+                        type: filterBrands[index].get('type'),
+                        dc: filterBrands[index].get('dc'),
+                        priceHour: filterBrands[index].get('priceHour'),
+                        priceDay: filterBrands[index].get('priceDay'),
+                        rage: filterBrands[index].get('rage'),
+                        seat: filterBrands[index].get('seat'),
+                        brand: filterBrands[index].get('brand'),
+                        supercharge: filterBrands[index].get('superCharger'),
+                        ac: filterBrands[index].get('ac'),
+                        transmossion: filterBrands[index].get('transmossion'),
+                        energyType: filterBrands[index].get('energyType'),
+                        batteryLevel: filterBrands[index].get('batteryLevel'),
+                        routePage: BookingCarRentalPage(
                           thumbnail: filterBrands[index].get('image'),
                           title: filterBrands[index].get('name'),
                           type: filterBrands[index].get('type'),
+                          rage: filterBrands[index].get('rage'),
+                          seat: filterBrands[index].get('seat'),
                           dc: filterBrands[index].get('dc'),
                           priceHour: filterBrands[index].get('priceHour'),
                           priceDay: filterBrands[index].get('priceDay'),
-                          rage: filterBrands[index].get('rage'),
-                          seat: filterBrands[index].get('seat'),
                           brand: filterBrands[index].get('brand'),
-                          supercharge:
-                              filterBrands[index].get('superCharger'),
-                          ac: filterBrands[index].get('ac'),
+                          transmossion: filterBrands[index].get('transmossion'),
+                          energyType: filterBrands[index].get('energyType'),
+                          batteryLevel: filterBrands[index].get('batteryLevel'),
                         ),
-                      );
-                    }),
-              ),
-            ],
-          ),
-        ));
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

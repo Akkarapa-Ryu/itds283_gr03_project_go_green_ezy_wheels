@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:icons_plus/icons_plus.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -92,7 +91,7 @@ class SettingPage extends StatelessWidget {
             sizeButtonWidth: 350,
              textButton: SettingMessage.signOut, 
             colorText: DesignSystem.c0, textSize: 25, 
-            textWeight: FontWeight.w600)
+            textWeight: FontWeight.w600, widthSizeButton: 300,)
           ],
         ),
       ),

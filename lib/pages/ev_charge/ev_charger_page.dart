@@ -79,7 +79,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
                   textButton: EvChargerMessage.destinationToCharger,
                   colorText: DesignSystem.c0,
                   textSize: 16,
-                  textWeight: FontWeight.bold)
+                  textWeight: FontWeight.bold, widthSizeButton: 250,)
             ],
           ),
         ));

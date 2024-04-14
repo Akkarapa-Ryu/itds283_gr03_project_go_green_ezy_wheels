@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
 import '../../pages/pages.dart';
+import '../../constants/constants.dart';
 import '../../theme/theme.dart';
 import '../../components/components.dart';
 
@@ -12,6 +13,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<QueryDocumentSnapshot> carsList = [];
+
+  getDate() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('cars').get();
+
+    carsList.addAll(querySnapshot.docs);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getDate();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,13 +88,13 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     HomeMenuButton(
                       iconMenu: Icon(IconData(0xee2d,
-                          fontFamily: DesignSystem.fontIcon_MaterialIcons)),
+                          fontFamily: DesignSystem.fontIconMaterialIcons)),
                       text: HomeMessage.hour,
-                      // routePage: HourPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.sunny),
                       text: HomeMessage.day,
+                      routePage: CarListDayPage(),
                     ),
                     HomeMenuButton(
                       iconMenu: Icon(Icons.calendar_month),

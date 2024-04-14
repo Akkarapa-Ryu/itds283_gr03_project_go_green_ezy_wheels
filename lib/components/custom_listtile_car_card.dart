@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../theme/theme.dart';
+import 'components.dart';
 
 // https://api.flutter.dev/flutter/material/ListTile-class.html
 
@@ -17,7 +18,11 @@ class CustomListTileCarCard extends StatelessWidget {
       required this.priceDay,
       required this.rage,
       required this.seat,
-      required this.brand});
+      required this.brand,
+      required this.transmossion,
+      required this.energyType,
+      required this.batteryLevel,
+      this.routePage});
 
   final String thumbnail;
   final String title; // name's car
@@ -30,6 +35,10 @@ class CustomListTileCarCard extends StatelessWidget {
   final num priceHour;
   final num priceDay;
   final String brand;
+  final String transmossion;
+  final String energyType;
+  final num batteryLevel;
+  final Widget? routePage;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +55,7 @@ class CustomListTileCarCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      children: [containerImage(thumbnail)],
+                      children: [containerImage(thumbnail, 90, 150)],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -75,60 +84,75 @@ class CustomListTileCarCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  flex: 3,
-                  child: Padding(
-                      padding: EdgeInsets.only(left: 20, right: 2),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 2),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                            fontFamily: DesignSystem.fontFamily,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                      Row(
                         children: [
                           Text(
-                            title,
+                            '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
                             style: const TextStyle(
                                 fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 11),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
-                                style: const TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11),
-                              ),
-                              superchargeORac(supercharge, ac),
-                            ],
-                          ),
-                          // Text('Brand: $brand',style: TextStyle(
-                          //           fontFamily: DesignSystem.fontFamily,
-                          //           fontWeight: FontWeight.w500,
-                          //           fontSize: 11),),
-                          ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: DesignSystem.c6),
-                              child: const Text(
-                                '      ${CarListMessage.select}      ',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: DesignSystem.c1),
-                              ))
                         ],
-                      )))
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
+                            style: const TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 11),
+                          ),
+                          superchargeORac(supercharge, ac),
+                        ],
+                      ),
+                      // Text('Brand: $brand',style: TextStyle(
+                      //           fontFamily: DesignSystem.fontFamily,
+                      //           fontWeight: FontWeight.w500,
+                      //           fontSize: 11),),
+                      CustomButton(
+                        colorButton: DesignSystem.c6,
+                        heightSizeButton: 40,
+                        textButton: CarListMessage.select,
+                        colorText: DesignSystem.c1,
+                        textSize: 14,
+                        textWeight: FontWeight.bold,
+                        routePage: routePage,
+                        /*BookingDayCarRentalPage(
+                          thumbnail: thumbnail,
+                          title: title,
+                          type: type,
+                          rage: rage,
+                          seat: seat,
+                          dc: dc,
+                          priceHour: priceHour,
+                          priceDay: priceDay,
+                          brand: brand,
+                          transmossion: transmossion,
+                          energyType: energyType,
+                          batteryLevel: batteryLevel,
+                        ),*/
+                        borderRadius: 20,
+                        widthSizeButton: 120,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -156,19 +180,4 @@ class CustomListTileCarCard extends StatelessWidget {
       );
     }
   }
-}
-
-// https://www.youtube.com/watch?v=0ZHqrf0mzrI
-containerImage(String thumbnail) {
-  final urlDrive = thumbnail.split('/');
-  final pathH = 'https://drive.google.com/uc?export=view&id=${urlDrive[5]}';
-
-  // print('URL: $thumbnail');
-  // print("Url Drive: $urlDrive");
-  // print('Path: $pathH');
-  return Image.network(
-    pathH,
-    height: 90,
-    width: 150,
-  );
 }

@@ -4,7 +4,7 @@ class DesignSystem {
   const DesignSystem._();
 
   static const fontFamily = 'Manrope';
-  static const fontIcon_MaterialIcons = 'MaterialIcons';
+  static const fontIconMaterialIcons = 'MaterialIcons';
 
   // Colors
   static const c0 = Color(0xff000000);

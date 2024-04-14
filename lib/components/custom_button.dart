@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     required this.textWeight,
     this.iconWidget,
+    this.borderRadius, 
   });
   final Color colorButton;
   final double sizeButtonHeight;
@@ -22,7 +23,9 @@ class CustomButton extends StatelessWidget {
   final Color? colorText;
   final double? textSize;
   final FontWeight textWeight;
+  final double? borderRadius;
   final Widget? iconWidget;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +86,12 @@ class CustomButton extends StatelessWidget {
       ),
     );
   }
+
+    borderRadiusSize(borderRadius){
+    if (borderRadius != null) {
+     return RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius!));
+    }else{
+     return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
   
   sizeButton(sizeButtonHeight, sizeButtonWidth) {
     if (sizeButtonHeight == 0 && sizeButtonWidth == 0) {

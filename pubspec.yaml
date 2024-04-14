@@ -40,6 +40,8 @@ dependencies:
   cloud_firestore: ^4.15.8
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
+  dotted_border: ^2.1.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
