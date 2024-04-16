@@ -18,10 +18,10 @@ class _CarListPageState extends State<CarListPage> {
   List<QueryDocumentSnapshot> carsList = [];
 
   getDate() async {
-    QuerySnapshot querySnapshot =
+    QuerySnapshot querySnapshotCarList =
         await FirebaseFirestore.instance.collection('cars').get();
 
-    carsList.addAll(querySnapshot.docs);
+    carsList.addAll(querySnapshotCarList.docs);
     setState(() {});
   }
 

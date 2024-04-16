@@ -5,3 +5,4 @@ export 'login/login.dart';
 export 'landing/landing.dart';
 export 'booking/booking.dart';
 export 'ev_charge/ev_chare.dart';
+export 'register/register.dart';
