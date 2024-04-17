@@ -7,16 +7,8 @@ import 'theme/theme.dart';
 class MainPage extends StatefulWidget {
   const MainPage(
       {super.key,
-      // required this.id,
-      // required this.phone,
-      // required this.fname,
-      // required this.lname,
       required this.email,
       required this.password});
-  // final String id;
-  // final String phone;
-  // final String fname;
-  // final String lname;
   final String email;
   final String password;
 
@@ -34,21 +26,13 @@ class _MainPageState extends State<MainPage> {
         await users.where("email", isEqualTo: widget.email).get();
 
     for (var element in userData.docs) {
-      if (element.exists) {
-        // final userOfData = element.data();
         if (element["password"] == widget.password) {
           data.add(element);
-          // print('DATA From Firebase: ${element.id}');
-          // print('DATA User Password: ${element["password"]}');
-          return true;
+          // return true;
         } else {
-          // print('Not Found');
-          return false;
+          print("FALSE FETCHING DATA");
+          // return false;
         }
-      } else {
-        // print('Bye bye...');
-        return false;
-      }
     }
     // print('DATA of data Fetch: ${data.first.data()} -> ${data.runtimeType}');
     setState(() {});
@@ -102,9 +86,6 @@ class _MainPageState extends State<MainPage> {
   List<Widget> _pageWidget() => [
         HomePage(
             data: data,
-            // phone: phone,
-            // fname: fname,
-            // lname: lname,
             email: widget.email,
             password: widget.password),
         const CarListPage(),
@@ -116,6 +97,7 @@ class _MainPageState extends State<MainPage> {
     // getData();
     intiaData();
     super.initState();
+    
   }
 
   @override
@@ -146,7 +128,7 @@ class _MainPageState extends State<MainPage> {
             ? Center(
                 child: Text('Loading ...'),
               )
-            : Center(
+            : const Center(
                 child: Text(
                   "Not Found",
                   style: TextStyle(fontSize: 28),

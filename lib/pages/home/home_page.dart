@@ -9,17 +9,9 @@ class HomePage extends StatefulWidget {
   const HomePage(
       {super.key,
       required this.data,
-      // required this.id,
-      // required this.phone,
-      // required this.fname,
-      // required this.lname,
       required this.email,
       required this.password});
   final List data;
-  // final String id;
-  // final String phone;
-  // final String fname;
-  // final String lname;
   final String email;
   final String password;
 
