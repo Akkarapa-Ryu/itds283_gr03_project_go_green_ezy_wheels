@@ -13,7 +13,8 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     required this.textWeight,
     this.iconWidget,
-    this.borderRadius,
+    this.borderRadius, 
+    this.conditionPage,
   });
   final Color colorButton;
   final double sizeButtonHeight;
@@ -25,6 +26,7 @@ class CustomButton extends StatelessWidget {
   final FontWeight textWeight;
   final double? borderRadius;
   final Widget? iconWidget;
+  final Widget? conditionPage;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,10 @@ class CustomButton extends StatelessWidget {
             if (routePage != null) {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => routePage!));
-            } else {
+            } else if (conditionPage != null) {
+              conditionPage;
+            }
+            else {
               return;
             }
           },

@@ -1,50 +1,57 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../pages/pages.dart';
+import '../../components/components.dart';
+import '../../constants/constants.dart';
+import '../../theme/theme.dart';
+
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>(); // For form validation
-  String _email = '';
-  String _password = '';
+  final String _email = '';
+  final String _password = '';
   bool _isObscure = true; // for hiding password
 
-  void _submit() {
+  // TextEditingController
+  final phoneController = TextEditingController();
+  final fnameController = TextEditingController();
+  final lnameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final querySnapshotUser = FirebaseFirestore.instance.collection('users');
+
+  Future createUser(
+      {required String phone,
+      required String fname,
+      required String lname,
+      required String email,
+      required String password}) async {
     if (_formKey.currentState!.validate()) {
       // Process form data (e.g., send to server)
-      print("Email: $_email, Password: $_password");
+      final querySnapshotUserDoc = querySnapshotUser.doc();
+      final user = User(
+          id: querySnapshotUserDoc.id,
+          phone: phone,
+          fname: fname,
+          lname: lname,
+          email: email,
+          password: password);
+      final json = user.toJson();
+      querySnapshotUserDoc.set(json);
+
+      print("Email: $email, Password: $password");
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => LoginPage()),
+          ModalRoute.withName("/"));
     } else {
       print("Form validation failed!");
     }
-  }
-
-  Widget _buildPasswordField() {
-    return TextFormField(
-      obscureText: _isObscure,
-      decoration: InputDecoration(
-        labelText: 'Password',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(
-            _isObscure ? Icons.visibility : Icons.visibility_off,
-          ),
-          onPressed: () {
-            setState(() {
-              _isObscure = !_isObscure;
-            });
-          },
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your password';
-        }
-        return null; // Password validation can be more complex
-      },
-    );
   }
 
   @override
@@ -59,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(20),
           child: Text(
-            'Register',
+            RegisterMessage.register,
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -70,143 +77,159 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Please enter a form to continue the register',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  // fontWeight: FontWeight,
-                ),
-              ),
-              SizedBox(height: 25.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  prefix: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/images/TH.jpg',
-
-                        width: 25,
-                        height: 25,
-                      ),
-                      SizedBox(width: 0.1),
-                      Text('  +66  '),
-                    ],
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                keyboardType: TextInputType.phone, // Set keyboard type to phone
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your phone number';
-                  } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                    return 'Please enter a valid phone number';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 45.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your first name';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 45.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your last name';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 45.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Example : GoGreenEZyWheels@gmail.com',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  } else if (!value.contains('@')) {
-                    return 'Email must contain an @ symbol';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 45.0),
-              TextFormField(
-                obscureText: _isObscure,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isObscure ? Icons.visibility_off : Icons.visibility,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isObscure = !_isObscure;
-                      });
-                    },
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 55.0),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Sign up',
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Text(
+                  RegisterMessage.pleassMassage,
                   style: TextStyle(
-                    color: Colors.white, 
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    // fontWeight: FontWeight,
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Color.fromARGB(248, 141, 245, 155), 
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 163, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    )),
-              ),
-              SizedBox(height: 10.0),
-            ],
+                const SizedBox(height: 25.0),
+                TextFormField(
+                  controller: phoneController,
+                  decoration: InputDecoration(
+                    labelText: RegisterMessage.phoneNumber,
+                    prefix: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/images/TH.jpg',
+                          width: 25,
+                          height: 25,
+                        ),
+                        SizedBox(width: 0.1),
+                        Text('  ${RegisterMessage.plus66}  '),
+                      ],
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  keyboardType:
+                      TextInputType.phone, // Set keyboard type to phone
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return RegisterMessage.phonePlease;
+                    } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
+                      return RegisterMessage.phonePleaseValid;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 45.0),
+                TextFormField(
+                  controller: fnameController,
+                  decoration: InputDecoration(
+                    labelText: RegisterMessage.firstName,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return RegisterMessage.firstNamePlease;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 45.0),
+                TextFormField(
+                  controller: lnameController,
+                  decoration: InputDecoration(
+                    labelText: RegisterMessage.lastName,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return RegisterMessage.lastNamePlease;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 45.0),
+                TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: RegisterMessage.email,
+                    hintText: RegisterMessage.emailExample,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return RegisterMessage.emailPlease;
+                    } else if (!value.contains('@')) {
+                      return RegisterMessage.emailSymbol;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 45.0),
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: _isObscure,
+                  decoration: InputDecoration(
+                    labelText: RegisterMessage.password,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isObscure = !_isObscure;
+                        });
+                      },
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return RegisterMessage.passwordPlease;
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 55.0),
+                ElevatedButton(
+                  onPressed: () {
+                    createUser(
+                        phone: phoneController.text,
+                        fname: fnameController.text,
+                        lname: lnameController.text,
+                        email: emailController.text,
+                        password: passwordController.text);
+                  },
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      RegisterMessage.signUp,
+                      style: TextStyle(
+                          color: DesignSystem.c1,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: DesignSystem.fontFamily),
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: DesignSystem.c9,
+                      minimumSize: Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      )),
+                ),
+                const SizedBox(height: 10.0),
+              ],
+            ),
           ),
         ),
       ),
