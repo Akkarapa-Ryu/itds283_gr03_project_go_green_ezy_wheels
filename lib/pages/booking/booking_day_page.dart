@@ -20,7 +20,7 @@ class BookingDayCarRentalPage extends StatelessWidget {
       required this.transmossion,
       required this.energyType,
       required this.batteryLevel,
-      required this.locationMessage});
+      required this.locationMessage, required this.startDate, required this.endDate});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -36,6 +36,8 @@ class BookingDayCarRentalPage extends StatelessWidget {
   final String energyType;
   final num batteryLevel;
   final String locationMessage;
+  final Text startDate;
+  final Text endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -51,18 +53,28 @@ class BookingDayCarRentalPage extends StatelessWidget {
           centerTitle: true,
         ),
         body: BookingCar(
-          thumbnail: thumbnail,
-          title: title,
-          type: type,
-          rage: rage,
-          seat: seat,
-          dc: dc,
-          priceHour: priceHour,
-          priceDay: priceDay,
-          brand: brand,
-          transmossion: transmossion,
-          energyType: energyType,
-          batteryLevel: batteryLevel, locationMessage: Text(locationMessage)
-        ));
+            thumbnail: thumbnail,
+            title: title,
+            type: type,
+            rage: rage,
+            seat: seat,
+            dc: dc,
+            priceHour: priceHour,
+            priceDay: priceDay,
+            brand: brand,
+            transmossion: transmossion,
+            energyType: energyType,
+            batteryLevel: batteryLevel,
+            locationMessage: Text(
+              locationMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: DesignSystem.c1,
+                  fontFamily: DesignSystem.fontFamily,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18),
+            ),
+            startDate: startDate,
+            endDate: endDate,));
   }
 }
