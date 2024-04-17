@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/theme.dart';
-
+import '../../theme/theme.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 
@@ -20,7 +19,8 @@ class BookingDayCarRentalPage extends StatelessWidget {
       required this.brand,
       required this.transmossion,
       required this.energyType,
-      required this.batteryLevel});
+      required this.batteryLevel,
+      required this.locationMessage, required this.startDate, required this.endDate});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -35,6 +35,9 @@ class BookingDayCarRentalPage extends StatelessWidget {
   final String transmossion;
   final String energyType;
   final num batteryLevel;
+  final String locationMessage;
+  final Text startDate;
+  final Text endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +64,17 @@ class BookingDayCarRentalPage extends StatelessWidget {
             brand: brand,
             transmossion: transmossion,
             energyType: energyType,
-            batteryLevel: batteryLevel));
+            batteryLevel: batteryLevel,
+            locationMessage: Text(
+              locationMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: DesignSystem.c1,
+                  fontFamily: DesignSystem.fontFamily,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18),
+            ),
+            startDate: startDate,
+            endDate: endDate,));
   }
 }

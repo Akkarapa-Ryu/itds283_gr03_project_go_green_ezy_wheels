@@ -20,7 +20,11 @@ class BookingCar extends StatelessWidget {
       required this.brand,
       required this.transmossion,
       required this.energyType,
-      required this.batteryLevel});
+      required this.batteryLevel,
+      required this.locationMessage,
+      this.startDate,
+      this.endDate,
+      this.locationMessageFromIconButton});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -35,6 +39,10 @@ class BookingCar extends StatelessWidget {
   final String transmossion;
   final String energyType;
   final num batteryLevel;
+  final Widget locationMessage;
+  final Text? startDate;
+  final Text? endDate;
+  final String? locationMessageFromIconButton;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +51,58 @@ class BookingCar extends StatelessWidget {
       children: <Widget>[
         Column(
           children: [
-            ContainerLocationDateTimeWidget(),
+            Container(
+              margin: EdgeInsets.all(8),
+              height: 120,
+              decoration: BoxDecoration(
+                  color: DesignSystem.c2,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  if (locationMessageFromIconButton == null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        locationMessage,
+                      ],
+                    ),
+                  if (locationMessageFromIconButton != null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        locationMessage,
+                        Text(locationMessageFromIconButton!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: DesignSystem.c1,
+                    fontFamily: DesignSystem.fontFamily,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18),),
+                      ],
+                    ),
+                  Container(
+                    height: 2,
+                    width: 250,
+                    color: DesignSystem.c1,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(child: startDate),
+                      const Icon(
+                        Icons.arrow_forward,
+                        color: DesignSystem.c1,
+                      ),
+                      Container(child: endDate),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Card(
               color: DesignSystem.c1,
               surfaceTintColor: DesignSystem.c1,
@@ -259,3 +318,6 @@ class BookingCar extends StatelessWidget {
     );
   }
 }
+
+// https://stackoverflow.com/questions/51579546/how-to-format-datetime-in-flutter
+// https://stackoverflow.com/questions/64871346/flutter-how-to-show-current-date-and-next-5-day-dates

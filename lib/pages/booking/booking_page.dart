@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-
+import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
 
-class BookingCarRentalPage extends StatelessWidget {
-  const BookingCarRentalPage(
-      {super.key,
-      required this.thumbnail,
-      required this.title,
-      required this.type,
-      required this.rage,
-      required this.seat,
-      required this.dc,
-      this.ac,
-      this.supercharge,
-      required this.priceHour,
-      required this.priceDay,
-      required this.brand,
-      required this.transmossion,
-      required this.energyType,
-      required this.batteryLevel});
+class BookingCarRentalPage extends StatefulWidget {
+  const BookingCarRentalPage({
+    super.key,
+    required this.thumbnail,
+    required this.title,
+    required this.type,
+    required this.rage,
+    required this.seat,
+    required this.dc,
+    this.ac,
+    this.supercharge,
+    required this.priceHour,
+    required this.priceDay,
+    required this.brand,
+    required this.transmossion,
+    required this.energyType,
+    required this.batteryLevel,
+  });
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -37,28 +39,126 @@ class BookingCarRentalPage extends StatelessWidget {
   final num batteryLevel;
 
   @override
+  State<BookingCarRentalPage> createState() => _BookingCarRentalPageState();
+}
+
+class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
+  String locationMessage = 'Current Location';
+  late String lat;
+  late String long;
+  final startDate = Text(
+    DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
+    style: const TextStyle(
+        color: DesignSystem.c1,
+        fontFamily: DesignSystem.fontFamily,
+        fontWeight: FontWeight.w600,
+        fontSize: 16),
+  );
+  final endDate = Text(
+    DateFormat('dd MMMM yyyy, HH:mm')
+        .format(DateTime.now().add(Duration(days: 1))),
+    style: const TextStyle(
+        color: DesignSystem.c1,
+        fontFamily: DesignSystem.fontFamily,
+        fontWeight: FontWeight.w600,
+        fontSize: 16),
+  );
+
+  // https://www.youtube.com/watch?v=9v44lAagZCI
+  Future<Position> _getCurrentLOcation() async {
+    // เป็นการ check ว่ามีการเปิด location บนมือถือหรือยัง
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(BookingMessage.rentel,
-            style: TextStyle(
-                color: DesignSystem.c0,
-                fontFamily: DesignSystem.fontFamily,
-                fontWeight: FontWeight.bold),),
-          centerTitle: true,
+      appBar: AppBar(
+        title: const Text(
+          BookingMessage.rentel,
+          style: TextStyle(
+              color: DesignSystem.c0,
+              fontFamily: DesignSystem.fontFamily,
+              fontWeight: FontWeight.bold),
         ),
-        body: BookingCar(
-            thumbnail: thumbnail,
-            title: title,
-            type: type,
-            rage: rage,
-            seat: seat,
-            dc: dc,
-            priceHour: priceHour,
-            priceDay: priceDay,
-            brand: brand,
-            transmossion: transmossion,
-            energyType: energyType,
-            batteryLevel: batteryLevel));
+        centerTitle: true,
+        actions: [LocationNotificationPopup()],
+      ),
+      body: BookingCar(
+        thumbnail: widget.thumbnail,
+        title: widget.title,
+        type: widget.type,
+        rage: widget.rage,
+        seat: widget.seat,
+        dc: widget.dc,
+        priceHour: widget.priceHour,
+        priceDay: widget.priceDay,
+        brand: widget.brand,
+        transmossion: widget.transmossion,
+        energyType: widget.energyType,
+        batteryLevel: widget.batteryLevel,
+        /*locationMessage: ContainerLocationDateTimeWidget(
+          iconLocation: IconButton(
+            onPressed: () {
+              _getCurrentLOcation().then((value) {
+                lat = '${value.latitude}';
+                long = '${value.longitude}';
+                setState(() {
+                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                  print('LocationMessage" $locationMessage');
+                });
+                // liveLocation();
+              });
+            },
+            icon: Icon(
+              Icons.location_pin,
+              color: DesignSystem.c1,
+            ),
+          ),
+          locationMessage: locationMessage,
+          startDate: startDate,
+          endDate: endDate,
+        ),*/
+        locationMessage: IconButton(
+            onPressed: () {
+              _getCurrentLOcation().then((value) {
+                lat = '${value.latitude}';
+                long = '${value.longitude}';
+                setState(() {
+                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                  print('LocationMessage" $locationMessage');
+                });
+                // liveLocation();
+              });
+            },
+            icon: Icon(
+              Icons.location_pin,
+              color: DesignSystem.c1,
+            ),
+          ),
+        startDate: startDate,
+        endDate: endDate,
+        locationMessageFromIconButton: locationMessage,
+      ),
+    );
   }
 }
+

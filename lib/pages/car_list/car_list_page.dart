@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/pages.dart';
+import 'package:geolocator/geolocator.dart';
+import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
@@ -17,6 +18,34 @@ class _CarListPageState extends State<CarListPage> {
   List<String> selectCarBrand = [];
   List<QueryDocumentSnapshot> carsList = [];
 
+    String locationMessage = '';
+  late String lat;
+  late String long;
+
+  // https://www.youtube.com/watch?v=9v44lAagZCI
+  Future<Position> _getCurrentLOcation() async {
+    // เป็นการ check ว่ามีการเปิด location บนมือถือหรือยัง
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+  
   getDate() async {
     QuerySnapshot querySnapshotCarList =
         await FirebaseFirestore.instance.collection('cars').get();
@@ -131,7 +160,7 @@ class _CarListPageState extends State<CarListPage> {
                           brand: filterBrands[index].get('brand'),
                           transmossion: filterBrands[index].get('transmossion'),
                           energyType: filterBrands[index].get('energyType'),
-                          batteryLevel: filterBrands[index].get('batteryLevel'),
+                          batteryLevel: filterBrands[index].get('batteryLevel'), 
                         ),
                       ),
                     );

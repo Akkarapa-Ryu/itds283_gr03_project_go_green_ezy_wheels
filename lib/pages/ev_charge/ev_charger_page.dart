@@ -14,7 +14,6 @@ class EvChargerPage extends StatefulWidget {
 
 class _EvChargerPageState extends State<EvChargerPage> {
   // https://codelabs.developers.google.com/codelabs/google-maps-in-flutter#3
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +28,13 @@ class _EvChargerPageState extends State<EvChargerPage> {
               Container(
                 margin: EdgeInsets.only(bottom: 10),
                 height: 170,
-                child: 
-                ClipRRect(
+                child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
                     'assets/images/background.jpg',
                     fit: BoxFit.fitWidth,
                     width: double.maxFinite,
-                    alignment: Alignment(0,0.25),
+                    alignment: Alignment(0, 0.25),
                   ),
                 ),
               ),
@@ -46,6 +44,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
                   borderRadius: BorderRadius.circular(15),
                   child: FlutterMap(
                       options: MapOptions(
+                          // initialCenter: LatLng(13.801773, 100.321121),
                           initialCenter: LatLng(13.801773, 100.321121),
                           initialZoom: 11,
                           interactionOptions: InteractionOptions(
@@ -73,13 +72,14 @@ class _EvChargerPageState extends State<EvChargerPage> {
                 ),
               ),
               CustomButton(
-                  colorButton: DesignSystem.c2,
-                  sizeButtonHeight: 45,
-                  sizeButtonWidth: double.infinity,
-                  textButton: EvChargerMessage.destinationToCharger,
-                  colorText: DesignSystem.c0,
-                  textSize: 16,
-                  textWeight: FontWeight.bold,)
+                colorButton: DesignSystem.c2,
+                sizeButtonHeight: 45,
+                sizeButtonWidth: double.infinity,
+                textButton: EvChargerMessage.destinationToCharger,
+                colorText: DesignSystem.c0,
+                textSize: 16,
+                textWeight: FontWeight.bold,
+              )
             ],
           ),
         ));

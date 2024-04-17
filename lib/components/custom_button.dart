@@ -14,7 +14,6 @@ class CustomButton extends StatelessWidget {
     required this.textWeight,
     this.iconWidget,
     this.borderRadius, 
-    this.conditionPage,
   });
   final Color colorButton;
   final double sizeButtonHeight;
@@ -26,8 +25,7 @@ class CustomButton extends StatelessWidget {
   final FontWeight textWeight;
   final double? borderRadius;
   final Widget? iconWidget;
-  final Widget? conditionPage;
-
+  
   @override
   Widget build(BuildContext context) {
     if (iconWidget != null) {
