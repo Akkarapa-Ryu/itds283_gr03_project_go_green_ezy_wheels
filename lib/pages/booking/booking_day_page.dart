@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/theme.dart';
-
+import '../../theme/theme.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 
@@ -20,7 +19,8 @@ class BookingDayCarRentalPage extends StatelessWidget {
       required this.brand,
       required this.transmossion,
       required this.energyType,
-      required this.batteryLevel});
+      required this.batteryLevel,
+      required this.locationMessage});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -35,6 +35,7 @@ class BookingDayCarRentalPage extends StatelessWidget {
   final String transmossion;
   final String energyType;
   final num batteryLevel;
+  final String locationMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +51,18 @@ class BookingDayCarRentalPage extends StatelessWidget {
           centerTitle: true,
         ),
         body: BookingCar(
-            thumbnail: thumbnail,
-            title: title,
-            type: type,
-            rage: rage,
-            seat: seat,
-            dc: dc,
-            priceHour: priceHour,
-            priceDay: priceDay,
-            brand: brand,
-            transmossion: transmossion,
-            energyType: energyType,
-            batteryLevel: batteryLevel));
+          thumbnail: thumbnail,
+          title: title,
+          type: type,
+          rage: rage,
+          seat: seat,
+          dc: dc,
+          priceHour: priceHour,
+          priceDay: priceDay,
+          brand: brand,
+          transmossion: transmossion,
+          energyType: energyType,
+          batteryLevel: batteryLevel, locationMessage: Text(locationMessage)
+        ));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
@@ -14,7 +15,35 @@ class CarListDayPage extends StatefulWidget {
 
 class _CarListDayPageState extends State<CarListDayPage> {
   List<QueryDocumentSnapshot> carsList = [];
+  String locationMessage = 'Current Location';
+  late String lat;
+  late String long;
 
+  // https://www.youtube.com/watch?v=9v44lAagZCI
+  Future<Position> _getCurrentLOcation() async {
+    // เป็นการ check ว่ามีการเปิด location บนมือถือหรือยัง
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+  // late ContainerLocationDateTimeWidget locationMessage = ContainerLocationDateTimeWidget();
   getDate() async {
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('cars').get();
@@ -43,7 +72,26 @@ class _CarListDayPageState extends State<CarListDayPage> {
       ),
       body: Column(
         children: [
-          const ContainerLocationDateTimeWidget(),
+          ContainerLocationDateTimeWidget(
+            iconLocation: IconButton(
+              onPressed: () {
+                _getCurrentLOcation().then((value) {
+                  lat = '${value.latitude}';
+                  long = '${value.longitude}';
+                  setState(() {
+                    locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                    print('LocationMessage" $locationMessage');
+                  });
+                  // liveLocation();
+                });
+              },
+              icon: Icon(
+                Icons.location_pin,
+                color: DesignSystem.c1,
+              ),
+            ),
+            locationMessage: locationMessage,
+          ),
           Expanded(
             child: ListView.builder(
                 shrinkWrap: true,
@@ -54,8 +102,8 @@ class _CarListDayPageState extends State<CarListDayPage> {
                     color: DesignSystem.c1,
                     surfaceTintColor: DesignSystem.c1,
                     elevation: 3,
-                    margin:
-                        const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                    margin: const EdgeInsets.only(
+                        left: 5, right: 5, top: 5, bottom: 5),
                     child: CustomListTileCarCard(
                       thumbnail: carsList[index].get('image'),
                       title: carsList[index].get('name'),
@@ -84,6 +132,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
                         transmossion: carsList[index].get('transmossion'),
                         energyType: carsList[index].get('energyType'),
                         batteryLevel: carsList[index].get('batteryLevel'),
+                        locationMessage: locationMessage,
                       ),
                     ),
                   );
