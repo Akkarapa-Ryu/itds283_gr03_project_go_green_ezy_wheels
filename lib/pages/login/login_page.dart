@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../main_page.dart';
+import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
@@ -56,32 +56,39 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 55.0),
                   CustomButton(
-                    routePage: MainPage(),
-                      colorButton: DesignSystem.c1,
-                      textButton: LoginMessage.phoneSigin,
-                      textWeight: FontWeight.w600,
-                      sizeButtonHeight: 50,
-                      sizeButtonWidth: 275,),
+                    routePage: RegisterPage(),
+                    colorButton: DesignSystem.c1,
+                    textButton: LoginMessage.phoneSigin,
+                    textWeight: FontWeight.w600,
+                    sizeButtonHeight: 50,
+                    sizeButtonWidth: 275,
+                  ),
                   const SizedBox(height: 10.0),
                   CustomButton(
-                      iconWidget: Image.asset(
-                        'assets/images/google.jpg',
-                        height: 24.0,
-                        width: 24.0,
-                      ),
-                      colorButton: DesignSystem.c1,
-                      textButton: LoginMessage.googleSigin,
-                      textWeight: FontWeight.w600, sizeButtonHeight: 0, sizeButtonWidth: 0,),
+                    iconWidget: Image.asset(
+                      'assets/images/google.jpg',
+                      height: 24.0,
+                      width: 24.0,
+                    ),
+                    colorButton: DesignSystem.c1,
+                    textButton: LoginMessage.googleSigin,
+                    textWeight: FontWeight.w600,
+                    sizeButtonHeight: 0,
+                    sizeButtonWidth: 0,
+                  ),
                   const SizedBox(height: 10.0),
                   CustomButton(
-                      iconWidget: Image.asset(
-                        'assets/images/facebook.jpg',
-                        height: 24.0,
-                        width: 24.0,
-                      ),
-                      colorButton: DesignSystem.c1,
-                      textButton: LoginMessage.googleSigin,
-                      textWeight: FontWeight.w600, sizeButtonHeight: 0, sizeButtonWidth: 0,),
+                    iconWidget: Image.asset(
+                      'assets/images/facebook.jpg',
+                      height: 24.0,
+                      width: 24.0,
+                    ),
+                    colorButton: DesignSystem.c1,
+                    textButton: LoginMessage.googleSigin,
+                    textWeight: FontWeight.w600,
+                    sizeButtonHeight: 0,
+                    sizeButtonWidth: 0,
+                  ),
                   SizedBox(height: 40.0),
                   Text(
                     LoginMessage.alreadyMessage,
@@ -91,7 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                         fontFamily: DesignSystem.fontFamily),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SigninPage()));
+                    },
                     child: Text(LoginMessage.sigin),
                     style: TextButton.styleFrom(
                       foregroundColor: DesignSystem.c9,

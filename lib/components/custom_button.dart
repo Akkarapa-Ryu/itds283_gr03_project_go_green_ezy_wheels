@@ -36,7 +36,10 @@ class CustomButton extends StatelessWidget {
             if (routePage != null) {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => routePage!));
-            } else {
+            } else if (conditionPage != null) {
+              conditionPage;
+            }
+            else {
               return;
             }
           },
