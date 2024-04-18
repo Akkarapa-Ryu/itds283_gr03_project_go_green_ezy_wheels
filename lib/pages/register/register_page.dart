@@ -14,8 +14,6 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>(); // For form validation
-  final String _email = '';
-  final String _password = '';
   bool _isObscure = true; // for hiding password
 
   // TextEditingController

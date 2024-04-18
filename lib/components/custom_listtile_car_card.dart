@@ -42,119 +42,117 @@ class CustomListTileCarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(5),
-        child: SizedBox(
-          height: 130,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: SizedBox(
+        height: 130,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Row(
+                    children: [containerImage(thumbnail, 90, 150)],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '$priceHour / ${CarListMessage.hour}',
+                            style: const TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),
+                          ),
+                          Text(
+                            '$priceDay / ${CarListMessage.day}',
+                            style: const TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 2),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      children: [containerImage(thumbnail, 90, 150)],
+                    Text(
+                      title,
+                      style: const TextStyle(
+                          fontFamily: DesignSystem.fontFamily,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              '$priceHour / ${CarListMessage.hour}',
-                              style: const TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14),
-                            ),
-                            Text(
-                              '$priceDay / ${CarListMessage.day}',
-                              style: const TextStyle(
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14),
-                            ),
-                          ],
+                        Text(
+                          '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
+                          style: const TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 11),
                         ),
                       ],
-                    )
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
+                          style: const TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 11),
+                        ),
+                        superchargeORac(supercharge, ac),
+                      ],
+                    ),
+                    // Text('Brand: $brand',style: TextStyle(
+                    //           fontFamily: DesignSystem.fontFamily,
+                    //           fontWeight: FontWeight.w500,
+                    //           fontSize: 11),),
+                    CustomButton(
+                      colorButton: DesignSystem.c6,
+                      textButton: CarListMessage.select,
+                      colorText: DesignSystem.c1,
+                      textSize: 14,
+                      textWeight: FontWeight.bold,
+                      routePage: routePage,
+                      /*BookingDayCarRentalPage(
+                        thumbnail: thumbnail,
+                        title: title,
+                        type: type,
+                        rage: rage,
+                        seat: seat,
+                        dc: dc,
+                        priceHour: priceHour,
+                        priceDay: priceDay,
+                        brand: brand,
+                        transmossion: transmossion,
+                        energyType: energyType,
+                        batteryLevel: batteryLevel,
+                      ),*/
+                      borderRadius: 20,
+                      sizeButtonHeight: 40,
+                      sizeButtonWidth: 120,
+                    ),
                   ],
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 2),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                            fontFamily: DesignSystem.fontFamily,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
-                            style: const TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 11),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
-                            style: const TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 11),
-                          ),
-                          superchargeORac(supercharge, ac),
-                        ],
-                      ),
-                      // Text('Brand: $brand',style: TextStyle(
-                      //           fontFamily: DesignSystem.fontFamily,
-                      //           fontWeight: FontWeight.w500,
-                      //           fontSize: 11),),
-                      CustomButton(
-                        colorButton: DesignSystem.c6,
-                        textButton: CarListMessage.select,
-                        colorText: DesignSystem.c1,
-                        textSize: 14,
-                        textWeight: FontWeight.bold,
-                        routePage: routePage,
-                        /*BookingDayCarRentalPage(
-                          thumbnail: thumbnail,
-                          title: title,
-                          type: type,
-                          rage: rage,
-                          seat: seat,
-                          dc: dc,
-                          priceHour: priceHour,
-                          priceDay: priceDay,
-                          brand: brand,
-                          transmossion: transmossion,
-                          energyType: energyType,
-                          batteryLevel: batteryLevel,
-                        ),*/
-                        borderRadius: 20,
-                        sizeButtonHeight: 40,
-                        sizeButtonWidth: 120,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -48,7 +48,7 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
         // flutter.minSdkVersion
-        targetSdkVersion 30
+        targetSdkVersion 31
         // flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -69,5 +69,6 @@ flutter {
 }
 
 dependencies {
-    // implementation "androidx.multidex:multidex:2.0.1"
+    implementation "androidx.multidex:multidex:2.0.1"
+    // implementation 'com.google.android.material:material:<version>'
 }

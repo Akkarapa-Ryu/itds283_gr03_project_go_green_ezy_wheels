@@ -24,7 +24,8 @@ class BookingCar extends StatelessWidget {
       required this.locationMessage,
       this.startDate,
       this.endDate,
-      this.locationMessageFromIconButton});
+      this.locationMessageFromIconButton,
+      this.routePage});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -43,6 +44,7 @@ class BookingCar extends StatelessWidget {
   final Text? startDate;
   final Text? endDate;
   final String? locationMessageFromIconButton;
+  final Widget? routePage;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,9 @@ class BookingCar extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        locationMessage,
+                        Container(
+                          width: 300,
+                          child: locationMessage),
                       ],
                     ),
                   if (locationMessageFromIconButton != null)
@@ -72,13 +76,20 @@ class BookingCar extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         locationMessage,
-                        Text(locationMessageFromIconButton!,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: DesignSystem.c1,
-                    fontFamily: DesignSystem.fontFamily,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),),
+                        Container(
+                          width: 300,
+                          child: Text(
+                            locationMessageFromIconButton!,
+                            textAlign: TextAlign.center,
+                            softWrap: true,
+                            maxLines: 2,
+                            style: TextStyle(
+                                color: DesignSystem.c1,
+                                fontFamily: DesignSystem.fontFamily,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
+                          ),
+                        ),
                       ],
                     ),
                   Container(
@@ -310,6 +321,7 @@ class BookingCar extends StatelessWidget {
                     textWeight: FontWeight.w600,
                     borderRadius: 30,
                     sizeButtonWidth: 120,
+                    routePage: routePage,
                   ),
                 ],
               ),

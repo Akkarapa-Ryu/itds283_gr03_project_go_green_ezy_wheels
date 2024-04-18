@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import '../../components/components.dart';
@@ -43,9 +44,9 @@ class BookingCarRentalPage extends StatefulWidget {
 }
 
 class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
-  String locationMessage = 'Current Location';
-  late String lat;
-  late String long;
+  List locationMessage = [];
+  double lat = 0;
+  double long = 0;
   final startDate = Text(
     DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
     style: const TextStyle(
@@ -63,6 +64,7 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
         fontWeight: FontWeight.w600,
         fontSize: 16),
   );
+  String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
   Future<Position> _getCurrentLOcation() async {
@@ -86,6 +88,31 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
     }
 
     return await Geolocator.getCurrentPosition();
+  }
+
+  getLocationName() async {
+    double latitude = lat;
+    double longitude = long;
+
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemarks[0];
+      setState(() {
+        address =
+            "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
+      });
+    } catch (e) {
+      setState(() {
+        address = "Error fetching location";
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLocationName();
   }
 
   @override
@@ -115,50 +142,29 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
         transmossion: widget.transmossion,
         energyType: widget.energyType,
         batteryLevel: widget.batteryLevel,
-        /*locationMessage: ContainerLocationDateTimeWidget(
-          iconLocation: IconButton(
-            onPressed: () {
-              _getCurrentLOcation().then((value) {
-                lat = '${value.latitude}';
-                long = '${value.longitude}';
-                setState(() {
-                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
-                  print('LocationMessage" $locationMessage');
-                });
-                // liveLocation();
-              });
-            },
-            icon: Icon(
-              Icons.location_pin,
-              color: DesignSystem.c1,
-            ),
-          ),
-          locationMessage: locationMessage,
-          startDate: startDate,
-          endDate: endDate,
-        ),*/
         locationMessage: IconButton(
-            onPressed: () {
-              _getCurrentLOcation().then((value) {
-                lat = '${value.latitude}';
-                long = '${value.longitude}';
-                setState(() {
-                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
-                  print('LocationMessage" $locationMessage');
-                });
-                // liveLocation();
+          onPressed: () {
+            _getCurrentLOcation().then((value) {
+              lat = value.latitude;
+              long = value.longitude;
+              setState(() {
+                // locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                locationMessage.add(lat);
+                locationMessage.add(long);
+                print('LocationMessage" $locationMessage');
               });
-            },
-            icon: Icon(
-              Icons.location_pin,
-              color: DesignSystem.c1,
-            ),
+              getLocationName();
+            });
+          },
+          icon: Icon(
+            Icons.location_pin,
+            color: DesignSystem.c1,
           ),
+        ),
         startDate: startDate,
         endDate: endDate,
-        locationMessageFromIconButton: locationMessage,
+        locationMessageFromIconButton: address,
       ),
     );
   }
 }
-

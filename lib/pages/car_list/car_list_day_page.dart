@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import '../../components/components.dart';
@@ -8,7 +9,8 @@ import '../../constants/constants.dart';
 import '../pages.dart';
 
 class CarListDayPage extends StatefulWidget {
-  const CarListDayPage({super.key});
+  const CarListDayPage({super.key,
+  });
 
   @override
   State<CarListDayPage> createState() => _CarListDayPageState();
@@ -16,9 +18,9 @@ class CarListDayPage extends StatefulWidget {
 
 class _CarListDayPageState extends State<CarListDayPage> {
   List<QueryDocumentSnapshot> carsList = [];
-  String locationMessage = 'Current Location';
-  late String lat;
-  late String long;
+  List locationMessage = [];
+  double lat = 0;
+  double long = 0;
   final startDate = Text(
     DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
     style: const TextStyle(
@@ -36,6 +38,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
         fontWeight: FontWeight.w600,
         fontSize: 16),
   );
+  String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
   Future<Position> _getCurrentLOcation() async {
@@ -57,7 +60,6 @@ class _CarListDayPageState extends State<CarListDayPage> {
       return Future.error(
           'Location permissions are permanently denied, we cannot request');
     }
-
     return await Geolocator.getCurrentPosition();
   }
 
@@ -70,10 +72,30 @@ class _CarListDayPageState extends State<CarListDayPage> {
     setState(() {});
   }
 
+  getLocationName() async {
+    double latitude = lat;
+    double longitude = long;
+
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemarks[0];
+      setState(() {
+        address =
+            "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
+      });
+    } catch (e) {
+      setState(() {
+        address = "Error fetching location";
+      });
+    }
+  }
+
   @override
   void initState() {
     getDate();
     super.initState();
+    getLocationName();
   }
 
   @override
@@ -87,79 +109,88 @@ class _CarListDayPageState extends State<CarListDayPage> {
           style: TextStyle(
               fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         ),
-        actions: [LocationNotificationPopup()],
+        actions: const [LocationNotificationPopup()],
       ),
-      body: Column(
-        children: [
-          ContainerLocationDateTimeWidget(
-            iconLocation: IconButton(
-              onPressed: () {
-                _getCurrentLOcation().then((value) {
-                  lat = '${value.latitude}';
-                  long = '${value.longitude}';
-                  setState(() {
-                    locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
-                    print('LocationMessage" $locationMessage');
+      body: Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Column(
+          children: [
+            ContainerLocationDateTimeWidget(
+              iconLocation: IconButton(
+                onPressed: () {
+                  _getCurrentLOcation().then((value) {
+                    lat = value.latitude;
+                    long = value.longitude;
+                    setState(() {
+                      // locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                      locationMessage.add(lat);
+                      locationMessage.add(long);
+                      print('LocationMessage" $locationMessage');
+                    });
+                    getLocationName();
                   });
-                  // liveLocation();
-                });
-              },
-              icon: Icon(
-                Icons.location_pin,
-                color: DesignSystem.c1,
+                },
+                icon: Icon(
+                  Icons.location_pin,
+                  color: DesignSystem.c1,
+                ),
               ),
+              // locationMessage: locationMessage,
+              locationMessage: address,
+              startDate: startDate,
+              endDate: endDate,
             ),
-            locationMessage: locationMessage,
-            startDate: startDate,
-            endDate: endDate,
-          ),
-          Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(3),
-                itemCount: carsList.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: DesignSystem.c1,
-                    surfaceTintColor: DesignSystem.c1,
-                    elevation: 3,
-                    margin: const EdgeInsets.only(
-                        left: 5, right: 5, top: 5, bottom: 5),
-                    child: CustomListTileCarCard(
-                      thumbnail: carsList[index].get('image'),
-                      title: carsList[index].get('name'),
-                      type: carsList[index].get('type'),
-                      dc: carsList[index].get('dc'),
-                      priceHour: carsList[index].get('priceHour'),
-                      priceDay: carsList[index].get('priceDay'),
-                      rage: carsList[index].get('rage'),
-                      seat: carsList[index].get('seat'),
-                      brand: carsList[index].get('brand'),
-                      supercharge: carsList[index].get('superCharger'),
-                      ac: carsList[index].get('ac'),
-                      transmossion: carsList[index].get('transmossion'),
-                      energyType: carsList[index].get('energyType'),
-                      batteryLevel: carsList[index].get('batteryLevel'),
-                      routePage: BookingDayCarRentalPage(
+            // Text(address),
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(3),
+                  itemCount: carsList.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: DesignSystem.c1,
+                      surfaceTintColor: DesignSystem.c1,
+                      elevation: 3,
+                      margin: const EdgeInsets.only(
+                          left: 5, right: 5, top: 5, bottom: 5),
+                      child: CustomListTileCarCard(
                         thumbnail: carsList[index].get('image'),
                         title: carsList[index].get('name'),
                         type: carsList[index].get('type'),
-                        rage: carsList[index].get('rage'),
-                        seat: carsList[index].get('seat'),
                         dc: carsList[index].get('dc'),
                         priceHour: carsList[index].get('priceHour'),
                         priceDay: carsList[index].get('priceDay'),
+                        rage: carsList[index].get('rage'),
+                        seat: carsList[index].get('seat'),
                         brand: carsList[index].get('brand'),
+                        supercharge: carsList[index].get('superCharger'),
+                        ac: carsList[index].get('ac'),
                         transmossion: carsList[index].get('transmossion'),
                         energyType: carsList[index].get('energyType'),
                         batteryLevel: carsList[index].get('batteryLevel'),
-                        locationMessage: locationMessage, startDate: startDate, endDate: endDate,
+                        routePage: BookingDayCarRentalPage(
+                          thumbnail: carsList[index].get('image'),
+                          title: carsList[index].get('name'),
+                          type: carsList[index].get('type'),
+                          rage: carsList[index].get('rage'),
+                          seat: carsList[index].get('seat'),
+                          dc: carsList[index].get('dc'),
+                          priceHour: carsList[index].get('priceHour'),
+                          priceDay: carsList[index].get('priceDay'),
+                          brand: carsList[index].get('brand'),
+                          transmossion: carsList[index].get('transmossion'),
+                          energyType: carsList[index].get('energyType'),
+                          batteryLevel: carsList[index].get('batteryLevel'),
+                          locationMessage: address,
+                          startDate: startDate,
+                          endDate: endDate,
+                        ),
                       ),
-                    ),
-                  );
-                }),
-          ),
-        ],
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }

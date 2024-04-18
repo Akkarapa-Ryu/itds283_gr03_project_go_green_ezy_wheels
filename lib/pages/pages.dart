@@ -6,3 +6,5 @@ export 'landing/landing.dart';
 export 'booking/booking.dart';
 export 'ev_charge/ev_chare.dart';
 export 'register/register.dart';
+export 'confirm_pay/confirm_pay.dart';
+export 'sucessbooking/sucessbooking_page.dart';
