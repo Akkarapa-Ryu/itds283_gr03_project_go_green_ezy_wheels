@@ -17,6 +17,7 @@ class DesignSystem {
   static const c7 = Color(0xffFE3636);
   static const c8 = Color(0xff6BDE79);
   static const c9 = Color.fromARGB(248, 141, 245, 155);
+  static const c10 = Color.fromARGB(255, 12, 53, 236);
 
   
   

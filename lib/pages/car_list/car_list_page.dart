@@ -7,7 +7,14 @@ import '../../theme/theme.dart';
 import '../../constants/constants.dart';
 
 class CarListPage extends StatefulWidget {
-  const CarListPage({super.key});
+  const CarListPage(
+      {super.key,
+      required this.data,
+      required this.email,
+      required this.password});
+  final List data;
+  final String email;
+  final String password;
 
   @override
   State<CarListPage> createState() => _CarListPageState();
@@ -18,7 +25,7 @@ class _CarListPageState extends State<CarListPage> {
   List<String> selectCarBrand = [];
   List<QueryDocumentSnapshot> carsList = [];
 
-    String locationMessage = '';
+  String locationMessage = '';
   late String lat;
   late String long;
 
@@ -45,7 +52,7 @@ class _CarListPageState extends State<CarListPage> {
 
     return await Geolocator.getCurrentPosition();
   }
-  
+
   getDate() async {
     QuerySnapshot querySnapshotCarList =
         await FirebaseFirestore.instance.collection('cars').get();
@@ -71,7 +78,7 @@ class _CarListPageState extends State<CarListPage> {
       backgroundColor: DesignSystem.c4,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           CarListMessage.carList,
           style: TextStyle(
               fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
@@ -79,7 +86,7 @@ class _CarListPageState extends State<CarListPage> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             color: DesignSystem.c4,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15))),
@@ -88,8 +95,8 @@ class _CarListPageState extends State<CarListPage> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
-                margin:
-                    const EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
+                margin: EdgeInsets.only(
+                    top: 15, left: 10, right: 10, bottom: 10),
                 child: Wrap(
                   spacing: 10,
                   runSpacing: 4,
@@ -160,7 +167,7 @@ class _CarListPageState extends State<CarListPage> {
                           brand: filterBrands[index].get('brand'),
                           transmossion: filterBrands[index].get('transmossion'),
                           energyType: filterBrands[index].get('energyType'),
-                          batteryLevel: filterBrands[index].get('batteryLevel'), 
+                          batteryLevel: filterBrands[index].get('batteryLevel'),
                         ),
                       ),
                     );

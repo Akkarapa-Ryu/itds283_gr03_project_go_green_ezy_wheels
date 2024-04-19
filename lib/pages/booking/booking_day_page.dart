@@ -23,7 +23,7 @@ class BookingDayCarRentalPage extends StatelessWidget {
       required this.batteryLevel,
       required this.locationMessage,
       required this.startDate,
-      required this.endDate});
+      required this.endDate, required this.data});
   final String thumbnail;
   final String title; // name's car
   final String type; // type,
@@ -41,6 +41,7 @@ class BookingDayCarRentalPage extends StatelessWidget {
   final String locationMessage;
   final Text startDate;
   final Text endDate;
+  final List data;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +97,6 @@ class BookingDayCarRentalPage extends StatelessWidget {
                 batteryLevel: batteryLevel,
                 locationMessage: locationMessage,
                 startDate: startDate,
-                endDate: endDate)));
+                endDate: endDate, data: data,)));
   }
 }

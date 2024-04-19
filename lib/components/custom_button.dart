@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
 import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/landing/landing.dart';
 import '/theme/theme.dart';
 
@@ -72,7 +73,11 @@ class CustomButton extends StatelessWidget {
             Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => WelcomePage()),
           ModalRoute.withName("/"));
-          } else {
+          } else if (routePageClose == "back") {
+            Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => routePage!),
+          ModalRoute.withName("/"));
+          }else {
             return;
           }
         },

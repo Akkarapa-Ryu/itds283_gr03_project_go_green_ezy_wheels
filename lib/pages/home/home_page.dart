@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SingleChildScrollView(
           child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(children: [
                 SizedBox(
                   height: 300,
@@ -72,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                 // Text("${widget.data.first.data().runtimeType}"),
                 Container(
                   height: 550,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       color: DesignSystem.c4,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(15),
                           topRight: Radius.circular(15))),
-                  child: const Column(
+                  child: Column(
                     children: [
                       SizedBox(
                         height: 50,
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                           HomeMenuButton(
                             iconMenu: Icon(Icons.sunny),
                             text: HomeMessage.day,
-                            routePage: CarListDayPage(),
+                            routePage: CarListDayPage(data: widget.data,),
                           ),
                           HomeMenuButton(
                             iconMenu: Icon(Icons.calendar_month),

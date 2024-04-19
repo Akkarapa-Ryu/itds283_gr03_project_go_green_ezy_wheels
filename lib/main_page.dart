@@ -5,10 +5,7 @@ import 'pages/pages.dart';
 import 'theme/theme.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage(
-      {super.key,
-      required this.email,
-      required this.password});
+  const MainPage({super.key, required this.email, required this.password});
   final String email;
   final String password;
 
@@ -26,13 +23,13 @@ class _MainPageState extends State<MainPage> {
         await users.where("email", isEqualTo: widget.email).get();
 
     for (var element in userData.docs) {
-        if (element["password"] == widget.password) {
-          data.add(element);
-          // return true;
-        } else {
-          print("FALSE FETCHING DATA");
-          // return false;
-        }
+      if (element["password"] == widget.password) {
+        data.add(element);
+        // return true;
+      } else {
+        print("FALSE FETCHING DATA");
+        // return false;
+      }
     }
     // print('DATA of data Fetch: ${data.first.data()} -> ${data.runtimeType}');
     setState(() {});
@@ -81,15 +78,12 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-
 // https://stackoverflow.com/questions/56073366/flutter-send-params-in-bottom-navigation-bar
   List<Widget> _pageWidget() => [
-        HomePage(
-            data: data,
-            email: widget.email,
-            password: widget.password),
-        const CarListPage(),
-        const SettingPage()
+        HomePage(data: data, email: widget.email, password: widget.password),
+        CarListPage(
+            data: data, email: widget.email, password: widget.password),
+        SettingPage()
       ];
 
   @override
@@ -97,7 +91,6 @@ class _MainPageState extends State<MainPage> {
     // getData();
     intiaData();
     super.initState();
-    
   }
 
   @override

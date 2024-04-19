@@ -9,8 +9,9 @@ import '../../constants/constants.dart';
 import '../pages.dart';
 
 class CarListDayPage extends StatefulWidget {
-  const CarListDayPage({super.key,
+  const CarListDayPage({super.key, required this.data,
   });
+  final List data;
 
   @override
   State<CarListDayPage> createState() => _CarListDayPageState();
@@ -109,7 +110,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
           style: TextStyle(
               fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         ),
-        actions: const [LocationNotificationPopup()],
+        actions: [LocationNotificationPopup()],
       ),
       body: Padding(
         padding: const EdgeInsets.all(1.0),
@@ -183,7 +184,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
                           batteryLevel: carsList[index].get('batteryLevel'),
                           locationMessage: address,
                           startDate: startDate,
-                          endDate: endDate,
+                          endDate: endDate, data: widget.data,
                         ),
                       ),
                     );

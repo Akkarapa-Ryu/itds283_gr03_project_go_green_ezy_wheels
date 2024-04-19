@@ -1,33 +1,69 @@
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/components/components.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/constants/success_message.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/models/models.dart';
+import '../../theme/theme.dart';
 
-class ReservationBook extends StatelessWidget {
-  const ReservationBook({super.key});
+class SuccessPage extends StatefulWidget {
+  SuccessPage(
+      {super.key,
+      required this.thumbnail,
+      required this.title,
+      required this.type,
+      required this.rage,
+      required this.seat,
+      required this.dc,
+      this.ac,
+      this.supercharge,
+      required this.priceHour,
+      required this.priceDay,
+      required this.brand,
+      required this.transmossion,
+      required this.energyType,
+      required this.batteryLevel,
+      required this.locationMessage,
+      required this.startDate,
+      required this.endDate,
+      required this.data});
+  final String thumbnail;
+  final String title; // name's car
+  final String type; // type,
+  final int rage;
+  final String seat;
+  final int dc; // dc
+  final num? ac;
+  final String? supercharge;
+  final num priceHour;
+  final num priceDay;
+  final String brand;
+  final String transmossion;
+  final String energyType;
+  final num batteryLevel;
+  final String locationMessage;
+  final Text startDate;
+  final Text endDate;
+  final List data;
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
+  State<SuccessPage> createState() => _SuccessPageState();
 }
 
-class MyHomePage extends StatelessWidget {
+class _SuccessPageState extends State<SuccessPage> {
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              
-              Color(0xff32AEB7),
-              Color(0xff13526D),
+              DesignSystem.c4,
+              DesignSystem.c6,
             ],
             stops: [0.7, 1.5],
           ),
@@ -41,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(height: 45),
                 Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(50),
                     child: Image.asset('assets/images/logo.jpg'),
                   ),
                 ),
@@ -50,26 +86,29 @@ class MyHomePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'You have successfully Booking',
+                        SuccessMessage.youHaveSuccessBooking,
                         style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: DesignSystem.c0,
+                            fontFamily: DesignSystem.fontFamily),
                       ),
                       Text(
-                        'Car rental',
+                        SuccessMessage.carRental,
                         style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: DesignSystem.c0,
+                            fontFamily: DesignSystem.fontFamily),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Thank You For  "Eazy Wheels and Green Mobility"',
+                        SuccessMessage.thankYouForewgb,
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
-                            color: Color.fromARGB(255, 12, 53, 236)),
+                            color: DesignSystem.c10,
+                            fontFamily: DesignSystem.fontFamily),
                       ),
                     ],
                   ),
@@ -78,105 +117,76 @@ class MyHomePage extends StatelessWidget {
                 Center(
                   child: Column(
                     children: [
-                      Container(
-                        width: 350,
-                        height: 140,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
-                              child: Image.asset(
-                                'assets/images/Tesla Model S (Plaid).png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            // Positioned(
-                            //   left: 110,
-                            //   top: 5,
-                            //   child: Container(
-                            //     width: 130,
-                            //     height: 130,
-                            //     decoration: BoxDecoration(
-                            //       color: const Color.fromARGB(255, 255, 255, 255),
-                            //       borderRadius: BorderRadius.circular(100),
-                            //     ),
-                            //     child: Center(
-                            //       child: Icon(Icons.person, size: 60, color: const Color.fromARGB(255, 0, 0, 0)),
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
+                      containerImage(widget.thumbnail, 150, 350),
                     ],
                   ),
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Albert Flores',
+                  '${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily),
                 ),
+                SizedBox(height: 10),
                 Text(
-                  'Tesla Model S Plaid',
+                  '${widget.title}',
                   style: TextStyle(
-                      fontSize: 18, color: Color.fromARGB(255, 12, 53, 236)),
+                      fontSize: 20,
+                      color: DesignSystem.c10,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: DesignSystem.fontFamily),
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
                       Icons.calendar_today,
                       size: 25,
                     ),
-                    SizedBox(width: 12),
-                    Text(
-                      'Appointment',
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: Color.fromARGB(255, 12, 53, 236)),
+                    SizedBox(width: 20),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          SuccessMessage.appointment,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: DesignSystem.c10,
+                              fontFamily: DesignSystem.fontFamily),
+                        ),
+                        Text(
+                          '${widget.startDate.data}',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: DesignSystem.c0,
+                              fontFamily: DesignSystem.fontFamily),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                SizedBox(height: 0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 40),
-                    Text(
-                      'Friday, 15 Mar 2024, 11:00 AM',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 55.0),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Back to home',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 119, vertical: 17),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
+                SizedBox(height: 50),
+                CustomButton(
+                  colorButton: DesignSystem.c1,
+                  sizeButtonHeight: 50,
+                  sizeButtonWidth: 300,
+                  textButton: SuccessMessage.backToHome,
+                  textWeight: FontWeight.bold,
+                  textSize: 16,
+                  colorText: DesignSystem.c0,
+                  routePageClose: 'back',
+                  routePage: MainPage(
+                      email: widget.data.first.data()['email'],
+                      password: widget.data.first.data()['password']),
+                )
               ],
             ),
           ),

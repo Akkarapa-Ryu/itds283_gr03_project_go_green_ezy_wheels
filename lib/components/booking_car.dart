@@ -274,7 +274,7 @@ class BookingCar extends StatelessWidget {
           ],
         ),
         Positioned(
-            top: 735,
+            top: 715,
             child: Container(
               padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
               alignment: Alignment.topCenter,
