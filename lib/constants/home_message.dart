@@ -1,5 +1,6 @@
 final class HomeMessage {
   const HomeMessage._();
+  static const String hello = 'Hello';
   static const String hour = 'Hour';
   static const String day = 'Day';
   static const String longTerm = 'Long-Term';

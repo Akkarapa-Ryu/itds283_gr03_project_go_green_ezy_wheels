@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../components/components.dart';
 import 'constants/constants.dart';
 import 'pages/pages.dart';
 import 'theme/theme.dart';
@@ -38,19 +39,6 @@ class _MainPageState extends State<MainPage> {
 
   int currentPageIndex = 0;
 
-  // final List _pageWidget = [
-  //   HomePage(
-  //     data: data,
-  //     //     // phone: phone,
-  //     //     // fname: fname,
-  //     //     // lname: lname,
-  //     //     // email: email,
-  //     //     // password: password
-  //   ),
-  //   const CarListPage(),
-  //   const SettingPage()
-  // ];
-
   final List<BottomNavigationBarItem> _menuBar = <BottomNavigationBarItem>[
     const BottomNavigationBarItem(
         icon: Icon(
@@ -81,9 +69,8 @@ class _MainPageState extends State<MainPage> {
 // https://stackoverflow.com/questions/56073366/flutter-send-params-in-bottom-navigation-bar
   List<Widget> _pageWidget() => [
         HomePage(data: data, email: widget.email, password: widget.password),
-        CarListPage(
-            data: data, email: widget.email, password: widget.password),
-        SettingPage()
+        CarListPage(data: data, email: widget.email, password: widget.password),
+        SettingPage(data: data, email: widget.email, password: widget.password)
       ];
 
   @override
@@ -101,7 +88,8 @@ class _MainPageState extends State<MainPage> {
       return Scaffold(
         body: isLoading == true
             ? Center(
-                child: Text('Loading ...'),
+                child: textContainer(
+                    MainMessage.loading, DesignSystem.c0, FontWeight.bold, 20),
               )
             : pageWidget[currentPageIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -115,17 +103,17 @@ class _MainPageState extends State<MainPage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Sign in"),
+          title: textContainer(
+              MainMessage.signIn, DesignSystem.c0, FontWeight.bold, null),
         ),
         body: isLoading == true
             ? Center(
-                child: Text('Loading ...'),
+                child: textContainer(
+                    MainMessage.loading, DesignSystem.c0, FontWeight.bold, 20),
               )
-            : const Center(
-                child: Text(
-                  "Not Found",
-                  style: TextStyle(fontSize: 28),
-                ),
+            : Center(
+                child: textContainer(
+                    MainMessage.notFound, DesignSystem.c0, FontWeight.bold, 28),
               ),
       );
     }

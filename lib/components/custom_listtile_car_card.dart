@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../theme/theme.dart';
 import 'components.dart';
+import 'container_text.dart';
 
 // https://api.flutter.dev/flutter/material/ListTile-class.html
 
@@ -61,20 +62,10 @@ class CustomListTileCarCard extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(
-                            '$priceHour / ${CarListMessage.hour}',
-                            style: const TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14),
-                          ),
-                          Text(
-                            '$priceDay / ${CarListMessage.day}',
-                            style: const TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14),
-                          ),
+                          textContainer('$priceHour / ${CarListMessage.hour}',
+                              DesignSystem.c0, FontWeight.w600, 14),
+                          textContainer('$priceDay / ${CarListMessage.day}',
+                              DesignSystem.c0, FontWeight.w600, 14),
                         ],
                       ),
                     ],
@@ -89,40 +80,30 @@ class CustomListTileCarCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                          fontFamily: DesignSystem.fontFamily,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
+                    textContainer(
+                            title,
+                            DesignSystem.c0,
+                            FontWeight.bold,
+                            16),
                     Row(
                       children: [
-                        Text(
-                          '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
-                          style: const TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 11),
-                        ),
+                        textContainer(
+                            '${CarListMessage.type}: $type  ${CarListMessage.rage}: $rage  ${CarListMessage.seat}: $seat',
+                            DesignSystem.c0,
+                            FontWeight.w500,
+                            11),
                       ],
                     ),
                     Row(
                       children: [
-                        Text(
-                          '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
-                          style: const TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 11),
-                        ),
+                        textContainer(
+                            '${CarListMessage.dc}: $dc ${CarListMessage.kwH}',
+                            DesignSystem.c0,
+                            FontWeight.w500,
+                            11),
                         superchargeORac(supercharge, ac),
                       ],
                     ),
-                    // Text('Brand: $brand',style: TextStyle(
-                    //           fontFamily: DesignSystem.fontFamily,
-                    //           fontWeight: FontWeight.w500,
-                    //           fontSize: 11),),
                     CustomButton(
                       colorButton: DesignSystem.c6,
                       textButton: CarListMessage.select,
@@ -130,20 +111,6 @@ class CustomListTileCarCard extends StatelessWidget {
                       textSize: 14,
                       textWeight: FontWeight.bold,
                       routePage: routePage,
-                      /*BookingDayCarRentalPage(
-                        thumbnail: thumbnail,
-                        title: title,
-                        type: type,
-                        rage: rage,
-                        seat: seat,
-                        dc: dc,
-                        priceHour: priceHour,
-                        priceDay: priceDay,
-                        brand: brand,
-                        transmossion: transmossion,
-                        energyType: energyType,
-                        batteryLevel: batteryLevel,
-                      ),*/
                       borderRadius: 20,
                       sizeButtonHeight: 40,
                       sizeButtonWidth: 120,
@@ -161,21 +128,12 @@ class CustomListTileCarCard extends StatelessWidget {
 // https://flutterdesk.com/show-conditional-widgets-in-flutter/
   superchargeORac(supercharge, ac) {
     if (supercharge != "-") {
-      return Text(
-        ' ($supercharge)',
-        style: const TextStyle(
-            fontFamily: DesignSystem.fontFamily,
-            fontWeight: FontWeight.w500,
-            fontSize: 11),
-      );
+      return textContainer(
+          ' ($supercharge)', DesignSystem.c0, FontWeight.w500, 11);
     } else if (ac != 0) {
-      return Text(
-        '  ${CarListMessage.ac}: $ac${CarListMessage.kwH}',
-        style: const TextStyle(
-            fontFamily: DesignSystem.fontFamily,
-            fontWeight: FontWeight.w500,
-            fontSize: 11),
-      );
+      return 
+      textContainer(
+          '  ${CarListMessage.ac}: $ac${CarListMessage.kwH}', DesignSystem.c0, FontWeight.w500, 11);
     }
   }
 }

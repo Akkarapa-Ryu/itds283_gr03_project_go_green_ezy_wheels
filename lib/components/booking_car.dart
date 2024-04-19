@@ -66,9 +66,7 @@ class BookingCar extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 300,
-                          child: locationMessage),
+                        Container(width: 300, child: locationMessage),
                       ],
                     ),
                   if (locationMessageFromIconButton != null)
@@ -124,13 +122,7 @@ class BookingCar extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Text(
-              title,
-              style: const TextStyle(
-                  fontSize: 25,
-                  fontFamily: DesignSystem.fontFamily,
-                  fontWeight: FontWeight.bold),
-            ),
+            textContainer(title, DesignSystem.c0, FontWeight.bold, 25),
             const SizedBox(
               height: 20,
             ),
@@ -150,64 +142,28 @@ class BookingCar extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${BookingMessage.vihicalType}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c6),
-                              ),
-                              Text(
-                                type,
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c0),
-                              )
+                              textContainer('${BookingMessage.vihicalType}',
+                                  DesignSystem.c0, FontWeight.w500, 17),
+                              textContainer(
+                                  type, DesignSystem.c0, FontWeight.w500, 17),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${BookingMessage.transmossion}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c6),
-                              ),
-                              Text(
-                                transmossion,
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c0),
-                              )
+                              textContainer('${BookingMessage.transmossion}',
+                                  DesignSystem.c0, FontWeight.w500, 17),
+                              textContainer(transmossion, DesignSystem.c0,
+                                  FontWeight.w500, 17),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${BookingMessage.seat}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c6),
-                              ),
-                              Text(
-                                seat,
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c0),
-                              )
+                              textContainer('${BookingMessage.seat}',
+                                  DesignSystem.c0, FontWeight.w500, 17),
+                              textContainer(
+                                  seat, DesignSystem.c0, FontWeight.w500, 17),
                             ],
                           ),
                         ],
@@ -225,43 +181,19 @@ class BookingCar extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${BookingMessage.energyType}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c6),
-                              ),
-                              Text(
-                                energyType,
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c0),
-                              )
+                              textContainer('${BookingMessage.energyType}',
+                                  DesignSystem.c0, FontWeight.w500, 17),
+                              textContainer(energyType, DesignSystem.c0,
+                                  FontWeight.w500, 17),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${BookingMessage.batteryLevel}',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c6),
-                              ),
-                              Text(
-                                '$batteryLevel',
-                                style: TextStyle(
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: DesignSystem.c0),
-                              )
+                              textContainer('${BookingMessage.batteryLevel}',
+                                  DesignSystem.c0, FontWeight.w500, 17),
+                              textContainer('$batteryLevel', DesignSystem.c0,
+                                  FontWeight.w500, 17),
                             ],
                           ),
                         ],
@@ -298,18 +230,10 @@ class BookingCar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '$priceHour \$ / ${BookingMessage.hour}',
-                        style: TextStyle(
-                            fontFamily: DesignSystem.fontFamily, fontSize: 15),
-                      ),
-                      Text(
-                        '$priceDay \$ / ${BookingMessage.day}',
-                        style: TextStyle(
-                            fontFamily: DesignSystem.fontFamily,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
-                      ),
+                      textContainer('$priceHour \$ / ${BookingMessage.hour}',
+                          DesignSystem.c0, FontWeight.normal, 15),
+                      textContainer('$priceDay \$ / ${BookingMessage.day}',
+                          DesignSystem.c0, FontWeight.bold, 24),
                     ],
                   ),
                   CustomButton(

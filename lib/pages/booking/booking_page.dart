@@ -47,23 +47,17 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
   List locationMessage = [];
   double lat = 0;
   double long = 0;
-  final startDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
-  final endDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm')
-        .format(DateTime.now().add(Duration(days: 1))),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
+  final startDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
+  final endDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm')
+          .format(DateTime.now().add(Duration(days: 1))),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
   String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
@@ -119,13 +113,8 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          BookingMessage.rentel,
-          style: TextStyle(
-              color: DesignSystem.c0,
-              fontFamily: DesignSystem.fontFamily,
-              fontWeight: FontWeight.bold),
-        ),
+        title: textContainer(
+            BookingMessage.rental, DesignSystem.c0, FontWeight.bold, null),
         centerTitle: true,
         actions: [LocationNotificationPopup()],
       ),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../models/models.dart';
 import '../../constants/constants.dart';
@@ -63,13 +64,8 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(20),
-          child: Text(
-            RegisterMessage.register,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: textContainer(
+              RegisterMessage.register, DesignSystem.c0, FontWeight.bold, 25),
         ),
       ),
       body: SingleChildScrollView(
@@ -80,18 +76,26 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                const Text(
-                  RegisterMessage.pleassMassage,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    // fontWeight: FontWeight,
-                  ),
-                ),
+
+                textContainer(
+                      RegisterMessage.pleassMassage, DesignSystem.c0, FontWeight.normal, 16),
                 const SizedBox(height: 25.0),
                 TextFormField(
                   controller: phoneController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.phoneNumber,
+                    labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                     prefix: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
@@ -100,8 +104,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           width: 25,
                           height: 25,
                         ),
-                        SizedBox(width: 0.1),
-                        Text('  ${RegisterMessage.plus66}  '),
+                        const SizedBox(width: 0.1),
+                        textContainer(
+                      '  ${RegisterMessage.plus66}  ', DesignSystem.c0, FontWeight.normal, 16),
                       ],
                     ),
                     border: OutlineInputBorder(
@@ -122,8 +127,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: fnameController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.firstName,
+                    labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -138,8 +155,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: lnameController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.lastName,
+                    labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -154,8 +183,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: emailController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.email,
+                    labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                     hintText: RegisterMessage.emailExample,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -173,9 +214,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: passwordController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   obscureText: _isObscure,
                   decoration: InputDecoration(
                     labelText: RegisterMessage.password,
+                    labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -209,14 +262,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
-                      RegisterMessage.signUp,
-                      style: TextStyle(
-                          color: DesignSystem.c1,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: DesignSystem.fontFamily),
-                    ),
+                    child: 
+                    textContainer(
+                      RegisterMessage.signUp, DesignSystem.c1, FontWeight.bold, 16),
                   ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: DesignSystem.c9,

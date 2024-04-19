@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '/constants/constants.dart';
@@ -28,7 +29,7 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           Container(
             margin: EdgeInsets.only(left: 17),
-            width: 150,
+            width: 180,
             height: 5,
             decoration: BoxDecoration(
                 color: DesignSystem.c8,
@@ -40,22 +41,9 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  WelcomeMessage.welcome,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: DesignSystem.c0,
-                  ),
-                ),
+                textContainer(WelcomeMessage.welcome, DesignSystem.c0, FontWeight.bold, 30),
                 SizedBox(height: 20),
-                Text(
-                  WelcomeMessage.ggewMessage,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: DesignSystem.c0,
-                  ),
-                ),
+                textContainer(WelcomeMessage.ggewMessage, DesignSystem.c0, FontWeight.normal, 16),
                 SizedBox(
                   height: 220,
                 ),

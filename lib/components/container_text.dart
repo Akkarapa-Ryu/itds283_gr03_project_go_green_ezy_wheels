@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/theme.dart';
+import '../../theme/theme.dart';
 
-textContainer(String text, Color colorText, FontWeight fontWeight,double fontSize) {
-  return Text(text,
+textContainer(String text, Color colorText, FontWeight fontWeight,double? fontSize) {
+  if (fontSize != null) {
+    return Text(text,
       style: TextStyle(
           color: colorText,
           fontFamily: DesignSystem.fontFamily,
           fontWeight: fontWeight,
           fontSize: fontSize));
+  } else {
+    return Text(text,
+      style: TextStyle(
+          color: colorText,
+          fontFamily: DesignSystem.fontFamily,
+          fontWeight: fontWeight));
+  }
 }

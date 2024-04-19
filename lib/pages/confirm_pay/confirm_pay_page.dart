@@ -133,38 +133,13 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
   void initState() {
     super.initState();
   }
-  // getLocationName() async {
-  //   final location = widget.locationMessage.split(",");
-  //   final location_lat = location[0].split(" ");
-  //   final location_long = location[1].split(" ");
-  //   final lat = double.parse(location_lat[1]);
-  //   final long = double.parse(location_long[2]);
-
-  //   double latitude = lat;
-  //   double longitude = long;
-
-  //   try {
-  //     List<Placemark> placemarks = await placemarkFromCoordinates(latitude, longitude);
-  //     Placemark place = placemarks[0];
-  //     setState(() {
-  //       address = "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
-  //     });
-  //   } catch (e) {
-  //     setState(() {
-  //       address = "Error fetching location";
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          ConfirmPayMessage.confirmPay,
-          style: TextStyle(
-              fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
-        ),
+        title: textContainer(ConfirmPayMessage.confirmPay, DesignSystem.c0,
+            FontWeight.w700, null),
         centerTitle: true,
       ),
       body: Stack(
@@ -174,14 +149,9 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Text(
-                  "${widget.title}",
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
+                textContainer(
+                    "${widget.title}", DesignSystem.c0, FontWeight.bold, 24),
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -200,19 +170,13 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                             Icons.location_pin,
                             color: DesignSystem.c6,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 15,
                           ),
                           Container(
                             width: 250,
-                            child: Text(widget.locationMessage,
-                                softWrap: true,
-                                maxLines: 2,
-                                style: const TextStyle(
-                                    color: DesignSystem.c6,
-                                    fontFamily: DesignSystem.fontFamily,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16)),
+                            child: textContainer(widget.locationMessage,
+                                DesignSystem.c6, FontWeight.w600, 16),
                           )
                         ],
                       ),
@@ -224,28 +188,20 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("${widget.startDate.data}",
-                              style: const TextStyle(
-                                  color: DesignSystem.c6,
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16)),
+                          textContainer("${widget.startDate.data}",
+                              DesignSystem.c6, FontWeight.w600, 16),
                           Icon(
                             Icons.arrow_forward,
                             color: DesignSystem.c6,
                           ),
-                          Text("${widget.endDate.data}",
-                              style: const TextStyle(
-                                  color: DesignSystem.c6,
-                                  fontFamily: DesignSystem.fontFamily,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16)),
+                          textContainer("${widget.endDate.data}",
+                              DesignSystem.c6, FontWeight.w600, 16),
                         ],
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -253,15 +209,9 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        ConfirmPayMessage.pickUpReturnLocation,
-                        style: TextStyle(
-                          fontFamily: DesignSystem.fontFamily,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
+                      textContainer(ConfirmPayMessage.pickUpReturnLocation,
+                          DesignSystem.c0, FontWeight.bold, 18),
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
@@ -270,25 +220,17 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                             Icons.location_pin,
                             color: DesignSystem.c6,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Container(
                             width: 300,
-                            child: Text(
-                              widget.locationMessage,
-                              overflow: TextOverflow.fade,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontFamily: DesignSystem.fontFamily,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                            child: textContainer(widget.locationMessage,
+                                DesignSystem.c0, FontWeight.w500, 18),
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -296,84 +238,42 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                         width: double.maxFinite,
                         color: DesignSystem.c0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        ConfirmPayMessage.priceSummary,
-                        style: TextStyle(
-                          fontFamily: DesignSystem.fontFamily,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      textContainer(ConfirmPayMessage.priceSummary,
+                          DesignSystem.c0, FontWeight.bold, 18),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "     ${ConfirmPayMessage.rental}",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "${widget.priceDay} \$",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
+                          textContainer("     ${ConfirmPayMessage.rental}",
+                              DesignSystem.c0, FontWeight.w500, 18),
+                          textContainer("${widget.priceDay} \$",
+                              DesignSystem.c0, FontWeight.w500, 18),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "     ${ConfirmPayMessage.oneDayRate}",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "${widget.priceDay} \$",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
+                          textContainer("     ${ConfirmPayMessage.oneDayRate}",
+                              DesignSystem.c0, FontWeight.w500, 18),
+                          textContainer("${widget.priceDay} \$",
+                              DesignSystem.c0, FontWeight.w500, 18),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            ConfirmPayMessage.totalPayment,
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "${widget.priceDay} \$",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
+                          textContainer(ConfirmPayMessage.totalPayment,
+                              DesignSystem.c0, FontWeight.bold, 18),
+                          textContainer("${widget.priceDay} \$",
+                              DesignSystem.c0, FontWeight.w500, 18),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -381,67 +281,34 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                         width: double.maxFinite,
                         color: DesignSystem.c0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
                         children: [
-                          Text(
-                            "${ConfirmPayMessage.fullName}:   ",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          textContainer("${ConfirmPayMessage.fullName}:   ",
+                              DesignSystem.c0, FontWeight.bold, 18),
+                          textContainer(
+                              "${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}",
+                              DesignSystem.c0,
+                              FontWeight.w500,
+                              18),
                         ],
                       ),
                       Row(
                         children: [
-                          Text(
-                            "${ConfirmPayMessage.email}:   ",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "${widget.data.first.data()["email"]}",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          textContainer("${ConfirmPayMessage.email}:   ",
+                              DesignSystem.c0, FontWeight.bold, 18),
+                          textContainer("${widget.data.first.data()["email"]}",
+                              DesignSystem.c0, FontWeight.w500, 18),
                         ],
                       ),
                       Row(
                         children: [
-                          Text(
-                            "${ConfirmPayMessage.phone}:   ",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "${widget.data.first.data()["phone"]}",
-                            style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+                          textContainer("${ConfirmPayMessage.phone}:   ",
+                              DesignSystem.c0, FontWeight.bold, 18),
+                          textContainer("${widget.data.first.data()["phone"]}",
+                              DesignSystem.c0, FontWeight.w500, 18),
                         ],
                       ),
                     ],
@@ -475,19 +342,10 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '${widget.priceHour} \$ / Hour',
-                          style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 15),
-                        ),
-                        Text(
-                          '${widget.priceDay} \$ / Day',
-                          style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                        ),
+                        textContainer(ConfirmPayMessage.totalPayment,
+                            DesignSystem.c0, FontWeight.normal, 15),
+                        textContainer('${widget.priceDay} \$ / Day',
+                            DesignSystem.c0, FontWeight.bold, 24),
                       ],
                     ),
                     ElevatedButton(
@@ -525,10 +383,8 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                                 borderRadius: BorderRadius.circular(30)),
                             backgroundColor: DesignSystem.c6,
                             minimumSize: Size(120, 40)),
-                        child: 
-                        textContainer(ConfirmPayMessage.continueText, DesignSystem.c1, 
-                        FontWeight.bold, 20)
-                                )
+                        child: textContainer(ConfirmPayMessage.continueText,
+                            DesignSystem.c1, FontWeight.bold, 20))
                   ],
                 ),
               ))

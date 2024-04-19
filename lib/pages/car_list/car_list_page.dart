@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -78,11 +79,8 @@ class _CarListPageState extends State<CarListPage> {
       backgroundColor: DesignSystem.c4,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          CarListMessage.carList,
-          style: TextStyle(
-              fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
-        ),
+        title: textContainer(
+            CarListMessage.carList, DesignSystem.c0, FontWeight.w700, null),
         automaticallyImplyLeading: false,
       ),
       body: Container(
@@ -95,8 +93,8 @@ class _CarListPageState extends State<CarListPage> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Container(
-                margin: EdgeInsets.only(
-                    top: 15, left: 10, right: 10, bottom: 10),
+                margin:
+                    EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
                 child: Wrap(
                   spacing: 10,
                   runSpacing: 4,
@@ -107,12 +105,8 @@ class _CarListPageState extends State<CarListPage> {
                                 borderRadius: BorderRadius.circular(20)),
                             side: BorderSide.none,
                             selectedColor: DesignSystem.c5,
-                            label: Text(
-                              e,
-                              style: TextStyle(
-                                  color: DesignSystem.c0,
-                                  fontFamily: DesignSystem.fontFamily),
-                            ),
+                            label: textContainer(
+                                e, DesignSystem.c0, FontWeight.w500, null),
                             selected: selectCarBrand.contains(e),
                             onSelected: (value) {
                               setState(() {

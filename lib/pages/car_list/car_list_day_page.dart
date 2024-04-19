@@ -22,23 +22,17 @@ class _CarListDayPageState extends State<CarListDayPage> {
   List locationMessage = [];
   double lat = 0;
   double long = 0;
-  final startDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
-  final endDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm')
-        .format(DateTime.now().add(Duration(days: 1))),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
+  final startDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
+  final endDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm')
+          .format(DateTime.now().add(Duration(days: 1))),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
   String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
@@ -123,7 +117,6 @@ class _CarListDayPageState extends State<CarListDayPage> {
                     lat = value.latitude;
                     long = value.longitude;
                     setState(() {
-                      // locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
                       locationMessage.add(lat);
                       locationMessage.add(long);
                       print('LocationMessage" $locationMessage');
@@ -136,12 +129,10 @@ class _CarListDayPageState extends State<CarListDayPage> {
                   color: DesignSystem.c1,
                 ),
               ),
-              // locationMessage: locationMessage,
               locationMessage: address,
               startDate: startDate,
               endDate: endDate,
             ),
-            // Text(address),
             Expanded(
               child: ListView.builder(
                   shrinkWrap: true,

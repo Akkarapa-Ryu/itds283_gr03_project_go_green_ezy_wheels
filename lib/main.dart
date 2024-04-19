@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );*/
     return MaterialApp(
-        home: LandingPage()
+        home: LandingPage(),
         // PageView(
         //   controller: PageController(viewportFraction: 1),
         //   onPageChanged: (index) => setState(() {

@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/components/components.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/constants/success_message.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/models/models.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/components/container_text.dart';
+import '../../components/components.dart';
+import '../../constants/constants.dart';
+import '../../main_page.dart';
 import '../../theme/theme.dart';
 
 class SuccessPage extends StatefulWidget {
@@ -51,8 +50,6 @@ class SuccessPage extends StatefulWidget {
 }
 
 class _SuccessPageState extends State<SuccessPage> {
-  
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +71,7 @@ class _SuccessPageState extends State<SuccessPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 45),
+                const SizedBox(height: 45),
                 Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
@@ -85,31 +82,13 @@ class _SuccessPageState extends State<SuccessPage> {
                 Center(
                   child: Column(
                     children: [
-                      Text(
-                        SuccessMessage.youHaveSuccessBooking,
-                        style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: DesignSystem.c0,
-                            fontFamily: DesignSystem.fontFamily),
-                      ),
-                      Text(
-                        SuccessMessage.carRental,
-                        style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: DesignSystem.c0,
-                            fontFamily: DesignSystem.fontFamily),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        SuccessMessage.thankYouForewgb,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            color: DesignSystem.c10,
-                            fontFamily: DesignSystem.fontFamily),
-                      ),
+                      textContainer(SuccessMessage.youHaveSuccessBooking,
+                          DesignSystem.c0, FontWeight.bold, 22),
+                      textContainer(SuccessMessage.carRental, DesignSystem.c0,
+                          FontWeight.bold, 22),
+                      const SizedBox(height: 10),
+                      textContainer(SuccessMessage.thankYouForewgb,
+                          DesignSystem.c10, FontWeight.normal, 14),
                     ],
                   ),
                 ),
@@ -121,25 +100,16 @@ class _SuccessPageState extends State<SuccessPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
-                Text(
-                  '${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '${widget.title}',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: DesignSystem.c10,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: DesignSystem.fontFamily),
-                ),
-                SizedBox(height: 35),
+                const SizedBox(height: 20),
+                textContainer(
+                    '${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}',
+                    DesignSystem.c0,
+                    FontWeight.bold,
+                    20),
+                const SizedBox(height: 10),
+                textContainer(
+                    '${widget.title}', DesignSystem.c10, FontWeight.bold, 20),
+                const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,22 +123,10 @@ class _SuccessPageState extends State<SuccessPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          SuccessMessage.appointment,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: DesignSystem.c10,
-                              fontFamily: DesignSystem.fontFamily),
-                        ),
-                        Text(
-                          '${widget.startDate.data}',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: DesignSystem.c0,
-                              fontFamily: DesignSystem.fontFamily),
-                        ),
+                        textContainer(SuccessMessage.appointment,
+                            DesignSystem.c10, FontWeight.w500, 16),
+                        textContainer('${widget.startDate.data}',
+                            DesignSystem.c0, FontWeight.w500, 16),
                       ],
                     ),
                   ],

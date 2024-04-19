@@ -6,3 +6,4 @@ export 'container_image.dart';
 export 'container_location_datetime.dart';
 export 'booking_car.dart';
 export 'location_notification_popup.dart';
+export 'container_text.dart';

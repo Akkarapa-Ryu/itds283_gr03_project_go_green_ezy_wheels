@@ -1,6 +1,6 @@
 final class BookingMessage {
   const BookingMessage._();
-  static const String rentel = 'Rental';
+  static const String rental = 'Rental';
   static const String rentelDay = 'Day Rental';
   static const String vihicalType = 'Vihical Type';
   static const String transmossion = 'Transmossion';

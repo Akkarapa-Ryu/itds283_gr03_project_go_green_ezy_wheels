@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../components/container_text.dart';
 import '../../main_page.dart';
 import '../../constants/constants.dart';
+import '../../theme/theme.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
@@ -16,7 +18,9 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign in'),
+        title: textContainer(
+            SignInMessage.signIn, DesignSystem.c0, FontWeight.bold, null),
+            centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -29,16 +33,28 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 TextFormField(
                   controller: emailSigninController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
-                      labelText: RegisterMessage.email,
-                      hintText: RegisterMessage.emailExample,
+                      labelText: SignInMessage.email,
+                      labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
+                      hintText: SignInMessage.emailExample,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return RegisterMessage.emailPlease;
+                      return SignInMessage.emailPlease;
                     } else if (!value.contains('@')) {
-                      return RegisterMessage.emailSymbol;
+                      return SignInMessage.emailSymbol;
                     }
                     return null;
                   },
@@ -48,8 +64,20 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 TextFormField(
                   controller: passwordSigninController,
+                  style: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                   decoration: InputDecoration(
-                      labelText: RegisterMessage.password,
+                      labelText: SignInMessage.password,
+                      labelStyle: TextStyle(
+                      color: DesignSystem.c0,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16
+                    ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
@@ -57,19 +85,26 @@ class _SigninPageState extends State<SigninPage> {
                   height: 20,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      var _email = emailSigninController.text;
-                      var _password = passwordSigninController.text;
+                  onPressed: () {
+                    var _email = emailSigninController.text;
+                    var _password = passwordSigninController.text;
 
-                      if (_email.contains('@')) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainPage(
-                                    email: _email, password: _password)));
-                      }
-                    },
-                    child: Text("Sign in"))
+                    if (_email.contains('@')) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainPage(
+                                  email: _email, password: _password)));
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      backgroundColor: DesignSystem.c4,
+                      minimumSize: Size(250, 50)),
+                  child: textContainer(SignInMessage.signIn, DesignSystem.c1,
+                      FontWeight.bold, 16),
+                )
               ],
             ),
           ),

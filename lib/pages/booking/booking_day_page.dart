@@ -47,13 +47,9 @@ class BookingDayCarRentalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            BookingMessage.rentelDay,
-            style: TextStyle(
-                color: DesignSystem.c0,
-                fontFamily: DesignSystem.fontFamily,
-                fontWeight: FontWeight.bold),
-          ),
+          title: 
+          textContainer(
+                    BookingMessage.rentelDay, DesignSystem.c0, FontWeight.bold, null),
           centerTitle: true,
         ),
         body: BookingCar(

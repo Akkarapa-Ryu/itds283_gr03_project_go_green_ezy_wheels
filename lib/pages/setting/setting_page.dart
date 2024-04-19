@@ -5,7 +5,15 @@ import '../../theme/theme.dart';
 import '../../constants/constants.dart';
 
 class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+  const SettingPage({
+    super.key,
+    required this.data,
+    required this.email,
+    required this.password,
+  });
+  final List data;
+  final String email;
+  final String password;
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +34,18 @@ class SettingPage extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                Text(
-                  SettingMessage.setting,
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.w700),
-                ),
+                textContainer(SettingMessage.setting, DesignSystem.c0,
+                    FontWeight.bold, 24),
                 SizedBox(
                   height: 40,
                 ),
-                Text('Albert Forests',
-                    style: TextStyle(
-                        fontFamily: DesignSystem.fontFamily,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold)),
-                        Text('Email Albert Forests',
-                    style: TextStyle(
-                        fontFamily: DesignSystem.fontFamily,
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal)),
+                textContainer(
+                    '${data.first.data()["fname"]}   ${data.first.data()["lname"]}',
+                    DesignSystem.c0,
+                    FontWeight.bold,
+                    40),
+                textContainer('Email: ${data.first.data()["email"]}',
+                    DesignSystem.c0, FontWeight.normal, 18),
                 SizedBox(
                   height: 40,
                 ),

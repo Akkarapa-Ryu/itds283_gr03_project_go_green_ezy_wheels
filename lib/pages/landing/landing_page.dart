@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../../components/container_text.dart';
 import '/constants/constants.dart';
 import '/pages/pages.dart';
 import '/theme/theme.dart';
@@ -42,14 +43,8 @@ class _LandingPageState extends State<LandingPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
-            child: Text(
-              LandingMessage.ggew,
-              style: TextStyle(
-                  color: DesignSystem.c3,
-                  fontSize: 22,
-                  fontFamily: DesignSystem.fontFamily,
-                  fontWeight: FontWeight.bold),
-            ),
+            child: 
+            textContainer(LandingMessage.ggew,DesignSystem.c3,FontWeight.bold,22)
           ),
 
         ],
