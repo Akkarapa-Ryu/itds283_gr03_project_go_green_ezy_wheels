@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
@@ -41,59 +42,41 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: 
-          Column(children: [
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(children: [
             SizedBox(
               height: 300,
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Hi !!!',
-                        style: TextStyle(
-                            fontFamily: DesignSystem.fontFamily,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      // Text("${widget.email}"),
-                      // Text("${widget.data.first.data()["email"]}"),
-                      Text(
-                          "${widget.data.first.data()["fname"]} ${widget.data.first.data()["lname"]}",
-                          style: TextStyle(
-                              fontFamily: DesignSystem.fontFamily,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600))
-                    ],
+                  textContainer(
+                      HomeMessage.hello, DesignSystem.c0, FontWeight.w600, 20),
+                  const SizedBox(
+                    height: 15,
                   ),
-                  SizedBox(
-                    width: 50,
+                  textContainer(
+                      "${widget.data.first.data()["fname"]} ${widget.data.first.data()["lname"]}",
+                      DesignSystem.c0,
+                      FontWeight.w600,
+                      26),
+                  const SizedBox(
+                    height: 15,
                   ),
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundImage: NetworkImage(
-                        'https://img.freepik.com/premium-photo/portrait-handsome-young-man_53876-38137.jpg?size=626&ext=jpg&ga=GA1.1.735520172.1711238400&semt=ais'),
-                  )
+                  textContainer("${widget.data.first.data()["email"]}",
+                      DesignSystem.c0, FontWeight.normal, 14),
                 ],
               ),
             ),
             Container(
               height: 550,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   color: DesignSystem.c4,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15))),
-              child: const Column(
+              child: Column(
                 children: [
                   SizedBox(
                     height: 50,
@@ -109,7 +92,9 @@ class _HomePageState extends State<HomePage> {
                       HomeMenuButton(
                         iconMenu: Icon(Icons.sunny),
                         text: HomeMessage.day,
-                        routePage: CarListDayPage(),
+                        routePage: CarListDayPage(
+                          data: widget.data,
+                        ),
                       ),
                       HomeMenuButton(
                         iconMenu: Icon(Icons.calendar_month),
@@ -125,10 +110,6 @@ class _HomePageState extends State<HomePage> {
                         text: HomeMessage.evCharger,
                         routePage: EvChargerPage(),
                       ),
-                      /*
-                      ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TestPage()));
-                      }, child: Icon(Icons.add,size: 100,))*/
                       HomeMenuButton(
                         iconMenu: Icon(Icons.car_rental),
                         text: HomeMessage.vanWithDriver,
@@ -142,8 +123,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             )
-          ])
-      )),
+          ]),
+        ),
+      ),
     );
   }
 }

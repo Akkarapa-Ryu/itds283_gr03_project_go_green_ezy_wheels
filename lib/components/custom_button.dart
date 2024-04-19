@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
+import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/landing/landing.dart';
 import '/theme/theme.dart';
 
 class CustomButton extends StatelessWidget {
@@ -13,7 +15,7 @@ class CustomButton extends StatelessWidget {
     this.textSize,
     required this.textWeight,
     this.iconWidget,
-    this.borderRadius, 
+    this.borderRadius, this.routePageClose, 
   });
   final Color colorButton;
   final double sizeButtonHeight;
@@ -25,6 +27,7 @@ class CustomButton extends StatelessWidget {
   final FontWeight textWeight;
   final double? borderRadius;
   final Widget? iconWidget;
+  final String? routePageClose;
   
   @override
   Widget build(BuildContext context) {
@@ -36,10 +39,7 @@ class CustomButton extends StatelessWidget {
             if (routePage != null) {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => routePage!));
-            } else if (conditionPage != null) {
-              conditionPage;
-            }
-            else {
+            } else {
               return;
             }
           },
@@ -69,7 +69,15 @@ class CustomButton extends StatelessWidget {
           if (routePage != null) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => routePage!));
-          } else {
+          } else if (routePageClose == "close") {
+            Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => WelcomePage()),
+          ModalRoute.withName("/"));
+          } else if (routePageClose == "back") {
+            Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => routePage!),
+          ModalRoute.withName("/"));
+          }else {
             return;
           }
         },

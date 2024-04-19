@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
@@ -30,30 +31,20 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
-                      'assets/images/logo.jpg',
-                      height: 110,
-                      width: 110,
+                      'assets/images/logo.png',
+                      // height: 110,
+                      // width: 110,
+                      // color: DesignSystem.c1,
                     ),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    LoginMessage.ggew,
-                    style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: DesignSystem.c1,
-                        fontFamily: DesignSystem.fontFamily),
-                  ),
+                  textContainer(
+                      LoginMessage.ggew, DesignSystem.c1, FontWeight.bold, 24),
                   SizedBox(height: 10.0),
-                  Text(
-                    LoginMessage.beginMessage,
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        color: DesignSystem.c1,
-                        fontFamily: DesignSystem.fontFamily),
-                  ),
+                  textContainer(
+                      LoginMessage.beginMessage, DesignSystem.c1, FontWeight.normal, 18),
                   SizedBox(height: 55.0),
                   CustomButton(
                     routePage: RegisterPage(),
@@ -90,23 +81,17 @@ class _LoginPageState extends State<LoginPage> {
                     sizeButtonWidth: 0,
                   ),
                   SizedBox(height: 40.0),
-                  Text(
-                    LoginMessage.alreadyMessage,
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        color: DesignSystem.c1,
-                        fontFamily: DesignSystem.fontFamily),
-                  ),
+                  textContainer(
+                      LoginMessage.alreadyMessage, DesignSystem.c1, FontWeight.w500, 16),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SigninPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SigninPage()));
                     },
-                    child: Text(LoginMessage.sigin),
-                    style: TextButton.styleFrom(
-                      foregroundColor: DesignSystem.c9,
-                      textStyle: TextStyle(
-                          fontSize: 16.0, fontFamily: DesignSystem.fontFamily),
-                    ),
+                    child: textContainer(
+                      LoginMessage.sigin, DesignSystem.c9, FontWeight.bold, 16),
                   ),
                 ],
               ),

@@ -1,13 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
 
 class CarListPage extends StatefulWidget {
-  const CarListPage({super.key});
+  const CarListPage(
+      {super.key,
+      required this.data,
+      required this.email,
+      required this.password});
+  final List data;
+  final String email;
+  final String password;
 
   @override
   State<CarListPage> createState() => _CarListPageState();
@@ -18,7 +26,7 @@ class _CarListPageState extends State<CarListPage> {
   List<String> selectCarBrand = [];
   List<QueryDocumentSnapshot> carsList = [];
 
-    String locationMessage = '';
+  String locationMessage = '';
   late String lat;
   late String long;
 
@@ -45,7 +53,7 @@ class _CarListPageState extends State<CarListPage> {
 
     return await Geolocator.getCurrentPosition();
   }
-  
+
   getDate() async {
     QuerySnapshot querySnapshotCarList =
         await FirebaseFirestore.instance.collection('cars').get();
@@ -71,15 +79,12 @@ class _CarListPageState extends State<CarListPage> {
       backgroundColor: DesignSystem.c4,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          CarListMessage.carList,
-          style: TextStyle(
-              fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
-        ),
+        title: textContainer(
+            CarListMessage.carList, DesignSystem.c0, FontWeight.w700, null),
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             color: DesignSystem.c4,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15))),
@@ -89,7 +94,7 @@ class _CarListPageState extends State<CarListPage> {
               scrollDirection: Axis.horizontal,
               child: Container(
                 margin:
-                    const EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
+                    EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
                 child: Wrap(
                   spacing: 10,
                   runSpacing: 4,
@@ -100,12 +105,8 @@ class _CarListPageState extends State<CarListPage> {
                                 borderRadius: BorderRadius.circular(20)),
                             side: BorderSide.none,
                             selectedColor: DesignSystem.c5,
-                            label: Text(
-                              e,
-                              style: TextStyle(
-                                  color: DesignSystem.c0,
-                                  fontFamily: DesignSystem.fontFamily),
-                            ),
+                            label: textContainer(
+                                e, DesignSystem.c0, FontWeight.w500, null),
                             selected: selectCarBrand.contains(e),
                             onSelected: (value) {
                               setState(() {
@@ -161,6 +162,7 @@ class _CarListPageState extends State<CarListPage> {
                           transmossion: filterBrands[index].get('transmossion'),
                           energyType: filterBrands[index].get('energyType'),
                           batteryLevel: filterBrands[index].get('batteryLevel'), 
+                          data: widget.data,
                         ),
                       ),
                     );

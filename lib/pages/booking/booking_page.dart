@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
+import '../pages.dart';
 
 class BookingCarRentalPage extends StatefulWidget {
   const BookingCarRentalPage({
@@ -21,7 +23,7 @@ class BookingCarRentalPage extends StatefulWidget {
     required this.brand,
     required this.transmossion,
     required this.energyType,
-    required this.batteryLevel,
+    required this.batteryLevel, required this.data,
   });
   final String thumbnail;
   final String title; // name's car
@@ -37,32 +39,28 @@ class BookingCarRentalPage extends StatefulWidget {
   final String transmossion;
   final String energyType;
   final num batteryLevel;
+  final List data;
 
   @override
   State<BookingCarRentalPage> createState() => _BookingCarRentalPageState();
 }
 
 class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
-  String locationMessage = 'Current Location';
-  late String lat;
-  late String long;
-  final startDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
-  final endDate = Text(
-    DateFormat('dd MMMM yyyy, HH:mm')
-        .format(DateTime.now().add(Duration(days: 1))),
-    style: const TextStyle(
-        color: DesignSystem.c1,
-        fontFamily: DesignSystem.fontFamily,
-        fontWeight: FontWeight.w600,
-        fontSize: 16),
-  );
+  List locationMessage = [];
+  double lat = 0;
+  double long = 0;
+  final startDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
+  final endDate = textContainer(
+      DateFormat('dd MMMM yyyy, HH:mm')
+          .format(DateTime.now().add(Duration(days: 1))),
+      DesignSystem.c1,
+      FontWeight.w600,
+      16);
+  String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
   Future<Position> _getCurrentLOcation() async {
@@ -88,17 +86,37 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
     return await Geolocator.getCurrentPosition();
   }
 
+  getLocationName() async {
+    double latitude = lat;
+    double longitude = long;
+
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemarks[0];
+      setState(() {
+        address =
+            "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
+      });
+    } catch (e) {
+      setState(() {
+        address = "Error fetching location";
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLocationName();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          BookingMessage.rentel,
-          style: TextStyle(
-              color: DesignSystem.c0,
-              fontFamily: DesignSystem.fontFamily,
-              fontWeight: FontWeight.bold),
-        ),
+        title: textContainer(
+            BookingMessage.rental, DesignSystem.c0, FontWeight.bold, null),
         centerTitle: true,
         actions: [LocationNotificationPopup()],
       ),
@@ -115,50 +133,45 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
         transmossion: widget.transmossion,
         energyType: widget.energyType,
         batteryLevel: widget.batteryLevel,
-        /*locationMessage: ContainerLocationDateTimeWidget(
-          iconLocation: IconButton(
-            onPressed: () {
-              _getCurrentLOcation().then((value) {
-                lat = '${value.latitude}';
-                long = '${value.longitude}';
-                setState(() {
-                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
-                  print('LocationMessage" $locationMessage');
-                });
-                // liveLocation();
-              });
-            },
-            icon: Icon(
-              Icons.location_pin,
-              color: DesignSystem.c1,
-            ),
-          ),
-          locationMessage: locationMessage,
-          startDate: startDate,
-          endDate: endDate,
-        ),*/
         locationMessage: IconButton(
-            onPressed: () {
-              _getCurrentLOcation().then((value) {
-                lat = '${value.latitude}';
-                long = '${value.longitude}';
-                setState(() {
-                  locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
-                  print('LocationMessage" $locationMessage');
-                });
-                // liveLocation();
+          onPressed: () {
+            _getCurrentLOcation().then((value) {
+              lat = value.latitude;
+              long = value.longitude;
+              setState(() {
+                // locationMessage = 'Latitude: $lat ,\n Longtitude: $long';
+                locationMessage.add(lat);
+                locationMessage.add(long);
+                print('LocationMessage" $locationMessage');
               });
-            },
-            icon: Icon(
-              Icons.location_pin,
-              color: DesignSystem.c1,
-            ),
+              getLocationName();
+            });
+          },
+          icon: Icon(
+            Icons.location_pin,
+            color: DesignSystem.c1,
           ),
+        ),
         startDate: startDate,
         endDate: endDate,
-        locationMessageFromIconButton: locationMessage,
+        locationMessageFromIconButton: address,
+        routePage: ConfirmPayPage(
+                thumbnail: widget.thumbnail,
+                title: widget.title,
+                type: widget.type,
+                rage: widget.rage,
+                seat: widget.seat,
+                dc: widget.dc,
+                priceHour: widget.priceHour,
+                priceDay: widget.priceDay,
+                brand: widget.brand,
+                transmossion: widget.transmossion,
+                energyType: widget.energyType,
+                batteryLevel: widget.batteryLevel,
+                locationMessage: address,
+                startDate: startDate,
+                endDate: endDate, data: widget.data,),
       ),
     );
   }
 }
-

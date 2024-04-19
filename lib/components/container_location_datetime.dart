@@ -62,36 +62,22 @@ class _ContainerLocationDateTimeWidgetState
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // IconButton(
-              //   onPressed: () {
-              //     _getCurrentLOcation().then((value) {
-              //       lat = '${value.latitude}';
-              //       long = '${value.longitude}';
-              //       setState(() {
-              //         locationMessage =
-              //             'Latitude: $lat ,\n Longtitude: $long';
-              //             print('LocationMessage" $locationMessage');
-              //       });
-              //       // liveLocation();
-              //     });
-              //   },
-              //   icon: Icon(
-              //     Icons.location_pin,
-              //     color: DesignSystem.c1,
-              //   ),
-              // ),
               widget.iconLocation,
               SizedBox(
                 width: 10,
               ),
-              Text(
-                widget.locationMessage,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: DesignSystem.c1,
-                    fontFamily: DesignSystem.fontFamily,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
+              Container(
+                width: 300,
+                child: Text(
+                  widget.locationMessage,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  style: TextStyle(
+                      color: DesignSystem.c1,
+                      fontFamily: DesignSystem.fontFamily,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18),
+                ),
               )
             ],
           ),

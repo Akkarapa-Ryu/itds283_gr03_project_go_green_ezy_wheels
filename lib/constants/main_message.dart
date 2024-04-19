@@ -5,4 +5,7 @@ final class MainMessage {
   static const String setting = 'Setting';
   static const String itds283Pjgr03 = 'itds283 PJGR03-658727-6587045';
   static const String goGreenEzyWheels = 'GO Green Ezy Wheels';
+  static const String loading = 'Loading . . . .';
+  static const String notFound = 'Not Found';
+  static const String signIn = 'Sign in';
 }
