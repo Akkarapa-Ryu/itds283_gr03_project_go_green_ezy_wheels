@@ -50,6 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ModalRoute.withName("/"));
     } else {
       print("Form validation failed!");
+      return;
     }
   }
 
@@ -76,9 +77,8 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
-                textContainer(
-                      RegisterMessage.pleassMassage, DesignSystem.c0, FontWeight.normal, 16),
+                textContainer(RegisterMessage.pleassMassage, DesignSystem.c0,
+                    FontWeight.normal, 16),
                 const SizedBox(height: 25.0),
                 TextFormField(
                   controller: phoneController,
@@ -86,16 +86,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                      fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.phoneNumber,
                     labelStyle: TextStyle(
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                        color: DesignSystem.c0,
+                        fontFamily: DesignSystem.fontFamily,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                     prefix: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
@@ -105,8 +103,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 25,
                         ),
                         const SizedBox(width: 0.1),
-                        textContainer(
-                      '  ${RegisterMessage.plus66}  ', DesignSystem.c0, FontWeight.normal, 16),
+                        textContainer('  ${RegisterMessage.plus66}  ',
+                            DesignSystem.c0, FontWeight.normal, 16),
                       ],
                     ),
                     border: OutlineInputBorder(
@@ -131,16 +129,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                      fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.firstName,
                     labelStyle: TextStyle(
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                        color: DesignSystem.c0,
+                        fontFamily: DesignSystem.fontFamily,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -159,16 +155,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                      fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.lastName,
                     labelStyle: TextStyle(
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                        color: DesignSystem.c0,
+                        fontFamily: DesignSystem.fontFamily,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -187,16 +181,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                      fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.email,
                     labelStyle: TextStyle(
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                        color: DesignSystem.c0,
+                        fontFamily: DesignSystem.fontFamily,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                     hintText: RegisterMessage.emailExample,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -218,17 +210,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                      fontSize: 16),
                   obscureText: _isObscure,
                   decoration: InputDecoration(
                     labelText: RegisterMessage.password,
                     labelStyle: TextStyle(
-                      color: DesignSystem.c0,
-                      fontFamily: DesignSystem.fontFamily,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16
-                    ),
+                        color: DesignSystem.c0,
+                        fontFamily: DesignSystem.fontFamily,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -260,12 +250,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         email: emailController.text,
                         password: passwordController.text);
                   },
-                  child: TextButton(
-                    onPressed: () {},
-                    child: 
-                    textContainer(
-                      RegisterMessage.signUp, DesignSystem.c1, FontWeight.bold, 16),
-                  ),
+                  child: textContainer(RegisterMessage.signUp,
+                      DesignSystem.c1, FontWeight.bold, 16),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: DesignSystem.c9,
                       minimumSize: Size(double.infinity, 50),

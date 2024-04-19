@@ -161,7 +161,8 @@ class _CarListPageState extends State<CarListPage> {
                           brand: filterBrands[index].get('brand'),
                           transmossion: filterBrands[index].get('transmossion'),
                           energyType: filterBrands[index].get('energyType'),
-                          batteryLevel: filterBrands[index].get('batteryLevel'),
+                          batteryLevel: filterBrands[index].get('batteryLevel'), 
+                          data: widget.data,
                         ),
                       ),
                     );

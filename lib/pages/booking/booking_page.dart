@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 import '../../theme/theme.dart';
+import '../pages.dart';
 
 class BookingCarRentalPage extends StatefulWidget {
   const BookingCarRentalPage({
@@ -22,7 +23,7 @@ class BookingCarRentalPage extends StatefulWidget {
     required this.brand,
     required this.transmossion,
     required this.energyType,
-    required this.batteryLevel,
+    required this.batteryLevel, required this.data,
   });
   final String thumbnail;
   final String title; // name's car
@@ -38,6 +39,7 @@ class BookingCarRentalPage extends StatefulWidget {
   final String transmossion;
   final String energyType;
   final num batteryLevel;
+  final List data;
 
   @override
   State<BookingCarRentalPage> createState() => _BookingCarRentalPageState();
@@ -153,6 +155,22 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
         startDate: startDate,
         endDate: endDate,
         locationMessageFromIconButton: address,
+        routePage: ConfirmPayPage(
+                thumbnail: widget.thumbnail,
+                title: widget.title,
+                type: widget.type,
+                rage: widget.rage,
+                seat: widget.seat,
+                dc: widget.dc,
+                priceHour: widget.priceHour,
+                priceDay: widget.priceDay,
+                brand: widget.brand,
+                transmossion: widget.transmossion,
+                energyType: widget.energyType,
+                batteryLevel: widget.batteryLevel,
+                locationMessage: address,
+                startDate: startDate,
+                endDate: endDate, data: widget.data,),
       ),
     );
   }

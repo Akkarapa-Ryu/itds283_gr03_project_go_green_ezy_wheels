@@ -33,11 +33,9 @@ class _LandingPageState extends State<LandingPage> {
         children: [
           Center(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                'assets/images/logo.jpg',
-                color: DesignSystem.c7,
-                colorBlendMode: BlendMode.difference,
+                'assets/images/logo.png',
               ),
             ),
           ),

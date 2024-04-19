@@ -43,7 +43,7 @@ class SettingPage extends StatelessWidget {
                     '${data.first.data()["fname"]}   ${data.first.data()["lname"]}',
                     DesignSystem.c0,
                     FontWeight.bold,
-                    40),
+                    35),
                 textContainer('Email: ${data.first.data()["email"]}',
                     DesignSystem.c0, FontWeight.normal, 18),
                 SizedBox(

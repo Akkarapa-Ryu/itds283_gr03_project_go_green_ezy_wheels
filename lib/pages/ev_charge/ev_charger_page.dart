@@ -97,29 +97,47 @@ class _EvChargerPageState extends State<EvChargerPage> {
                 ),
               ),
               Row(
-                children: [IconButton(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      _getCurrentLOcation().then((value) {
+                        lat = value.latitude;
+                        long = value.longitude;
+                        setState(() {
+                          locationMessage.add(lat);
+                          locationMessage.add(long);
+                          print('LocationMessage" $locationMessage');
+                          // showImage = !showImage;
+                        });
+                        getLocationName();
+                      });
+                    },
+                    icon: Icon(
+                      size: 35,
+                      Icons.location_pin,
+                      color: DesignSystem.c4,
+                    ),
+                  ),
+                  Container(
+                    width: 320,
+                    child: textContainer(
+                        address, DesignSystem.c0, FontWeight.bold, 20),
+                  )
+                ],
+              ),
+              ElevatedButton(
                 onPressed: () {
-                  _getCurrentLOcation().then((value) {
-                    lat = value.latitude;
-                    long = value.longitude;
-                    setState(() {
-                      locationMessage.add(lat);
-                      locationMessage.add(long);
-                      print('LocationMessage" $locationMessage');
-                      showImage = !showImage;
-                    });
-                    getLocationName();
+                  setState(() {
+                    showImage = !showImage;
                   });
                 },
-                icon: Icon(
-                  size: 35,
-                  Icons.location_pin,
-                  color: DesignSystem.c4,
-                ),
-              ),
-              Container(
-                width: 320,
-                child: textContainer(address, DesignSystem.c0, FontWeight.bold, 20),)],
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    backgroundColor: DesignSystem.c2,
+                    minimumSize: Size(300, 40)),
+                child: textContainer(EvChargerMessage.showMap, DesignSystem.c1,
+                    FontWeight.bold, 16),
               ),
               SizedBox(height: 10,),
               showImage
@@ -128,7 +146,6 @@ class _EvChargerPageState extends State<EvChargerPage> {
                         borderRadius: BorderRadius.circular(15),
                         child: FlutterMap(
                             options: MapOptions(
-                                // initialCenter: LatLng(13.801773, 100.321121),
                                 initialCenter: LatLng(lat, long),
                                 initialZoom: 11,
                                 interactionOptions: InteractionOptions(
@@ -142,9 +159,6 @@ class _EvChargerPageState extends State<EvChargerPage> {
                                   height: 60,
                                   alignment: Alignment.center,
                                   child: GestureDetector(
-                                    onTap: () {
-                                      // Navigate to another screen
-                                    },
                                     child: Icon(
                                       Icons.location_pin,
                                       size: 60,
@@ -161,15 +175,15 @@ class _EvChargerPageState extends State<EvChargerPage> {
                       height: 0,
                       width: 0,
                     ),
-              CustomButton(
-                colorButton: DesignSystem.c2,
-                sizeButtonHeight: 45,
-                sizeButtonWidth: double.infinity,
-                textButton: EvChargerMessage.destinationToCharger,
-                colorText: DesignSystem.c0,
-                textSize: 16,
-                textWeight: FontWeight.bold,
-              )
+              // CustomButton(
+              //   colorButton: DesignSystem.c2,
+              //   sizeButtonHeight: 45,
+              //   sizeButtonWidth: double.infinity,
+              //   textButton: EvChargerMessage.destinationToCharger,
+              //   colorText: DesignSystem.c0,
+              //   textSize: 16,
+              //   textWeight: FontWeight.bold,
+              // )
             ],
           ),
         ));

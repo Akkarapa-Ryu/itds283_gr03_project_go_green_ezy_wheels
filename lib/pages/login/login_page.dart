@@ -31,11 +31,12 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
-                      'assets/images/logo.jpg',
-                      height: 110,
-                      width: 110,
+                      'assets/images/logo.png',
+                      // height: 110,
+                      // width: 110,
+                      // color: DesignSystem.c1,
                     ),
                   ),
                   SizedBox(height: 10),

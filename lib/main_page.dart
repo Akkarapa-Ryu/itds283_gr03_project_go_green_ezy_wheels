@@ -105,7 +105,9 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           title: textContainer(
               MainMessage.signIn, DesignSystem.c0, FontWeight.bold, null),
+              centerTitle: true,
         ),
+        
         body: isLoading == true
             ? Center(
                 child: textContainer(
