@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:geocoding/geocoding.dart';
+import '../../components/container_text.dart';
+import '../../constants/constants.dart';
 import '../../models/models.dart';
 import '../../theme/theme.dart';
-import '../../components/components.dart';
 import '../pages.dart';
 
 class ConfirmPayPage extends StatefulWidget {
@@ -162,7 +161,7 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Confirm & Pay',
+          ConfirmPayMessage.confirmPay,
           style: TextStyle(
               fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         ),
@@ -247,84 +246,206 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Pick-up & Return location"),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: DesignSystem.c6,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        ConfirmPayMessage.pickUpReturnLocation,
+                        style: TextStyle(
+                          fontFamily: DesignSystem.fontFamily,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                        // Text("$lat"),
-                        // Text("$long"),
-                        Text(widget.locationMessage)
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 2,
-                      width: 300,
-                      color: DesignSystem.c0,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text("Price summary"),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text("Rental"), Text("${widget.priceDay}")],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("1 day rate"),
-                        Text("${widget.priceDay}")
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Total Payment"),
-                        Text("${widget.priceDay}")
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 2,
-                      width: 300,
-                      color: DesignSystem.c0,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Text("Full Name:   "),
-                        Text(
-                            "${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("Email:   "),
-                        Text("${widget.data.first.data()["email"]}")
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("Phone:   "),
-                        Text("${widget.data.first.data()["phone"]}")
-                      ],
-                    ),
-                  ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
+                            color: DesignSystem.c6,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            width: 300,
+                            child: Text(
+                              widget.locationMessage,
+                              overflow: TextOverflow.fade,
+                              maxLines: 2,
+                              style: TextStyle(
+                                fontFamily: DesignSystem.fontFamily,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 2,
+                        width: double.maxFinite,
+                        color: DesignSystem.c0,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        ConfirmPayMessage.priceSummary,
+                        style: TextStyle(
+                          fontFamily: DesignSystem.fontFamily,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "     ${ConfirmPayMessage.rental}",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "${widget.priceDay} \$",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "     ${ConfirmPayMessage.oneDayRate}",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            "${widget.priceDay} \$",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            ConfirmPayMessage.totalPayment,
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "${widget.priceDay} \$",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 2,
+                        width: double.maxFinite,
+                        color: DesignSystem.c0,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "${ConfirmPayMessage.fullName}:   ",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "${widget.data.first.data()["fname"]}   ${widget.data.first.data()["lname"]}",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "${ConfirmPayMessage.email}:   ",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "${widget.data.first.data()["email"]}",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "${ConfirmPayMessage.phone}:   ",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "${widget.data.first.data()["phone"]}",
+                            style: TextStyle(
+                              fontFamily: DesignSystem.fontFamily,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -355,13 +476,13 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '21 \$ / hour',
+                          '${widget.priceHour} \$ / Hour',
                           style: TextStyle(
                               fontFamily: DesignSystem.fontFamily,
                               fontSize: 15),
                         ),
                         Text(
-                          '210 \$ / Day',
+                          '${widget.priceDay} \$ / Day',
                           style: TextStyle(
                               fontFamily: DesignSystem.fontFamily,
                               fontSize: 24,
@@ -369,16 +490,6 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                         ),
                       ],
                     ),
-                    /*CustomButton(
-                      colorButton: DesignSystem.c6,
-                      sizeButtonHeight: 40,
-                      textButton: 'Continue',
-                      colorText: DesignSystem.c1,
-                      textSize: 20,
-                      textWeight: FontWeight.w600,
-                      borderRadius: 30,
-                      sizeButtonWidth: 120,
-                    ),*/
                     ElevatedButton(
                         onPressed: () {
                           save = true;
@@ -410,32 +521,19 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                               data: widget.data);
                         },
                         style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                          backgroundColor: DesignSystem.c6,
-                          minimumSize: Size(120, 40)
-                        ),
-                        child: Text("Continue",
-                            style: TextStyle(
-                                color: DesignSystem.c1,
-                                fontFamily: DesignSystem.fontFamily,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20)))
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            backgroundColor: DesignSystem.c6,
+                            minimumSize: Size(120, 40)),
+                        child: 
+                        textContainer(ConfirmPayMessage.continueText, DesignSystem.c1, 
+                        FontWeight.bold, 20)
+                                )
                   ],
                 ),
               ))
         ],
       ),
     );
-  }
-}
-
-Future<String> getAddress(double latitude, double longitude) async {
-  try {
-    List<Placemark> placemarks =
-        await placemarkFromCoordinates(latitude, longitude);
-    Placemark place = placemarks[0];
-    return "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.country}";
-  } catch (e) {
-    return "Unable to fetch the address";
   }
 }

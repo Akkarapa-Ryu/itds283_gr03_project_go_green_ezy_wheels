@@ -9,3 +9,4 @@ export 'booking_message.dart';
 export 'login_message.dart';
 export 'register_message.dart';
 export 'success_message.dart';
+export 'confirm_pay_message.dart';
