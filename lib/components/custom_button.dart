@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/main_page.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/pages/landing/landing.dart';
+import '../../pages/pages.dart';
 import '/theme/theme.dart';
 
 class CustomButton extends StatelessWidget {

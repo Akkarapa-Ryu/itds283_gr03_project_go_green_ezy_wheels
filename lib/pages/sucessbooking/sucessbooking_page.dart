@@ -54,6 +54,7 @@ class _SuccessPageState extends State<SuccessPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -75,7 +76,7 @@ class _SuccessPageState extends State<SuccessPage> {
                 Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
-                    child: Image.asset('assets/images/logo.jpg'),
+                    child: Image.asset('assets/images/logo.png'),
                   ),
                 ),
                 SizedBox(height: 25),
