@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
         label: MainMessage.home),
     const BottomNavigationBarItem(
         icon: Icon(
-          IconData(0xe1d7, fontFamily: DesignSystem.fontIconMaterialIcons),
+          IconData(0xf6b2, fontFamily: DesignSystem.fontIconMaterialIcons),
           size: 35,
         ),
         label: MainMessage.car),
@@ -105,9 +105,8 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           title: textContainer(
               MainMessage.signIn, DesignSystem.c0, FontWeight.bold, null),
-              centerTitle: true,
+          centerTitle: true,
         ),
-        
         body: isLoading == true
             ? Center(
                 child: textContainer(

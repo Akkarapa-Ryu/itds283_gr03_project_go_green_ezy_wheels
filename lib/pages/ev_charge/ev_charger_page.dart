@@ -78,6 +78,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
           centerTitle: true,
           title: textContainer(EvChargerMessage.evChargerMap, DesignSystem.c0,
               FontWeight.bold, null),
+              actions: [LocationNotificationPopup()],
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),

@@ -1,6 +1,6 @@
 // Go Green Ezy Wheels Theme
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/theme/design_system.dart';
+import '../../theme/theme.dart';
 
 final class GGEWTheme {
   GGEWTheme._();

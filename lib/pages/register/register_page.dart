@@ -82,14 +82,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 25.0),
                 TextFormField(
                   controller: phoneController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
                       fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.phoneNumber,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -125,14 +125,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: fnameController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
                       fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.firstName,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -141,6 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
+                  keyboardType: TextInputType.name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return RegisterMessage.firstNamePlease;
@@ -151,14 +152,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: lnameController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
                       fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.lastName,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -167,6 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
+                  keyboardType: TextInputType.name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return RegisterMessage.lastNamePlease;
@@ -177,14 +179,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: emailController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
                       fontSize: 16),
                   decoration: InputDecoration(
                     labelText: RegisterMessage.email,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -194,6 +196,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return RegisterMessage.emailPlease;
@@ -233,6 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                     ),
                   ),
+                  keyboardType: TextInputType.visiblePassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return RegisterMessage.passwordPlease;

@@ -5,5 +5,6 @@ final class SettingMessage {
   static const String chagePassword = 'Change Password';
   static const String bankAccount = 'Bank Account';
   static const String information = 'Information';
+  static const String aboutUs = 'About Us';
   static const String signOut = 'Sign out';
 }

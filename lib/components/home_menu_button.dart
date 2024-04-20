@@ -3,15 +3,16 @@ import '.../../../theme/theme.dart';
 
 class HomeMenuButton extends StatelessWidget {
   const HomeMenuButton(
-      {super.key, required this.iconMenu, required this.text, this.routePage});
+      {super.key, required this.iconMenu, required this.text, this.routePage, this.locate,});
 
   final Icon iconMenu;
   final String text;
   final Widget? routePage;
+  final String? locate;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+      return SizedBox(
       height: 170,
       child: Column(
         children: [

@@ -53,6 +53,7 @@ class _SigninPageState extends State<SigninPage> {
                       hintText: SignInMessage.emailExample,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
+                          keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return SignInMessage.emailPlease;
@@ -94,6 +95,7 @@ class _SigninPageState extends State<SigninPage> {
                       },
                     ),
                   ),
+                  keyboardType: TextInputType.visiblePassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return RegisterMessage.passwordPlease;

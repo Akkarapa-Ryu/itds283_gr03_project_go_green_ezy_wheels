@@ -21,27 +21,23 @@ class _LocationNotificationPopupState extends State<LocationNotificationPopup> {
               return AlertDialog(
                 backgroundColor: DesignSystem.c1,
                 title: textContainer(
-                    'Location', DesignSystem.c0, FontWeight.w600, 28),
+                    'Instructions', DesignSystem.c0, FontWeight.w600, 24),
                 content: Container(
-                  height: 150,
-                  width: 200,
+                  height: 120,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Using Loation',
-                        style: TextStyle(
-                            fontFamily: DesignSystem.fontFamily,
-                            fontSize: 16,
-                            color: DesignSystem.c0,
-                            fontWeight: FontWeight.normal),
-                      ),
+                      textContainer('Using Loation', DesignSystem.c0, FontWeight.w500, 16),
+                                            SizedBox(height: 10,),
+                      textContainer('1. Open the location of the mobile phone.', DesignSystem.c0, FontWeight.w500, 16),
+                      textContainer('2. Then press "Pin" on the app page.', DesignSystem.c0, FontWeight.w500, 16),
                     ],
                   ),
                 ),
                 actions: [
                   TextButton(
                       child: textContainer(
-                          'Close', DesignSystem.c0, FontWeight.normal, 16),
+                          'Close', DesignSystem.c0, FontWeight.w600, 16),
                       onPressed: () {
                         Navigator.pop(context);
                       })

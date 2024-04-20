@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -9,9 +7,13 @@ import '../../constants/constants.dart';
 import '../pages.dart';
 
 class CarListDayPage extends StatefulWidget {
-  const CarListDayPage({super.key, required this.data,
+  const CarListDayPage({
+    super.key,
+    required this.data,
+    required this.address,
   });
   final List data;
+  final String address;
 
   @override
   State<CarListDayPage> createState() => _CarListDayPageState();
@@ -19,9 +21,9 @@ class CarListDayPage extends StatefulWidget {
 
 class _CarListDayPageState extends State<CarListDayPage> {
   List<QueryDocumentSnapshot> carsList = [];
-  List locationMessage = [];
-  double lat = 0;
-  double long = 0;
+  // List locationMessage = [];
+  // double lat = 0;
+  // double long = 0;
   final startDate = textContainer(
       DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
       DesignSystem.c1,
@@ -33,10 +35,10 @@ class _CarListDayPageState extends State<CarListDayPage> {
       DesignSystem.c1,
       FontWeight.w600,
       16);
-  String address = "Loading . . . .";
+  // String address = "Loading . . . .";
 
   // https://www.youtube.com/watch?v=9v44lAagZCI
-  Future<Position> _getCurrentLOcation() async {
+  /*Future<Position> _getCurrentLOcation() async {
     // เป็นการ check ว่ามีการเปิด location บนมือถือหรือยัง
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -56,7 +58,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
           'Location permissions are permanently denied, we cannot request');
     }
     return await Geolocator.getCurrentPosition();
-  }
+  }*/
 
   // late ContainerLocationDateTimeWidget locationMessage = ContainerLocationDateTimeWidget();
   getDate() async {
@@ -67,7 +69,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
     setState(() {});
   }
 
-  getLocationName() async {
+  /*getLocationName() async {
     double latitude = lat;
     double longitude = long;
 
@@ -84,13 +86,12 @@ class _CarListDayPageState extends State<CarListDayPage> {
         address = "Error fetching location";
       });
     }
-  }
+  }*/
 
   @override
   void initState() {
     getDate();
     super.initState();
-    getLocationName();
   }
 
   @override
@@ -104,32 +105,17 @@ class _CarListDayPageState extends State<CarListDayPage> {
           style: TextStyle(
               fontFamily: DesignSystem.fontFamily, fontWeight: FontWeight.w700),
         ),
-        actions: [LocationNotificationPopup()],
       ),
       body: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
           children: [
             ContainerLocationDateTimeWidget(
-              iconLocation: IconButton(
-                onPressed: () {
-                  _getCurrentLOcation().then((value) {
-                    lat = value.latitude;
-                    long = value.longitude;
-                    setState(() {
-                      locationMessage.add(lat);
-                      locationMessage.add(long);
-                      print('LocationMessage" $locationMessage');
-                    });
-                    getLocationName();
-                  });
-                },
-                icon: Icon(
-                  Icons.location_pin,
-                  color: DesignSystem.c1,
-                ),
+              iconLocation: Icon(
+                Icons.location_pin,
+                color: DesignSystem.c1,
               ),
-              locationMessage: address,
+              locationMessage: widget.address,
               startDate: startDate,
               endDate: endDate,
             ),
@@ -173,9 +159,10 @@ class _CarListDayPageState extends State<CarListDayPage> {
                           transmossion: carsList[index].get('transmossion'),
                           energyType: carsList[index].get('energyType'),
                           batteryLevel: carsList[index].get('batteryLevel'),
-                          locationMessage: address,
+                          locationMessage: widget.address,
                           startDate: startDate,
-                          endDate: endDate, data: widget.data,
+                          endDate: endDate,
+                          data: widget.data,
                         ),
                       ),
                     );
