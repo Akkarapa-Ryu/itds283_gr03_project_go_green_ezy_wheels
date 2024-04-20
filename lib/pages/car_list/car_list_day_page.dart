@@ -24,11 +24,15 @@ class _CarListDayPageState extends State<CarListDayPage> {
   // List locationMessage = [];
   // double lat = 0;
   // double long = 0;
+
+  // https://stackoverflow.com/questions/51579546/how-to-format-datetime-in-flutter
   final startDate = textContainer(
       DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
       DesignSystem.c1,
       FontWeight.w600,
       16);
+
+  // https://stackoverflow.com/questions/64871346/flutter-how-to-show-current-date-and-next-5-day-dates
   final endDate = textContainer(
       DateFormat('dd MMMM yyyy, HH:mm')
           .format(DateTime.now().add(Duration(days: 1))),
@@ -111,7 +115,7 @@ class _CarListDayPageState extends State<CarListDayPage> {
         child: Column(
           children: [
             ContainerLocationDateTimeWidget(
-              iconLocation: Icon(
+              iconLocation: const Icon(
                 Icons.location_pin,
                 color: DesignSystem.c1,
               ),

@@ -38,7 +38,7 @@ class SettingMenuButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             CircleAvatar(
@@ -50,12 +50,12 @@ class SettingMenuButton extends StatelessWidget {
                 color: DesignSystem.c1,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Text(
               textButtonSetting,
-              style: TextStyle(
+              style: const TextStyle(
                   color: DesignSystem.c0,
                   fontSize: 20,
                   fontFamily: DesignSystem.fontFamily,

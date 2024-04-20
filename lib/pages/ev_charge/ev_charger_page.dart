@@ -113,13 +113,13 @@ class _EvChargerPageState extends State<EvChargerPage> {
                         getLocationName();
                       });
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       size: 35,
                       Icons.location_pin,
                       color: DesignSystem.c4,
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 320,
                     child: textContainer(
                         address, DesignSystem.c0, FontWeight.bold, 20),
@@ -140,7 +140,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
                 child: textContainer(EvChargerMessage.showMap, DesignSystem.c1,
                     FontWeight.bold, 16),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               showImage
                   ? Expanded(
                       child: ClipRRect(
@@ -160,7 +160,7 @@ class _EvChargerPageState extends State<EvChargerPage> {
                                   height: 60,
                                   alignment: Alignment.center,
                                   child: GestureDetector(
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.location_pin,
                                       size: 60,
                                       color: DesignSystem.error,
@@ -176,15 +176,6 @@ class _EvChargerPageState extends State<EvChargerPage> {
                       height: 0,
                       width: 0,
                     ),
-              // CustomButton(
-              //   colorButton: DesignSystem.c2,
-              //   sizeButtonHeight: 45,
-              //   sizeButtonWidth: double.infinity,
-              //   textButton: EvChargerMessage.destinationToCharger,
-              //   colorText: DesignSystem.c0,
-              //   textSize: 16,
-              //   textWeight: FontWeight.bold,
-              // )
             ],
           ),
         ));

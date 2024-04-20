@@ -38,14 +38,14 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 TextFormField(
                   controller: emailSigninController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
                       fontSize: 16),
                   decoration: InputDecoration(
                       labelText: SignInMessage.email,
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                           color: DesignSystem.c0,
                           fontFamily: DesignSystem.fontFamily,
                           fontWeight: FontWeight.normal,
@@ -53,7 +53,7 @@ class _SigninPageState extends State<SigninPage> {
                       hintText: SignInMessage.emailExample,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
-                          keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return SignInMessage.emailPlease;
@@ -68,7 +68,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 TextFormField(
                   controller: passwordSigninController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
@@ -76,7 +76,7 @@ class _SigninPageState extends State<SigninPage> {
                   obscureText: _isObscure,
                   decoration: InputDecoration(
                     labelText: SignInMessage.password,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -127,7 +127,7 @@ class _SigninPageState extends State<SigninPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
                       backgroundColor: DesignSystem.c9,
-                      minimumSize: Size(double.infinity, 50)),
+                      minimumSize: const Size(double.infinity, 50)),
                   child: textContainer(SignInMessage.signIn, DesignSystem.c1,
                       FontWeight.bold, 16),
                 )

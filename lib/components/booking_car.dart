@@ -81,7 +81,7 @@ class BookingCar extends StatelessWidget {
                             textAlign: TextAlign.center,
                             softWrap: true,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: DesignSystem.c1,
                                 fontFamily: DesignSystem.fontFamily,
                                 fontWeight: FontWeight.w600,
@@ -109,7 +109,7 @@ class BookingCar extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Card(
@@ -208,7 +208,7 @@ class BookingCar extends StatelessWidget {
         Positioned(
             top: 715,
             child: Container(
-              padding: EdgeInsets.only(left: 15, right: 15, bottom: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
               alignment: Alignment.topCenter,
               height: 100,
               width: 410,

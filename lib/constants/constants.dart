@@ -11,3 +11,4 @@ export 'register_message.dart';
 export 'success_message.dart';
 export 'confirm_pay_message.dart';
 export 'signin_message.dart';
+export 'location_popup_message.dart';

@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Positioned(
+            const Positioned(
                 top: 420,
                 left: 100,
                 child: Icon(
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                   size: 450,
                   color: DesignSystem.c13,
                 )),
-            Positioned(
+            const Positioned(
                 top: -50,
                 left: -150,
                 child: Icon(
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 height: 500,
                 decoration: const BoxDecoration(
                   color: DesignSystem.c11,
@@ -184,18 +184,18 @@ class _HomePageState extends State<HomePage> {
                                 child: Container(
                                   height: 85,
                                   width: 85,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: DesignSystem.c1,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(10))),
-                                  child: Icon(Icons.sunny,
+                                  child: const Icon(Icons.sunny,
                                       size: 65, color: DesignSystem.c6),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 100,
                                 child: Text(
                                   HomeMessage.day,

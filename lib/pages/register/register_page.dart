@@ -209,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: 45.0),
                 TextFormField(
                   controller: passwordController,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c0,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.normal,
@@ -217,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: _isObscure,
                   decoration: InputDecoration(
                     labelText: RegisterMessage.password,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                         color: DesignSystem.c0,
                         fontFamily: DesignSystem.fontFamily,
                         fontWeight: FontWeight.normal,
@@ -258,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       DesignSystem.c1, FontWeight.bold, 16),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: DesignSystem.c9,
-                      minimumSize: Size(double.infinity, 50),
+                      minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       )),
