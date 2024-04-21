@@ -67,7 +67,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Text('Register'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -135,11 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextInputType.phone, // Set keyboard type to phone
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      if (value!.length != 10) {
-                        return RegisterMessage.phonePlease;
-                      } else {
-                        return null;
-                      }
+                      return RegisterMessage.phonePlease;
                     } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
                       return RegisterMessage.phonePleaseValid;
                     }
@@ -259,27 +254,22 @@ class _RegisterPageState extends State<RegisterPage> {
                         });
                       },
                     ),
-                    errorText: passwordError ? RegisterMessage.passwordError : null,
+                    errorText:
+                        passwordError ? RegisterMessage.passwordError : null,
                   ),
                   onChanged: (value) {
                     setState(() {
-                  if (value.length < 8) {
-                    passwordError = true;
-                  } else {
-                    passwordError = false;
-                  }
-                });
-
+                      if (value.length < 8) {
+                        passwordError = true;
+                      } else {
+                        passwordError = false;
+                      }
+                    });
                   },
                   keyboardType: TextInputType.visiblePassword,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      int pass_check = value!.length;
-                      if (pass_check < 8) {
-                        return RegisterMessage.passwordPlease;
-                      } else {
-                        return null;
-                      }
+                      return RegisterMessage.passwordPlease;
                     }
                     return null;
                   },
