@@ -8,10 +8,10 @@ Application Name: Go Green Ez Wheels
 - open vscoder or IDE
 - run command in terminal
   
-$ flutter pub get
+  $ flutter pub get
 
 - Open launch emulator
 - run command
   
-$ flutter run
+  $ flutter run
 - or press "F5" button
