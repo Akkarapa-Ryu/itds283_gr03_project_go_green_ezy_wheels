@@ -5,4 +5,5 @@ Application Name: Go Green Ez Wheels
 # Setup
 
 $ flutter pub get
+
 $ flutter run
