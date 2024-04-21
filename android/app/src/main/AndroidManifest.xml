@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <application
-        android:label="itds283_gr03_project_go_green_ezy_wheels"
+        android:label="Go Green Ezy Wheels"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
