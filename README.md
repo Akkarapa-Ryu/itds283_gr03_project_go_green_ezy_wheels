@@ -8,4 +8,4 @@ Dowload project "itds283_gr03_go_grwwn_ezy_wheels"
 
 $ flutter pub get
 
-$ flutter run
+$ flutter run or press "F5" button
