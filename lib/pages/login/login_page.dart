@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   const CustomButton(
                     routePage: RegisterPage(),
                     colorButton: DesignSystem.c1,
-                    textButton: LoginMessage.phoneSigin,
+                    textButton: LoginMessage.register,
                     textWeight: FontWeight.w600,
                     sizeButtonHeight: 50,
                     sizeButtonWidth: 275,
