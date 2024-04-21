@@ -5,7 +5,7 @@ Application Name: Go Green Ez Wheels
 # Setup
 
 - Dowload project "itds283_gr03_go_grwwn_ezy_wheels"
-- open vscoder or IDE
+- open vscode or IDE
 - run command in terminal
   
   $ flutter pub get
