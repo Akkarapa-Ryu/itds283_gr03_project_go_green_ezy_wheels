@@ -4,6 +4,8 @@ Application Name: Go Green Ez Wheels
 
 # Setup
 
+Dowload project "itda283_gr03_go_grwwn_ezy_wheels"
+
 $ flutter pub get
 
 $ flutter run
