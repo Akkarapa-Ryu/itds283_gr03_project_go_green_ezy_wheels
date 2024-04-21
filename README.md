@@ -9,9 +9,10 @@ Application Name: Go Green Ez Wheels
 - run command in terminal
   
   $ flutter pub get
-
-- Open launch emulator
-- run command
   
   $ flutter run
-- or press "F5" button
+
+  $ flutter doctor
+
+- Open launch emulator
+- press "F5" button
