@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
@@ -34,22 +33,19 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
                       'assets/images/logo.png',
-                      // height: 110,
-                      // width: 110,
-                      // color: DesignSystem.c1,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   textContainer(
                       LoginMessage.ggew, DesignSystem.c1, FontWeight.bold, 24),
                   SizedBox(height: 10.0),
-                  textContainer(
-                      LoginMessage.beginMessage, DesignSystem.c1, FontWeight.normal, 18),
-                  SizedBox(height: 55.0),
-                  CustomButton(
+                  textContainer(LoginMessage.beginMessage, DesignSystem.c1,
+                      FontWeight.normal, 18),
+                  const SizedBox(height: 55.0),
+                  const CustomButton(
                     routePage: RegisterPage(),
                     colorButton: DesignSystem.c1,
-                    textButton: LoginMessage.phoneSigin,
+                    textButton: LoginMessage.register,
                     textWeight: FontWeight.w600,
                     sizeButtonHeight: 50,
                     sizeButtonWidth: 275,
@@ -80,9 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                     sizeButtonHeight: 0,
                     sizeButtonWidth: 0,
                   ),
-                  SizedBox(height: 40.0),
-                  textContainer(
-                      LoginMessage.alreadyMessage, DesignSystem.c1, FontWeight.w500, 16),
+                  const SizedBox(height: 40.0),
+                  textContainer(LoginMessage.alreadyMessage, DesignSystem.c1,
+                      FontWeight.w500, 16),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
@@ -90,8 +86,8 @@ class _LoginPageState extends State<LoginPage> {
                           MaterialPageRoute(
                               builder: (context) => SigninPage()));
                     },
-                    child: textContainer(
-                      LoginMessage.sigin, DesignSystem.c9, FontWeight.bold, 16),
+                    child: textContainer(LoginMessage.sigin, DesignSystem.c9,
+                        FontWeight.bold, 16),
                   ),
                 ],
               ),

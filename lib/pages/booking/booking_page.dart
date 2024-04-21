@@ -147,7 +147,7 @@ class _BookingCarRentalPageState extends State<BookingCarRentalPage> {
               getLocationName();
             });
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.location_pin,
             color: DesignSystem.c1,
           ),

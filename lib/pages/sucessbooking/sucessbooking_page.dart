@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:itds283_gr03_project_go_green_ezy_wheels/components/container_text.dart';
 import '../../components/components.dart';
 import '../../constants/constants.dart';
 import '../../main_page.dart';
@@ -55,31 +54,31 @@ class _SuccessPageState extends State<SuccessPage> {
     return Scaffold(
       body: Container(
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              DesignSystem.c4,
-              DesignSystem.c6,
+              DesignSystem.c15,
+              DesignSystem.c14,
             ],
             stops: [0.7, 1.5],
           ),
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(39),
+            padding: const EdgeInsets.all(39),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 45),
                 Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(20),
                     child: Image.asset('assets/images/logo.png'),
                   ),
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Center(
                   child: Column(
                     children: [
@@ -93,7 +92,7 @@ class _SuccessPageState extends State<SuccessPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: Column(
                     children: [
@@ -113,13 +112,13 @@ class _SuccessPageState extends State<SuccessPage> {
                 const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.calendar_today,
                       size: 25,
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

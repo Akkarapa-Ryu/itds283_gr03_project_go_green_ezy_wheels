@@ -70,7 +70,7 @@ class BookingDayCarRentalPage extends StatelessWidget {
               textAlign: TextAlign.center,
               softWrap: true,
               maxLines: 2,
-              style: TextStyle(
+              style: const TextStyle(
                   color: DesignSystem.c1,
                   fontFamily: DesignSystem.fontFamily,
                   fontWeight: FontWeight.w600,

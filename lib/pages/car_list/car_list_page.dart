@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import '../../components/container_text.dart';
 import '../../pages/pages.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -84,7 +83,7 @@ class _CarListPageState extends State<CarListPage> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: DesignSystem.c4,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15))),
@@ -94,7 +93,7 @@ class _CarListPageState extends State<CarListPage> {
               scrollDirection: Axis.horizontal,
               child: Container(
                 margin:
-                    EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
+                    const EdgeInsets.only(top: 15, left: 10, right: 10, bottom: 10),
                 child: Wrap(
                   spacing: 10,
                   runSpacing: 4,

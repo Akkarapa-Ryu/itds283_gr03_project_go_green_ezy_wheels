@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import '../theme/theme.dart';
 
 class ContainerLocationDateTimeWidget extends StatefulWidget {
@@ -63,7 +62,7 @@ class _ContainerLocationDateTimeWidgetState
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               widget.iconLocation,
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Container(
@@ -72,7 +71,7 @@ class _ContainerLocationDateTimeWidgetState
                   widget.locationMessage,
                   textAlign: TextAlign.center,
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: DesignSystem.c1,
                       fontFamily: DesignSystem.fontFamily,
                       fontWeight: FontWeight.w600,
@@ -89,52 +88,16 @@ class _ContainerLocationDateTimeWidgetState
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              // https://stackoverflow.com/questions/51579546/how-to-format-datetime-in-flutter
-              // Text(
-              //   DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
-              //   style: const TextStyle(
-              //       color: DesignSystem.c1,
-              //       fontFamily: DesignSystem.fontFamily,
-              //       fontWeight: FontWeight.w600,
-              //       fontSize: 16),
-              // ),
               widget.startDate,
               const Icon(
                 Icons.arrow_forward,
                 color: DesignSystem.c1,
               ),
-              // https://stackoverflow.com/questions/64871346/flutter-how-to-show-current-date-and-next-5-day-dates
-              // Text(
-              //   DateFormat('dd MMMM yyyy, HH:mm')
-              //       .format(DateTime.now().add(Duration(days: 1))),
-              //   style: const TextStyle(
-              //       color: DesignSystem.c1,
-              //       fontFamily: DesignSystem.fontFamily,
-              //       fontWeight: FontWeight.w600,
-              //       fontSize: 16),
-              // ),
               widget.endDate,
             ],
           )
         ],
       ),
     );
-  }
-
-  void liveLocation() {
-    LocationSettings locationSettings = const LocationSettings(
-      accuracy: LocationAccuracy.high,
-      distanceFilter: 100,
-    );
-
-    Geolocator.getPositionStream(locationSettings: locationSettings)
-        .listen((Position position) {
-      lat = position.latitude.toString();
-      long = position.longitude.toString();
-
-      setState(() {
-        // locationMessage = 'Latitude: $lat , Longitude: $long';
-      });
-    });
   }
 }

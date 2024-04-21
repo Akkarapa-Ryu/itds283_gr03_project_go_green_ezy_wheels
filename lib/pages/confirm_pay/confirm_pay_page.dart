@@ -166,7 +166,7 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.location_pin,
                             color: DesignSystem.c6,
                           ),
@@ -190,7 +190,7 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                         children: [
                           textContainer("${widget.startDate.data}",
                               DesignSystem.c6, FontWeight.w600, 16),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward,
                             color: DesignSystem.c6,
                           ),
@@ -216,7 +216,7 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       ),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.location_pin,
                             color: DesignSystem.c6,
                           ),
@@ -344,7 +344,7 @@ class _ConfirmPayPageState extends State<ConfirmPayPage> {
                       children: [
                         textContainer(ConfirmPayMessage.totalPayment,
                             DesignSystem.c0, FontWeight.normal, 15),
-                        textContainer('${widget.priceDay} \$ / Day',
+                        textContainer('${widget.priceDay} \$ / ${ConfirmPayMessage.day}',
                             DesignSystem.c0, FontWeight.bold, 24),
                       ],
                     ),

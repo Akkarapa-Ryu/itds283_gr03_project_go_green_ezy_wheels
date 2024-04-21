@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import '../theme/theme.dart';
 import 'components.dart';
-import 'container_text.dart';
 
 // https://api.flutter.dev/flutter/material/ListTile-class.html
 
@@ -80,11 +79,7 @@ class CustomListTileCarCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    textContainer(
-                            title,
-                            DesignSystem.c0,
-                            FontWeight.bold,
-                            16),
+                    textContainer(title, DesignSystem.c0, FontWeight.bold, 16),
                     Row(
                       children: [
                         textContainer(
@@ -131,9 +126,8 @@ class CustomListTileCarCard extends StatelessWidget {
       return textContainer(
           ' ($supercharge)', DesignSystem.c0, FontWeight.w500, 11);
     } else if (ac != 0) {
-      return 
-      textContainer(
-          '  ${CarListMessage.ac}: $ac${CarListMessage.kwH}', DesignSystem.c0, FontWeight.w500, 11);
+      return textContainer('  ${CarListMessage.ac}: $ac${CarListMessage.kwH}',
+          DesignSystem.c0, FontWeight.w500, 11);
     }
   }
 }

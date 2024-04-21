@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
+import '../constants/constants.dart';
 import 'components.dart';
 
 class LocationNotificationPopup extends StatefulWidget {
@@ -20,28 +21,29 @@ class _LocationNotificationPopupState extends State<LocationNotificationPopup> {
             builder: (context) {
               return AlertDialog(
                 backgroundColor: DesignSystem.c1,
-                title: textContainer(
-                    'Location', DesignSystem.c0, FontWeight.w600, 28),
+                title: textContainer(LocationPopUpMessage.instructions,
+                    DesignSystem.c0, FontWeight.w600, 24),
                 content: Container(
-                  height: 150,
-                  width: 200,
+                  height: 120,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Using Loation',
-                        style: TextStyle(
-                            fontFamily: DesignSystem.fontFamily,
-                            fontSize: 16,
-                            color: DesignSystem.c0,
-                            fontWeight: FontWeight.normal),
+                      textContainer(LocationPopUpMessage.usingLocation,
+                          DesignSystem.c0, FontWeight.w500, 16),
+                      const SizedBox(
+                        height: 10,
                       ),
+                      textContainer(LocationPopUpMessage.one, DesignSystem.c0,
+                          FontWeight.w500, 16),
+                      textContainer(LocationPopUpMessage.two, DesignSystem.c0,
+                          FontWeight.w500, 16),
                     ],
                   ),
                 ),
                 actions: [
                   TextButton(
-                      child: textContainer(
-                          'Close', DesignSystem.c0, FontWeight.normal, 16),
+                      child: textContainer(LocationPopUpMessage.close,
+                          DesignSystem.c0, FontWeight.w600, 16),
                       onPressed: () {
                         Navigator.pop(context);
                       })

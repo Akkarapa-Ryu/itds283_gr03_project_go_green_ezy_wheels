@@ -3,6 +3,7 @@ import 'package:icons_plus/icons_plus.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
 import '../../constants/constants.dart';
+import '../pages.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({
@@ -60,9 +61,17 @@ class SettingPage extends StatelessWidget {
                     iconSetting: Icon(Icons.currency_bitcoin)),
                 SettingMenuButton(
                     textButtonSetting: SettingMessage.information,
-                    iconSetting: Icon(IonIcons.chatbox_ellipses)),
+                    iconSetting: Icon(
+                      IonIcons.chatbox_ellipses,
+                    )),
+                SettingMenuButton(
+                    textButtonSetting: SettingMessage.aboutUs,
+                    iconSetting: Icon(
+                      IonIcons.information_circle,
+                    ),
+                    routePage: AboutAppPage()),
                 SizedBox(
-                  height: 180,
+                  height: 110,
                 ),
                 CustomButton(
                   colorButton: DesignSystem.c7,

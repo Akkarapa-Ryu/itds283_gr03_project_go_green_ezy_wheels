@@ -3,15 +3,16 @@ import '.../../../theme/theme.dart';
 
 class HomeMenuButton extends StatelessWidget {
   const HomeMenuButton(
-      {super.key, required this.iconMenu, required this.text, this.routePage});
+      {super.key, required this.iconMenu, required this.text, this.routePage, this.locate,});
 
   final Icon iconMenu;
   final String text;
   final Widget? routePage;
+  final String? locate;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+      return SizedBox(
       height: 170,
       child: Column(
         children: [
@@ -21,20 +22,19 @@ class HomeMenuButton extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => routePage!));
               } else {
-                // print('Not Found');
                 return;
               }
             },
             child: Container(
               height: 85,
               width: 85,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: DesignSystem.c1,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: iconColor(iconMenu, routePage),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           SizedBox(
@@ -43,7 +43,7 @@ class HomeMenuButton extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               overflow: TextOverflow.clip,
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: DesignSystem.fontFamily,
                   fontSize: 15,
                   color: DesignSystem.c1,
